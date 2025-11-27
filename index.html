@@ -1,86 +1,70 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Telegram Mini App</title>
-<style>
-    /* Giao diện dark giống Telegram */
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #1c1c1c;
-        color: white;
-        overflow: hidden; /* chặn cuộn xuống */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Telegram Mini App</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden; /* Khóa cuộn ngoài */
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e; /* Giao diện tối giống Telegram */
+      color: #ffffff;
     }
 
-    /* Canvas chính */
-    #myCanvas {
-        display: block;
-        margin: 0 auto;
-        background-color: #2c2c2c;
+    #app {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
     }
 
-    /* Checkbox dưới cùng */
-    .checkbox-container {
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 16px;
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0088cc;
+      color: white;
+      cursor: pointer;
     }
-</style>
+  </style>
 </head>
 <body>
+  <div id="app">
+    <h1>Mini App Telegram</h1>
+    <button id="closeBtn">Đóng Mini App</button>
+  </div>
 
-<canvas id="myCanvas"></canvas>
+  <script>
+    // Telegram WebApp API
+    const tg = window.Telegram.WebApp;
 
-<div class="checkbox-container">
-    <label><input type="checkbox" id="myCheckbox"> Chọn tùy chọn</label>
-</div>
+    // Khóa vuốt xuống minimize
+    tg.expand(); // Mở rộng toàn màn hình
+    tg.MainButton.show(); // Nếu muốn hiển thị nút chính
 
-<script>
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
+    // Bắt sự kiện khi người dùng nhấn nút "Đóng"
+    document.getElementById("closeBtn").addEventListener("click", () => {
+      tg.close();
+    });
 
-function resizeCanvas() {
-    // Luôn dọc, tỷ lệ 9:16
-    const height = window.innerHeight;
-    const width = height * 9 / 16;
-    canvas.width = width;
-    canvas.height = height;
-
-    drawCanvas();
-}
-
-function drawCanvas() {
-    ctx.fillStyle = "#2c2c2c";
-    ctx.fillRect(0,0,canvas.width, canvas.height);
-
-    ctx.fillStyle = "white";
-    ctx.font = "24px Arial";
-    ctx.fillText("Mini App Telegram", 20, 40);
-}
-
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-// Chặn thao tác vuốt xuống minimize (chỉ cảnh báo, không hoàn toàn chặn được)
-window.addEventListener('touchmove', function(e){
-    if(e.touches[0].clientY > 50){
-        e.preventDefault();
+    // Khóa xoay màn hình (sử dụng Screen Orientation API)
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('portrait').catch((err) => {
+        console.warn("Không thể khóa xoay màn hình:", err);
+      });
     }
-}, { passive: false });
 
-// Cảnh báo khi xoay ngang
-function checkOrientation() {
-    if(window.innerHeight < window.innerWidth){
-        alert("Vui lòng xoay điện thoại về chiều dọc!");
-    }
-}
-window.addEventListener("resize", checkOrientation);
-checkOrientation();
-</script>
-
+    // Khóa vuốt xuống bằng cách disable touchmove
+    document.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+    }, { passive: false });
+  </script>
 </body>
 </html>
