@@ -2,58 +2,56 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Safe Area UI Mới Telegram</title>
+    <title>Safe Under Close Button</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <style id="dynamic-style"></style>
+    <style id="app-style">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #ffffff;
+        }
+    </style>
 </head>
+
 <body>
 
-<h2>UI mới – Safe area dưới nút đóng</h2>
-<p>Nội dung này không bị che bởi nút đóng Mini App.</p>
-
-<div class="box">Nội dung chính</div>
+<h2>Nội dung Mini App</h2>
+<p>Phần body không bị nút đóng che.</p>
 
 <script>
     const tg = window.Telegram.WebApp;
-
     tg.ready();
-    tg.expand();
-    tg.setScreenOrientation("portrait"); // khóa dọc
 
-    function applySafeAreaAndTheme() {
-        const inset = tg.safeAreaInset;   // UI mới — quan trọng!
-        const closeButtonHeight = 48;     // chiều cao nút đóng UI mới Telegram
+    function adjustSafeArea() {
+        // Safe area UI mới Telegram
+        const inset = tg.safeAreaInset;
 
-        const topPadding = inset.top + closeButtonHeight + 12;
-        const bottomPadding = inset.bottom + 16;
+        // UI mới Telegram: nút đóng cách top ~48px dưới safe area
+        const closeButtonHeight = 48;
 
-        const p = tg.themeParams;
-        const scheme = tg.colorScheme;
+        const topPadding = inset.top + closeButtonHeight;
+        const bottomPadding = inset.bottom;
 
-        const style = document.getElementById("dynamic-style");
+        const style = document.getElementById("app-style");
 
         style.innerHTML = `
             body {
                 margin: 0;
-                padding: ${topPadding}px 20px ${bottomPadding}px 20px;
-                background: ${p.bg_color || (scheme === "dark" ? "#111" : "#fff")};
-                color: ${p.text_color || (scheme === "dark" ? "#fff" : "#000")};
+                padding: ${topPadding}px 16px ${bottomPadding}px 16px;
                 font-family: sans-serif;
-                transition: 0.2s;
-            }
-
-            .box {
-                background: ${p.secondary_bg_color || (scheme === "dark" ? "#1d1d1d" : "#f0f0f0")};
-                padding: 16px;
-                border-radius: 10px;
+                background: #ffffff;
+                box-sizing: border-box;
             }
         `;
     }
 
-    applySafeAreaAndTheme();
-    tg.onEvent("themeChanged", applySafeAreaAndTheme);
-    tg.onEvent("viewportChanged", applySafeAreaAndTheme); // UI mới cần listen viewport
+    // Áp dụng khi load
+    adjustSafeArea();
+
+    // UI mới Telegram: viewport có thể thay đổi
+    tg.onEvent("viewportChanged", adjustSafeArea);
 </script>
 
 </body>
