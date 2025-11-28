@@ -1,9 +1,5 @@
 name = "myapp"
-main = "src/index.js"          # ≤ nếu bạn không có file index thì thay đúng đường dẫn
 compatibility_date = "2025-11-28"
 
-[build]
-command = "npm install && npm run build"
-
 [assets]
-directory = "./dist"
+directory = "./dist"   # hoặc ./ nếu bạn không có dist
