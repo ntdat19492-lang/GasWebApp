@@ -2,24 +2,76 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Portrait Only - Telegram Mini App</title>
+    <title>Telegram Themed Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style id="theme-style">
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            background: #ffffff;
+            color: #000000;
+            transition: 0.2s;
+        }
+
+        .box {
+            padding: 16px;
+            border-radius: 10px;
+            background: #f0f0f0;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
 
+<h2>Mini App theo giao diện Telegram</h2>
+<p>Theme sẽ tự thay đổi khi bạn đổi theme Telegram.</p>
+
+<div class="box">
+    Đây là khung thử theme.
+</div>
+
 <script>
     const tg = window.Telegram.WebApp;
-
     tg.ready();
     tg.expand();
 
-    // 🔒 Khóa hướng xoay CHỈ portrait
-    tg.setScreenOrientation("portrait");
+    // 🟦 Hàm cập nhật giao diện theo theme Telegram
+    function applyTheme() {
+        const p = tg.themeParams;
+        const scheme = tg.colorScheme; // 'light' | 'dark'
 
+        // Lấy element stylesheet
+        const style = document.getElementById("theme-style");
+
+        // Gán CSS theo màu Telegram
+        style.innerHTML = `
+            body {
+                margin: 0;
+                padding: 20px;
+                font-family: sans-serif;
+                background: ${p.bg_color || (scheme === "dark" ? "#0f0f0f" : "#ffffff")};
+                color: ${p.text_color || (scheme === "dark" ? "#ffffff" : "#000000")};
+            }
+
+            .box {
+                padding: 16px;
+                border-radius: 10px;
+                background: ${p.secondary_bg_color || (scheme === "dark" ? "#1c1c1c" : "#f0f0f0")};
+                color: ${p.text_color || (scheme === "dark" ? "#ffffff" : "#000000")};
+            }
+        `;
+    }
+
+    // Áp dụng ngay khi load
+    applyTheme();
+
+    // Theo dõi khi người dùng đổi theme Telegram
+    tg.onEvent("themeChanged", () => {
+        applyTheme();
+    });
 </script>
-
-<h2>Mini App đang bị khóa hướng dọc</h2>
-<p>Dù xoay điện thoại, màn hình vẫn luôn hiển thị dọc.</p>
 
 </body>
 </html>
