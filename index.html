@@ -1,67 +1,358 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>MiniApp Safe Under Close (Fullscreen Only)</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Telegram Mini App — Dark UI Demo</title>
 
-    <style id="app-style">
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-            background: #ffffff;
-        }
-    </style>
-</head>
+  <!-- Telegram WebApp SDK (để test trong Telegram Mini App UI) -->
+  <script async src="https://telegram.org/js/telegram-web-app.js"></script>
 
-<body>
+  <!-- Fonts (tùy chọn) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<h2>Mini App</h2>
-<p>Nội dung này sẽ tự lùi xuống dưới nút đóng nếu đang ở FULLSCREEN 4.</p>
-
-<script>
-    const tg = window.Telegram.WebApp;
-    tg.ready();
-
-    function updateSafeArea() {
-        // 🚀 Kiểm tra launchMode UI mới
-        // Có thể là: "fullscreen", "partial", "popup"
-        const mode = tg.launchParams?.launchMode || "";
-
-        if (mode !== "fullscreen") {
-            // ❗ Không fullscreen → giữ nguyên
-            return;
-        } else {
-            // 🆕 Safe area UI mới Telegram
-            const inset = tg.safeAreaInset;
-    
-            // UI mới: nút đóng (X) nằm thấp hơn safe-area khoảng 48px
-            const closeButtonHeight = 100;
-    
-            const topPadding = inset.top + closeButtonHeight;
-            const bottomPadding = inset.bottom;
-    
-            // Cập nhật CSS
-            const style = document.getElementById("app-style");
-            style.innerHTML = `
-                body {
-                    margin: 0;
-                    padding: ${topPadding}px 16px ${bottomPadding}px 16px;
-                    font-family: sans-serif;
-                    background: #ffffff;
-                    box-sizing: border-box;
-                }
-            `;
-        }
+  <style>
+    :root{
+      --bg:#0f1112;
+      --surface:#141619;
+      --muted:#98a1a6;
+      --accent:#2a9df4; /* bluish like Telegram */
+      --bubble:#1b1f22;
+      --me-bubble:#2a6ef4;
+      --radius:14px;
+      color-scheme: dark;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -webkit-touch-callout: none; /* disable callout on iOS */
+      -webkit-user-select: none;
+      user-select: none;
+      overscroll-behavior-y: none; /* try to prevent pull-to-refresh */
+      touch-action: manipulation;
+      -webkit-overflow-scrolling:touch;
     }
 
-    // Áp dụng khi load
-    updateSafeArea();
+    /* App shell */
+    .app {
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      padding:12px;
+      box-sizing:border-box;
+      color:#e6eef7;
+    }
 
-    // Áp dụng lại khi thay đổi viewport (UI mới)
-    tg.onEvent("viewportChanged", updateSafeArea);
-</script>
+    /* Header */
+    .header {
+      height:56px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:12px;
+      backdrop-filter: blur(6px);
+    }
+    .avatar{
+      width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#2a6ef4,#7b53f5);
+    }
+    .title{ font-weight:600; font-size:16px; }
+    .subtitle{ color:var(--muted); font-size:12px; margin-top:2px; }
 
+    /* Chat area */
+    .chat-wrap{
+      flex:1;
+      overflow:auto;
+      padding:8px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .bubble{
+      max-width:72%;
+      padding:10px 12px;
+      border-radius:14px;
+      background:var(--bubble);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
+      color:#e6eef7;
+      word-break:break-word;
+    }
+    .me{
+      align-self:flex-end;
+      background:linear-gradient(180deg,var(--me-bubble),#1f58d6);
+      color:white;
+    }
+    .meta{ font-size:11px; color:var(--muted); margin-top:6px; }
+
+    /* Input area */
+    .composer {
+      display:flex;
+      gap:8px;
+      align-items:center;
+      padding:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius:12px;
+    }
+    .text {
+      flex:1;
+      background:transparent;
+      border:none;
+      outline:none;
+      color:#e6eef7;
+      font-size:15px;
+    }
+    .icon-btn{
+      background:transparent;
+      border:none;
+      color:var(--accent);
+      font-weight:600;
+      font-size:14px;
+      padding:8px;
+      border-radius:8px;
+    }
+
+    /* small helper */
+    .center {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* Prevent unwanted selection on long press */
+    ::selection { background: rgba(255,255,255,0.06); }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <div class="header" id="header">
+      <div class="avatar" aria-hidden="true"></div>
+      <div style="flex:1;">
+        <div class="title" id="chatTitle">Demo — Telegram Dark</div>
+        <div class="subtitle" id="chatSub">Mini App UI</div>
+      </div>
+      <button id="expandBtn" class="icon-btn" title="Expand">▣</button>
+    </div>
+
+    <div class="chat-wrap" id="chatWrap" role="log" aria-live="polite">
+      <!-- example messages -->
+      <div class="bubble">Chào mừng bạn đến với demo Mini App giao diện tối giống Telegram.</div>
+      <div class="bubble me">Xin chào! Mình đang test giao diện dark & lock zoom/rotation.</div>
+    </div>
+
+    <div class="composer" id="composer">
+      <input id="textInput" class="text" placeholder="Gõ tin nhắn..." inputmode="text" />
+      <button id="sendBtn" class="icon-btn">Gửi</button>
+    </div>
+  </div>
+
+  <script>
+    // ====== CORE: Telegram.WebApp compatibility check ======
+    const inTelegram = !!window.Telegram?.WebApp;
+    if(inTelegram){
+      const WebApp = window.Telegram.WebApp;
+      // Tell Telegram that app is ready
+      WebApp.ready();
+
+      // Apply theme params if available
+      try {
+        const params = WebApp.themeParams || {};
+        // If Telegram gives us a bg color, apply it:
+        if(params.bg_color) {
+          document.documentElement.style.setProperty('--bg', params.bg_color);
+        }
+        if(params.secondary_bg_color) {
+          document.documentElement.style.setProperty('--surface', params.secondary_bg_color);
+        }
+      } catch(e){ /* ignore */ }
+
+      // Show MainButton example
+      WebApp.MainButton.setText("Gửi (MainButton)");
+      WebApp.MainButton.show();
+      WebApp.MainButton.onClick(() => {
+        sendMessageViaMainButton();
+      });
+
+      // BackButton example (hide)
+      WebApp.BackButton.hide();
+
+      // Attempt to lock orientation on ready (works only in supporting contexts)
+      tryLockOrientation();
+
+      // If WebApp provides init data, show user name
+      if(WebApp.initDataUnsafe?.user) {
+        const user = WebApp.initDataUnsafe.user;
+        document.getElementById('chatTitle').textContent = (user.first_name || "") + (user.last_name ? " " + user.last_name : "");
+        document.getElementById('chatSub').textContent = "@" + (user.username || "user");
+      }
+    } else {
+      console.info("Not running inside Telegram WebApp. The UI still works in a browser.");
+    }
+
+    // ====== UI Behavior ======
+    const chatWrap = document.getElementById('chatWrap');
+    const sendBtn = document.getElementById('sendBtn');
+    const input = document.getElementById('textInput');
+    const expandBtn = document.getElementById('expandBtn');
+
+    function appendMessage(text, isMe=false){
+      const d = document.createElement('div');
+      d.className = 'bubble' + (isMe ? ' me' : '');
+      d.textContent = text;
+      chatWrap.appendChild(d);
+      // small meta for timestamp
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      const now = new Date();
+      meta.textContent = now.toLocaleTimeString();
+      d.appendChild(meta);
+      chatWrap.scrollTop = chatWrap.scrollHeight;
+    }
+
+    function sendMessageViaMainButton(){
+      const text = input.value.trim() || " (empty) ";
+      appendMessage(text, true);
+      // If inside Telegram, we can send data back to bot
+      if(window.Telegram?.WebApp){
+        try {
+          window.Telegram.WebApp.sendData(JSON.stringify({ text, ts: Date.now() }));
+        } catch(e){}
+      }
+      input.value = '';
+    }
+
+    sendBtn.addEventListener('click', () => sendMessageViaMainButton());
+    input.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') {
+        e.preventDefault();
+        sendMessageViaMainButton();
+      }
+    });
+
+    expandBtn.addEventListener('click', () => {
+      if(window.Telegram?.WebApp) window.Telegram.WebApp.expand();
+      else alert("Expand: only works in Telegram WebApp");
+    });
+
+    // ====== Prevent pinch/zoom + disable multi-touch gestures ======
+    (function blockPinchZoom(){
+      let lastTouchEnd = 0;
+      document.addEventListener('touchstart', function(e){
+        if(e.touches.length > 1){
+          e.preventDefault(); // block multi-touch (pinch)
+        }
+      }, { passive:false });
+
+      // iOS gesturestart
+      document.addEventListener('gesturestart', function(e){ e.preventDefault(); }, { passive:false });
+
+      // prevent double-tap to zoom
+      document.addEventListener('touchend', function(e){
+        const now = Date.now();
+        if(now - lastTouchEnd <= 300) {
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, { passive:false });
+
+      // also block ctrl + wheel zoom (desktop)
+      window.addEventListener('wheel', function(e){
+        if(e.ctrlKey) e.preventDefault();
+      }, { passive:false });
+    })();
+
+    // ====== Try to lock orientation to portrait ======
+    async function tryLockOrientation(){
+      if(!('screen' in window) || !screen.orientation || !screen.orientation.lock) {
+        console.info('Screen Orientation API not available or not allowed in this environment.');
+        return;
+      }
+      try {
+        await screen.orientation.lock('portrait');
+        console.info('Orientation locked to portrait.');
+      } catch(err){
+        console.warn('Orientation lock failed:', err);
+        // Some contexts require user gesture — show a gentle prompt:
+        showOrientationPrompt();
+      }
+    }
+
+    function showOrientationPrompt(){
+      // small gentle prompt bar to ask user to tap to lock orientation
+      if(document.getElementById('orientPrompt')) return;
+      const bar = document.createElement('div');
+      bar.id = 'orientPrompt';
+      bar.style.cssText = 'position:fixed;left:12px;right:12px;bottom:78px;padding:10px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);text-align:center;font-size:13px;color:var(--muted);z-index:9999;';
+      bar.innerHTML = 'Để có trải nghiệm tốt hơn, <button id="doLock" style="margin-left:8px;padding:6px 10px;border-radius:8px;border:none;background:var(--accent);color:white;">Khóa dọc</button>';
+      document.body.appendChild(bar);
+      document.getElementById('doLock').addEventListener('click', async () => {
+        try {
+          await screen.orientation.lock('portrait');
+          bar.remove();
+        } catch(e){
+          bar.textContent = 'Không thể khóa xoay trong WebView này.';
+          setTimeout(()=>bar.remove(),2000);
+        }
+      });
+    }
+
+    // ====== Reduce pull-to-refresh by controlling overscroll for top ======
+    (function preventPullToRefresh(){
+      let startY = 0;
+      let maybePrevent = false;
+
+      document.addEventListener('touchstart', function(e){
+        if(e.touches.length !== 1) return;
+        startY = e.touches[0].clientY;
+        maybePrevent = (document.scrollingElement.scrollTop === 0);
+      }, { passive:false });
+
+      document.addEventListener('touchmove', function(e){
+        if(maybePrevent){
+          const touch = e.touches[0];
+          const y = touch.clientY;
+          if(y > startY + 5){
+            // user is swiping down from top — prevent default to reduce minimize/pull-to-refresh
+            e.preventDefault();
+          }
+        }
+      }, { passive:false });
+    })();
+
+    // Accessibility / fallback: allow selecting text in input
+    input.addEventListener('focus', () => {
+      // allow text selection while focused
+      document.body.style.userSelect = 'text';
+    });
+    input.addEventListener('blur', () => {
+      document.body.style.userSelect = 'none';
+    });
+
+    // If not in Telegram, optionally simulate the MainButton using a control
+    if(!inTelegram){
+      // create a floating main-like button
+      const f = document.createElement('button');
+      f.id = 'fakeMain';
+      f.textContent = 'MainButton: Gửi';
+      f.style.cssText = 'position:fixed;right:14px;bottom:14px;padding:12px 16px;border-radius:28px;background:var(--accent);color:white;border:none;z-index:999;';
+      f.addEventListener('click', sendMessageViaMainButton);
+      document.body.appendChild(f);
+    }
+
+    // ensure chat scrolls to bottom on resize (keyboard)
+    window.addEventListener('resize', () => {
+      chatWrap.scrollTop = chatWrap.scrollHeight;
+    });
+
+    // initial scroll bottom
+    chatWrap.scrollTop = chatWrap.scrollHeight;
+  </script>
 </body>
 </html>
