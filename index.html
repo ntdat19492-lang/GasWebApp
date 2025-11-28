@@ -1,82 +1,50 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Telegram Mini App Test</title>
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    font-family: sans-serif;
-    background-color: #121212; /* Dark mode giống Telegram */
-    color: #ffffff;
-  }
-
-  #debug-log {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    background: rgba(0,0,0,0.7);
-    padding: 5px;
-    font-size: 12px;
-    line-height: 1.2em;
-    box-sizing: border-box;
-    z-index: 9999;
-  }
-
-  #content {
-    padding: 20px;
-  }
-
-  button {
-    padding: 10px 15px;
-    margin: 5px 0;
-    font-size: 16px;
-    background-color: #2CAB37;
-    color: white;
-    border: none;
-    border-radius: 6px;
-  }
-</style>
-<script src ='https://telegram.org/js/telegram-web-app.js'></script>
+    <meta charset="UTF-8">
+    <title>Lock Screen Orientation - Telegram Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        button {
+            padding: 12px 18px;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<div id="content">
-  <h2>Telegram Mini App Debug</h2>
-  <button id="mainBtn">Test Main Button</button>
-  <button id="sendDataBtn">Send Data to Bot</button>
-  <button id="closeBtn">Close Mini App</button>
-</div>
+    <h2>Khóa hướng màn hình (Telegram Mini App)</h2>
 
-<div id="debug-log"></div>
+    <button onclick="setPortrait()">📱 Khóa Portrait</button><br>
+    <button onclick="setLandscape()">📺 Khóa Landscape</button><br>
+    <button onclick="unlock()">🔓 Mở khóa (auto)</button>
 
-<script>
-const logDiv = document.getElementById('debug-log');
-function log(msg) {
-  const time = new Date().toLocaleTimeString();
-  logDiv.innerHTML += `[${time}] ${msg}<br>`;
-  logDiv.scrollTop = logDiv.scrollHeight;
-}
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
 
-// Kiểm tra Telegram WebApp tồn tại
-if (!window.Telegram || !Telegram.WebApp) {
-  log("⚠ Telegram.WebApp không tồn tại. Chạy trên Telegram Web App để thử!");
-} else {
-  const tg = window.Telegram.WebApp;
-  tg.setScreenOrientation("portrait");
-  };
-}
+        function setPortrait() {
+            tg.setScreenOrientation("portrait");
+            tg.HapticFeedback.notificationOccurred("success");
+        }
 
-// Lock zoom bằng meta tag (đã set ở <head>) và chỉ hiển thị dọc
-// Note: Khóa xoay hoàn toàn phụ thuộc Telegram WebView / thiết bị, nhưng API expand + viewport event giúp hạn chế xoay
-</script>
+        function setLandscape() {
+            tg.setScreenOrientation("landscape");
+            tg.HapticFeedback.notificationOccurred("success");
+        }
+
+        function unlock() {
+            tg.setScreenOrientation("auto");
+            tg.HapticFeedback.notificationOccurred("selection_changed");
+        }
+    </script>
+
 </body>
 </html>
