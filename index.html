@@ -2,49 +2,24 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Lock Screen Orientation - Telegram Mini App</title>
+    <title>Portrait Only - Telegram Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 20px;
-        }
-        button {
-            padding: 12px 18px;
-            font-size: 16px;
-            margin: 10px 0;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 
-    <h2>Khóa hướng màn hình (Telegram Mini App)</h2>
+<script>
+    const tg = window.Telegram.WebApp;
 
-    <button onclick="setPortrait()">📱 Khóa Portrait</button><br>
-    <button onclick="setLandscape()">📺 Khóa Landscape</button><br>
-    <button onclick="unlock()">🔓 Mở khóa (auto)</button>
+    tg.ready();
+    tg.expand();
 
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        tg.expand();
+    // 🔒 Khóa hướng xoay CHỈ portrait
+    tg.setScreenOrientation("portrait");
 
-        function setPortrait() {
-            tg.setScreenOrientation("portrait");
-            tg.HapticFeedback.notificationOccurred("success");
-        }
+</script>
 
-        function setLandscape() {
-            tg.setScreenOrientation("landscape");
-            tg.HapticFeedback.notificationOccurred("success");
-        }
-
-        function unlock() {
-            tg.setScreenOrientation("auto");
-            tg.HapticFeedback.notificationOccurred("selection_changed");
-        }
-    </script>
+<h2>Mini App đang bị khóa hướng dọc</h2>
+<p>Dù xoay điện thoại, màn hình vẫn luôn hiển thị dọc.</p>
 
 </body>
 </html>
