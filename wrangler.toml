@@ -1,4 +1,4 @@
-name = "worker-name"
+name = "myapp"
 main = "src/index.js"          # ≤ nếu bạn không có file index thì thay đúng đường dẫn
 compatibility_date = "2025-11-28"
 
