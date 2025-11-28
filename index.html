@@ -70,52 +70,8 @@ function log(msg) {
 if (!window.Telegram || !Telegram.WebApp) {
   log("⚠ Telegram.WebApp không tồn tại. Chạy trên Telegram Web App để thử!");
 } else {
-  const webApp = Telegram.WebApp;
-  log("✅ Telegram.WebApp tồn tại");
-
-  // Theme
-  log("Theme params: " + JSON.stringify(webApp.themeParams));
-
-  // Init data
-  log("User info: " + JSON.stringify(webApp.initDataUnsafe.user));
-  log("Chat info: " + JSON.stringify(webApp.initDataUnsafe.chat));
-
-  // Main Button
-  const mainBtn = webApp.MainButton;
-  mainBtn.setText("Nhấn tôi").show();
-  mainBtn.onClick(() => log("MainButton clicked"));
-
-  // Back Button (nếu muốn can thiệp)
-  webApp.BackButton.onClick(() => log("BackButton clicked"));
-
-  // Expand WebApp full screen
-  webApp.expand();
-  log("WebApp.expand() gọi");
-
-  // Khóa closing / prevent minimize swipe
-  webApp.enableClosingConfirmation(true);
-  log("Closing confirmation enabled");
-
-  // Event khi theme thay đổi
-  webApp.onEvent("themeChanged", () => {
-    log("Theme changed: " + JSON.stringify(webApp.themeParams));
-  });
-
-  // Event khi viewport thay đổi (xoay màn hình)
-  webApp.onEvent("viewportChanged", () => {
-    log("Viewport changed: " + webApp.viewportWidth + "x" + webApp.viewportHeight);
-  });
-
-  // Button gửi data về bot
-  document.getElementById("sendDataBtn").onclick = () => {
-    webApp.sendData(JSON.stringify({event: "test", time: Date.now()}));
-    log("sendData() gọi");
-  };
-
-  // Button đóng Mini App
-  document.getElementById("closeBtn").onclick = () => {
-    webApp.close();
-    log("WebApp.close() gọi");
+  const tg = window.Telegram.WebApp;
+  tg.setScreenOrientation("portrait");
   };
 }
 
