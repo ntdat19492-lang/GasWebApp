@@ -1,77 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Telegram Mini App</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      overflow: hidden; /* Khóa cuộn ngoài */
-      font-family: Arial, sans-serif;
-      background-color: #1e1e1e; /* Giao diện tối giống Telegram */
-      color: #ffffff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Telegram Mini App Test</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    background-color: #121212; /* Dark mode giống Telegram */
+    color: #ffffff;
+  }
 
-    #app {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-    }
+  #debug-log {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.7);
+    padding: 5px;
+    font-size: 12px;
+    line-height: 1.2em;
+    box-sizing: border-box;
+    z-index: 9999;
+  }
 
-    button {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      background-color: #0088cc;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+  #content {
+    padding: 20px;
+  }
+
+  button {
+    padding: 10px 15px;
+    margin: 5px 0;
+    font-size: 16px;
+    background-color: #2CAB37;
+    color: white;
+    border: none;
+    border-radius: 6px;
+  }
+</style>
 </head>
 <body>
-  <div id="app">
-    <h1>Mini App Telegram</h1>
-    <button id="closeBtn">Đóng Mini App</button>
-  </<div id="debug-log" style="position:fixed;bottom:0;left:0;width:100%;height:150px;overflow:auto;background:#000;color:#0f0;font-size:12px;"></div>
 
-  <script>
-    // Telegram WebApp API
-    const tg = window.Telegram.WebApp;
+<div id="content">
+  <h2>Telegram Mini App Debug</h2>
+  <button id="mainBtn">Test Main Button</button>
+  <button id="sendDataBtn">Send Data to Bot</button>
+  <button id="closeBtn">Close Mini App</button>
+</div>
 
-    // Khóa vuốt xuống minimize
-    tg.expand(); // Mở rộng toàn màn hình
-    tg.MainButton.show(); // Nếu muốn hiển thị nút chính
+<div id="debug-log"></div>
 
-    // Bắt sự kiện khi người dùng nhấn nút "Đóng"
-    document.getElementById("closeBtn").addEventListener("click", () => {
-      tg.close();
-    });
-
-    // Khóa xoay màn hình (sử dụng Screen Orientation API)
-    if (screen.orientation && screen.orientation.lock) {
-      screen.orientation.lock('portrait').catch((err) => {
-        console.warn("Không thể khóa xoay màn hình:", err);
-      });
-    }
-
-    // Khóa vuốt xuống bằng cách disable touchmove
-    document.addEventListener('touchmove', function(e) {
-      e.preventDefault();
-    }, { passive: function log(msg) {
-  const div = document.getElementById("debug-log");
-  div.innerHTML += msg + "<br>";
+<script>
+const logDiv = document.getElementById('debug-log');
+function log(msg) {
+  const time = new Date().toLocaleTimeString();
+  logDiv.innerHTML += `[${time}] ${msg}<br>`;
+  logDiv.scrollTop = logDiv.scrollHeight;
 }
 
-// Ví dụ test API
-log("User: " + JSON.stringify(Telegram.WebApp.initDataUnsafe.user));
-log("Theme: " + JSON.stringify(Telegram.WebApp.themeParams));
-  </script>
+// Kiểm tra Telegram WebApp tồn tại
+if (!window.Telegram || !Telegram.WebApp) {
+  log("⚠ Telegram.WebApp không tồn tại. Chạy trên Telegram Web App để thử!");
+} else {
+  const webApp = Telegram.WebApp;
+  log("✅ Telegram.WebApp tồn tại");
+
+  // Theme
+  log("Theme params: " + JSON.stringify(webApp.themeParams));
+
+  // Init data
+  log("User info: " + JSON.stringify(webApp.initDataUnsafe.user));
+  log("Chat info: " + JSON.stringify(webApp.initDataUnsafe.chat));
+
+  // Main Button
+  const mainBtn = webApp.MainButton;
+  mainBtn.setText("Nhấn tôi").show();
+  mainBtn.onClick(() => log("MainButton clicked"));
+
+  // Back Button (nếu muốn can thiệp)
+  webApp.BackButton.onClick(() => log("BackButton clicked"));
+
+  // Expand WebApp full screen
+  webApp.expand();
+  log("WebApp.expand() gọi");
+
+  // Khóa closing / prevent minimize swipe
+  webApp.enableClosingConfirmation(true);
+  log("Closing confirmation enabled");
+
+  // Event khi theme thay đổi
+  webApp.onEvent("themeChanged", () => {
+    log("Theme changed: " + JSON.stringify(webApp.themeParams));
+  });
+
+  // Event khi viewport thay đổi (xoay màn hình)
+  webApp.onEvent("viewportChanged", () => {
+    log("Viewport changed: " + webApp.viewportWidth + "x" + webApp.viewportHeight);
+  });
+
+  // Button gửi data về bot
+  document.getElementById("sendDataBtn").onclick = () => {
+    webApp.sendData(JSON.stringify({event: "test", time: Date.now()}));
+    log("sendData() gọi");
+  };
+
+  // Button đóng Mini App
+  document.getElementById("closeBtn").onclick = () => {
+    webApp.close();
+    log("WebApp.close() gọi");
+  };
+}
+
+// Lock zoom bằng meta tag (đã set ở <head>) và chỉ hiển thị dọc
+// Note: Khóa xoay hoàn toàn phụ thuộc Telegram WebView / thiết bị, nhưng API expand + viewport event giúp hạn chế xoay
+</script>
 </body>
 </html>
