@@ -2,4 +2,4 @@ name = "myapp"
 compatibility_date = "2025-11-28"
 
 [assets]
-directory = "./dist"   # hoặc ./ nếu bạn không có dist
+directory = "./"
