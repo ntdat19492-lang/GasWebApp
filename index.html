@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Safe Under Close Button</title>
+    <title>MiniApp Safe Under Close (Fullscreen Only)</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style id="app-style">
@@ -17,25 +17,34 @@
 
 <body>
 
-<h2>Nội dung Mini App</h2>
-<p>Phần body không bị nút đóng che.</p>
+<h2>Mini App</h2>
+<p>Nội dung này sẽ tự lùi xuống dưới nút đóng nếu đang ở FULLSCREEN.</p>
 
 <script>
     const tg = window.Telegram.WebApp;
     tg.ready();
 
-    function adjustSafeArea() {
-        // Safe area UI mới Telegram
+    function updateSafeArea() {
+        // 🚀 Kiểm tra launchMode UI mới
+        // Có thể là: "fullscreen", "partial", "popup"
+        const mode = tg.launchParams?.launchMode || "";
+
+        if (mode !== "fullscreen") {
+            // ❗ Không fullscreen → giữ nguyên
+            return;
+        }
+
+        // 🆕 Safe area UI mới Telegram
         const inset = tg.safeAreaInset;
 
-        // UI mới Telegram: nút đóng cách top ~48px dưới safe area
+        // UI mới: nút đóng (X) nằm thấp hơn safe-area khoảng 48px
         const closeButtonHeight = 48;
 
         const topPadding = inset.top + closeButtonHeight;
         const bottomPadding = inset.bottom;
 
+        // Cập nhật CSS
         const style = document.getElementById("app-style");
-
         style.innerHTML = `
             body {
                 margin: 0;
@@ -48,10 +57,10 @@
     }
 
     // Áp dụng khi load
-    adjustSafeArea();
+    updateSafeArea();
 
-    // UI mới Telegram: viewport có thể thay đổi
-    tg.onEvent("viewportChanged", adjustSafeArea);
+    // Áp dụng lại khi thay đổi viewport (UI mới)
+    tg.onEvent("viewportChanged", updateSafeArea);
 </script>
 
 </body>
