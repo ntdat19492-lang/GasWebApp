@@ -32,28 +32,28 @@
         if (mode !== "fullscreen") {
             // ❗ Không fullscreen → giữ nguyên
             return;
+        } else {
+            // 🆕 Safe area UI mới Telegram
+            const inset = tg.safeAreaInset;
+    
+            // UI mới: nút đóng (X) nằm thấp hơn safe-area khoảng 48px
+            const closeButtonHeight = 48;
+    
+            const topPadding = inset.top + closeButtonHeight;
+            const bottomPadding = inset.bottom;
+    
+            // Cập nhật CSS
+            const style = document.getElementById("app-style");
+            style.innerHTML = `
+                body {
+                    margin: 0;
+                    padding: ${topPadding}px 16px ${bottomPadding}px 16px;
+                    font-family: sans-serif;
+                    background: #ffffff;
+                    box-sizing: border-box;
+                }
+            `;
         }
-
-        // 🆕 Safe area UI mới Telegram
-        const inset = tg.safeAreaInset;
-
-        // UI mới: nút đóng (X) nằm thấp hơn safe-area khoảng 48px
-        const closeButtonHeight = 48;
-
-        const topPadding = inset.top + closeButtonHeight;
-        const bottomPadding = inset.bottom;
-
-        // Cập nhật CSS
-        const style = document.getElementById("app-style");
-        style.innerHTML = `
-            body {
-                margin: 0;
-                padding: ${topPadding}px 16px ${bottomPadding}px 16px;
-                font-family: sans-serif;
-                background: #ffffff;
-                box-sizing: border-box;
-            }
-        `;
     }
 
     // Áp dụng khi load
