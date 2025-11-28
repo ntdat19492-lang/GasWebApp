@@ -2,116 +2,58 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Portrait Fullscreen + Safe Area</title>
+    <title>Safe Area UI Mới Telegram</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <style id="theme-style">
-        :root {
-            /* Safe area mặc định */
-            --top: env(safe-area-inset-top);
-            --bottom: env(safe-area-inset-bottom);
-        }
-
-        body {
-            margin: 0;
-            padding: calc(var(--top) + 20px) 20px calc(var(--bottom) + 20px) 20px;
-            font-family: sans-serif;
-            background: #ffffff;
-            color: #000000;
-            transition: 0.2s;
-            box-sizing: border-box;
-        }
-
-        .container {
-            background: #f0f0f0;
-            padding: 16px;
-            border-radius: 12px;
-        }
-
-        .safe-view {
-            margin-top: 20px;
-            background: #dcdcdc;
-            padding: 12px;
-            border-radius: 10px;
-        }
-
-        /* Làm vùng dưới (safe area) nằm DƯỚI nút đóng */
-        .safe-bottom {
-            height: calc(env(safe-area-inset-bottom) + 16px);
-        }
-    </style>
+    <style id="dynamic-style"></style>
 </head>
-
 <body>
 
-<h2>Mini App Portrait + Safe View</h2>
-<p>Giao diện đang khóa hướng dọc và có vùng Safe Area nằm dưới nút đóng.</p>
+<h2>UI mới – Safe area dưới nút đóng</h2>
+<p>Nội dung này không bị che bởi nút đóng Mini App.</p>
 
-<div class="container">
-    Đây là khu vực nội dung chính, không bị notch hay nút đóng che.
-</div>
-
-<div class="safe-view">
-    Safe View – luôn nằm dưới nút đóng & không bị che ở fullscreen portrait.
-</div>
-
-<div class="safe-bottom"></div>
+<div class="box">Nội dung chính</div>
 
 <script>
     const tg = window.Telegram.WebApp;
 
     tg.ready();
-    tg.expand(); // mở fullscreen
-    tg.setScreenOrientation("portrait"); // 🔒 khóa hướng dọc
+    tg.expand();
+    tg.setScreenOrientation("portrait"); // khóa dọc
 
-    // Hàm cập nhật theme UI
-    function applyTheme() {
+    function applySafeAreaAndTheme() {
+        const inset = tg.safeAreaInset;   // UI mới — quan trọng!
+        const closeButtonHeight = 48;     // chiều cao nút đóng UI mới Telegram
+
+        const topPadding = inset.top + closeButtonHeight + 12;
+        const bottomPadding = inset.bottom + 16;
+
         const p = tg.themeParams;
         const scheme = tg.colorScheme;
 
-        const style = document.getElementById("theme-style");
+        const style = document.getElementById("dynamic-style");
 
         style.innerHTML = `
-            :root {
-                --top: env(safe-area-inset-top);
-                --bottom: env(safe-area-inset-bottom);
-            }
-
             body {
                 margin: 0;
-                padding: calc(var(--top) + 20px) 20px calc(var(--bottom) + 20px) 20px;
+                padding: ${topPadding}px 20px ${bottomPadding}px 20px;
+                background: ${p.bg_color || (scheme === "dark" ? "#111" : "#fff")};
+                color: ${p.text_color || (scheme === "dark" ? "#fff" : "#000")};
                 font-family: sans-serif;
-                background: ${p.bg_color || (scheme === "dark" ? "#0f0f0f" : "#ffffff")};
-                color: ${p.text_color || (scheme === "dark" ? "#ffffff" : "#000000")};
                 transition: 0.2s;
-                box-sizing: border-box;
             }
 
-            .container {
-                background: ${p.secondary_bg_color || (scheme === "dark" ? "#1c1c1c" : "#f0f0f0")};
-                color: inherit;
+            .box {
+                background: ${p.secondary_bg_color || (scheme === "dark" ? "#1d1d1d" : "#f0f0f0")};
                 padding: 16px;
-                border-radius: 12px;
-            }
-
-            .safe-view {
-                margin-top: 20px;
-                background: ${p.secondary_bg_color || (scheme === "dark" ? "#1f1f1f" : "#dcdcdc")};
-                padding: 12px;
                 border-radius: 10px;
-            }
-
-            .safe-bottom {
-                height: calc(env(safe-area-inset-bottom) + 16px);
             }
         `;
     }
 
-    // Áp dụng theme ngay
-    applyTheme();
-
-    // Lắng nghe thay đổi theme
-    tg.onEvent("themeChanged", applyTheme);
+    applySafeAreaAndTheme();
+    tg.onEvent("themeChanged", applySafeAreaAndTheme);
+    tg.onEvent("viewportChanged", applySafeAreaAndTheme); // UI mới cần listen viewport
 </script>
 
 </body>
