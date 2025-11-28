@@ -2,75 +2,116 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Telegram Themed Mini App</title>
+    <title>Portrait Fullscreen + Safe Area</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style id="theme-style">
+        :root {
+            /* Safe area mặc định */
+            --top: env(safe-area-inset-top);
+            --bottom: env(safe-area-inset-bottom);
+        }
+
         body {
             margin: 0;
-            padding: 20px;
+            padding: calc(var(--top) + 20px) 20px calc(var(--bottom) + 20px) 20px;
             font-family: sans-serif;
             background: #ffffff;
             color: #000000;
             transition: 0.2s;
+            box-sizing: border-box;
         }
 
-        .box {
-            padding: 16px;
-            border-radius: 10px;
+        .container {
             background: #f0f0f0;
-            margin-top: 15px;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .safe-view {
+            margin-top: 20px;
+            background: #dcdcdc;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        /* Làm vùng dưới (safe area) nằm DƯỚI nút đóng */
+        .safe-bottom {
+            height: calc(env(safe-area-inset-bottom) + 16px);
         }
     </style>
 </head>
+
 <body>
 
-<h2>Mini App theo giao diện Telegram</h2>
-<p>Theme sẽ tự thay đổi khi bạn đổi theme Telegram.</p>
+<h2>Mini App Portrait + Safe View</h2>
+<p>Giao diện đang khóa hướng dọc và có vùng Safe Area nằm dưới nút đóng.</p>
 
-<div class="box">
-    Đây là khung thử theme.
+<div class="container">
+    Đây là khu vực nội dung chính, không bị notch hay nút đóng che.
 </div>
+
+<div class="safe-view">
+    Safe View – luôn nằm dưới nút đóng & không bị che ở fullscreen portrait.
+</div>
+
+<div class="safe-bottom"></div>
 
 <script>
     const tg = window.Telegram.WebApp;
-    tg.ready();
-    tg.expand();
 
-    // 🟦 Hàm cập nhật giao diện theo theme Telegram
+    tg.ready();
+    tg.expand(); // mở fullscreen
+    tg.setScreenOrientation("portrait"); // 🔒 khóa hướng dọc
+
+    // Hàm cập nhật theme UI
     function applyTheme() {
         const p = tg.themeParams;
-        const scheme = tg.colorScheme; // 'light' | 'dark'
+        const scheme = tg.colorScheme;
 
-        // Lấy element stylesheet
         const style = document.getElementById("theme-style");
 
-        // Gán CSS theo màu Telegram
         style.innerHTML = `
+            :root {
+                --top: env(safe-area-inset-top);
+                --bottom: env(safe-area-inset-bottom);
+            }
+
             body {
                 margin: 0;
-                padding: 20px;
+                padding: calc(var(--top) + 20px) 20px calc(var(--bottom) + 20px) 20px;
                 font-family: sans-serif;
                 background: ${p.bg_color || (scheme === "dark" ? "#0f0f0f" : "#ffffff")};
                 color: ${p.text_color || (scheme === "dark" ? "#ffffff" : "#000000")};
+                transition: 0.2s;
+                box-sizing: border-box;
             }
 
-            .box {
-                padding: 16px;
-                border-radius: 10px;
+            .container {
                 background: ${p.secondary_bg_color || (scheme === "dark" ? "#1c1c1c" : "#f0f0f0")};
-                color: ${p.text_color || (scheme === "dark" ? "#ffffff" : "#000000")};
+                color: inherit;
+                padding: 16px;
+                border-radius: 12px;
+            }
+
+            .safe-view {
+                margin-top: 20px;
+                background: ${p.secondary_bg_color || (scheme === "dark" ? "#1f1f1f" : "#dcdcdc")};
+                padding: 12px;
+                border-radius: 10px;
+            }
+
+            .safe-bottom {
+                height: calc(env(safe-area-inset-bottom) + 16px);
             }
         `;
     }
 
-    // Áp dụng ngay khi load
+    // Áp dụng theme ngay
     applyTheme();
 
-    // Theo dõi khi người dùng đổi theme Telegram
-    tg.onEvent("themeChanged", () => {
-        applyTheme();
-    });
+    // Lắng nghe thay đổi theme
+    tg.onEvent("themeChanged", applyTheme);
 </script>
 
 </body>
