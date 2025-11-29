@@ -64,13 +64,16 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById("header");
+  const content = document.getElementById("content");
 
   const run = () => {
-    header.style.minHeight = "50px";   
+    header.style.minHeight = "100px";   
     header.style.display = "flex";
     header.style.alignItems = "center";
     header.style.justifyContent = "center";
-    header.style.fontSize = "24px";
+    header.style.fontSize = "30px";
+
+    content.style.marginTop = "130px";
   };
 
   if (window.Telegram && Telegram.WebApp) {
