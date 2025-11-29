@@ -40,7 +40,11 @@ main {
     flex: 1;
     overflow-y: auto;
     padding: 12px;
-    padding-bottom: 10px; /* Footer cao ~60px + khoảng cách 10px */
+}
+
+/* Khoảng cách dưới cùng của main so với footer */
+main .content-box:last-child {
+    margin-bottom: 10px; /* khoảng cách với footer */
 }
 
 .content-box {
