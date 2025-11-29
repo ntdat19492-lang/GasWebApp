@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Telegram Dark MiniApp</title>
     <style>
-        /* Reset cơ bản */
         * {
             margin: 0;
             padding: 0;
@@ -18,11 +17,7 @@
             font-family: "Segoe UI", Roboto, sans-serif;
             background-color: #1e1e1e;
             color: #e1e1e1;
-            -webkit-touch-callout: none;
             -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
         }
 
@@ -33,31 +28,17 @@
             overscroll-behavior: none;
         }
 
-        /* Header */
         header {
             height: 90px;
             background-color: #1e1e1e;
             display: flex;
-            align-items: flex-end; /* căn dưới dọc */
-            justify-content: center; /* căn giữa ngang */
+            align-items: flex-end;
+            justify-content: center;
             font-size: 20px;
             font-weight: bold;
             padding-bottom: 10px;
         }
 
-        /* Footer */
-        footer {
-            height: 90px;
-            background-color: #1e1e1e;
-            display: flex;
-            align-items: flex-start; /* căn trên dọc */
-            justify-content: center; /* căn giữa ngang */
-            font-size: 20px;
-            font-weight: bold;
-            padding-top: 10px;
-        }
-
-        /* Nội dung chính */
         main {
             flex: 1;
             overflow-y: auto;
@@ -67,11 +48,6 @@
         main::-webkit-scrollbar {
             width: 8px;
         }
-
-        main::-webkit-scrollbar-track {
-            background: #1e1e1e;
-        }
-
         main::-webkit-scrollbar-thumb {
             background-color: #3a3a3a;
             border-radius: 4px;
@@ -83,13 +59,49 @@
             margin-bottom: 10px;
             border-radius: 8px;
         }
+
+        /* -------- FOOTER 4 BUTTON KIỂU TELEGRAM -------- */
+        footer {
+            height: 90px;
+            background-color: #1e1e1e;
+            border-top: 1px solid #2b2b2b;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding-top: 5px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #0088cc; /* Xanh Telegram */
+        }
+
+        .nav-text {
+            font-size: 12px;
+            color: #e1e1e1;
+        }
+
+        .nav-btn:active .nav-icon {
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>Header</header>
+
         <main>
-            <!-- 10 nội dung mẫu -->
+            <!-- 15 nội dung -->
             <div class="content-box">Nội dung 1</div>
             <div class="content-box">Nội dung 2</div>
             <div class="content-box">Nội dung 3</div>
@@ -106,7 +118,39 @@
             <div class="content-box">Nội dung 14</div>
             <div class="content-box">Nội dung 15</div>
         </main>
-        <footer>Footer</footer>
+
+        <footer>
+            <div class="nav-btn" onclick="openPage('home')">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-text">Home</div>
+            </div>
+
+            <div class="nav-btn" onclick="openPage('search')">
+                <div class="nav-icon">🔍</div>
+                <div class="nav-text">Search</div>
+            </div>
+
+            <div class="nav-btn" onclick="openPage('chat')">
+                <div class="nav-icon">💬</div>
+                <div class="nav-text">Chat</div>
+            </div>
+
+            <div class="nav-btn" onclick="openPage('profile')">
+                <div class="nav-icon">👤</div>
+                <div class="nav-text">Profile</div>
+            </div>
+        </footer>
     </div>
+
+    <script>
+        function openPage(page) {
+            /* Bạn đổi thành link thật của bạn */
+            if (page === 'home') window.location.href = "https://example.com/home";
+            if (page === 'search') window.location.href = "https://example.com/search";
+            if (page === 'chat') window.location.href = "https://example.com/chat";
+            if (page === 'profile') window.location.href = "https://example.com/profile";
+        }
+    </script>
+
 </body>
 </html>
