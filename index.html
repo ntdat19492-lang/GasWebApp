@@ -23,9 +23,9 @@
     top: 0;
     z-index: 10;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    font-size: 24px;
+    font-size: 18px;
     transition: all 0.25s ease;
   }
 
@@ -68,10 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const run = () => {
     header.style.minHeight = "90px";   
-    header.style.display = "flex";
-    header.style.alignItems = "center";
-    header.style.justifyContent = "center";
-    header.style.fontSize = "18px";
 
     content.style.marginTop = "108px";
   };
