@@ -1,85 +1,107 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Telegram Dark MiniApp</title>
+    <style>
+        /* Reset cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: #0f0f0f;
-    color: white;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
+        html, body {
+            height: 100%;
+            overflow: hidden; /* Khóa scroll ngoài body */
+            font-family: "Segoe UI", Roboto, sans-serif;
+            background-color: #1e1e1e; /* Telegram Dark Background */
+            color: #e1e1e1;
+            -webkit-touch-callout: none; /* Chrome/iOS Safari */
+            -webkit-user-select: none;   /* Chrome/iOS Safari */
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
-  .header {
-    background: #1c1c1e;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    font-size: 18px;
-    transition: all 0.25s ease;
-  }
+        /* Container tổng */
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overscroll-behavior: none; /* Khóa vuốt xuống minimize app */
+        }
 
-  .footer {
-    background: #1c1c1e;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 10;
-  }
+        /* Header */
+        header {
+            height: 90px;
+            background-color: #2a2a2a; /* Màu đậm hơn body */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid #3a3a3a;
+        }
 
-  .content {
-    flex: 1;
-    margin-top: 70px;
-    margin-bottom: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-</style>
+        /* Footer */
+        footer {
+            height: 90px;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #3a3a3a;
+        }
+
+        /* Nội dung chính */
+        main {
+            flex: 1;
+            overflow-y: auto; /* Cho phép scroll nội dung chính */
+            padding: 10px;
+        }
+
+        /* Scrollbar kiểu Telegram Dark */
+        main::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        main::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        main::-webkit-scrollbar-thumb {
+            background-color: #3a3a3a;
+            border-radius: 4px;
+        }
+
+        /* Nội dung mẫu */
+        .content-box {
+            background-color: #2c2c2c;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+    </style>
 </head>
-
 <body>
-
-  <div class="header" id="header">Mini App Demo</div>
-
-  <div class="content" id="content">
-    Nội dung nằm dưới header & căn giữa.
-  </div>
-
-  <div class="footer">© Footer cố định</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const header = document.getElementById("header");
-  const content = document.getElementById("content");
-
-  const run = () => {
-    header.style.minHeight = "90px";   
-
-    content.style.marginTop = "108px";
-  };
-
-  if (window.Telegram && Telegram.WebApp) {
-    Telegram.WebApp.ready();
-    run();
-  } else {
-    run(); // debug ngoài Telegram
-  }
-});
-</script>
-
+    <div class="container">
+        <header>Header</header>
+        <main>
+            <!-- Nội dung scrollable -->
+            <div class="content-box">Nội dung 1</div>
+            <div class="content-box">Nội dung 2</div>
+            <div class="content-box">Nội dung 3</div>
+            <div class="content-box">Nội dung 4</div>
+            <div class="content-box">Nội dung 5</div>
+            <div class="content-box">Nội dung 6</div>
+            <div class="content-box">Nội dung 7</div>
+            <div class="content-box">Nội dung 8</div>
+            <div class="content-box">Nội dung 9</div>
+        </main>
+        <footer>Footer</footer>
+    </div>
 </body>
 </html>
