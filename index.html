@@ -38,7 +38,6 @@ header {
     padding: 0 10px;
 }
 
-/* Nút refresh ở header */
 #refreshBtn {
     position: absolute;
     right: 20px;
@@ -65,22 +64,19 @@ main {
     border-radius: 8px;
 }
 
-/* FOOTER PILLS */
 .footer-wrapper {
     position: fixed;
     bottom: 30px;
     left: 20px;
     right: 20px;
     background: #2b2b2b;
-    padding: 0;
-    border-radius: 35px; /* pill shape */
+    border-radius: 35px;
     display: flex;
     justify-content: space-around;
     gap: 8px;
     height: 60px;
 }
 
-/* NÚT PILLS */
 .nav-btn {
     flex: 1;
     display: flex;
@@ -88,7 +84,7 @@ main {
     align-items: center;
     justify-content: center;
     height: 100%;
-    border-radius: 35px; /* pill shape */
+    border-radius: 35px;
     cursor: pointer;
     opacity: 0.6;
     transition: 0.2s;
@@ -120,9 +116,7 @@ main {
     </header>
 
     <main id="mainContent">
-        <div class="content-box">Home nội dung 1</div>
-        <div class="content-box">Home nội dung 2</div>
-        <div class="content-box">Home nội dung 3</div>
+        <!-- Nội dung home sẽ được load tự động -->
     </main>
 </div>
 
@@ -150,55 +144,37 @@ main {
 </div>
 
 <script>
-// Nút Refresh header
+// Nút Refresh
 document.getElementById("refreshBtn").addEventListener("click", () => {
     window.location.reload();
 });
 
-// Chuyển tab footer
+// 📌 Hàm load file HTML rời
+async function loadPage(page) {
+    const main = document.getElementById("mainContent");
+
+    try {
+        const response = await fetch(`${page}.html`);
+        const html = await response.text();
+        main.innerHTML = html;
+        main.scrollTop = 0;
+    } catch (err) {
+        main.innerHTML = "<div class='content-box'>Không tải được dữ liệu.</div>";
+    }
+}
+
+// 📌 Chuyển tab + load file tương ứng
 function switchTab(tab, btn) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
     document.getElementById("headerTitle").childNodes[0].nodeValue = tab.toUpperCase();
 
-    const main = document.getElementById("mainContent");
-    main.innerHTML = "";
-
-    if (tab === "home") {
-        main.innerHTML = `
-            <div class="content-box">Home nội dung 1</div>
-            <div class="content-box">Home nội dung 2</div>
-            <div class="content-box">Home nội dung 3</div>
-        `;
-    }
-
-    if (tab === "search") {
-        main.innerHTML = `
-            <div class="content-box">Tìm kiếm 1</div>
-            <div class="content-box">Tìm kiếm 2</div>
-            <div class="content-box">Tìm kiếm 3</div>
-        `;
-    }
-
-    if (tab === "chat") {
-        main.innerHTML = `
-            <div class="content-box">Chat 1</div>
-            <div class="content-box">Chat 2</div>
-            <div class="content-box">Chat 3</div>
-        `;
-    }
-
-    if (tab === "profile") {
-        main.innerHTML = `
-            <div class="content-box">Profile bạn</div>
-            <div class="content-box">Cài đặt</div>
-            <div class="content-box">Thông tin</div>
-        `;
-    }
-
-    main.scrollTop = 0;
+    loadPage(tab);
 }
+
+// Load mặc định trang Home
+loadPage("home");
 </script>
 
 </body>
