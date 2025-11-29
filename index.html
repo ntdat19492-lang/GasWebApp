@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <style>
   body {
@@ -18,14 +18,14 @@
 
   .header {
     background: #1c1c1e;
-    padding: 15px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
+    width: 100%;
     position: fixed;
     top: 0;
-    width: 100%;
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;   /* căn giữa theo chiều cao */
+    font-size: 24px;
     transition: all 0.25s ease;
   }
 
@@ -41,7 +41,7 @@
 
   .content {
     flex: 1;
-    margin-top: 80px;
+    margin-top: 70px;
     margin-bottom: 60px;
     display: flex;
     justify-content: center;
@@ -49,35 +49,30 @@
     text-align: center;
   }
 </style>
-
 </head>
+
 <body>
 
   <div class="header" id="header">Mini App Demo</div>
 
   <div class="content" id="content">
-    Nội dung nằm bên dưới header & luôn căn giữa.
+    Nội dung nằm dưới header & căn giữa.
   </div>
 
   <div class="footer">© Footer cố định</div>
-
 
 <script>
   if (window.Telegram && Telegram.WebApp) {
     const header = document.getElementById("header");
     const content = document.getElementById("content");
 
-    // 🟦🟦 HEADER X2 CHIỀU CAO (SIÊU TO) 🟦🟦
-    header.style.paddingTop = "80px";
-    header.style.paddingBottom = "80px";
-    header.style.fontSize = "30px";
-
-    // Đẩy content xuống theo chiều cao mới (~200px)
-    content.style.marginTop = "220px";
+    // 🟦 X2 CHIỀU CAO (SIÊU CHẮC CHẮN 100%) 🟦
+    header.style.height = "200px";          // Chiều cao lớn
+    header.style.fontSize = "30px";         // Chữ lớn hơn
+    content.style.marginTop = "220px";      // Đẩy body xuống
 
     Telegram.WebApp.expand();
   }
 </script>
-
 </body>
 </html>
