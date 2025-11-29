@@ -50,39 +50,39 @@ main {
     border-radius: 8px;
 }
 
-/* FOOTER NỔI */
+/* FOOTER PILLS */
 .footer-wrapper {
     position: fixed;
     bottom: 20px;
     left: 20px;
     right: 20px;
     background: #000000;
-    padding: 8px;
-    border-radius: 28px; /* Bo góc nhiều hơn */
+    padding: 0;
+    border-radius: 35px; /* pill shape */
     display: flex;
     justify-content: space-around;
     gap: 8px;
-    height: 70px; /* Chiều cao footer */
+    height: 70px;
 }
 
-/* NÚT TRONG FOOTER */
+/* NÚT PILLS */
 .nav-btn {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Canh giữa theo chiều cao footer */
-    border-radius: 12px;
+    justify-content: center;
+    height: 100%;
+    border-radius: 35px; /* pill shape */
     cursor: pointer;
     opacity: 0.6;
     transition: 0.2s;
     background: transparent;
-    height: 100%; /* Chiều cao nút = footer */
 }
 
 .nav-btn.active {
     opacity: 1;
-    background: #3a3a3a; /* Nền khi chọn */
+    background: #3a3a3a;
 }
 
 .nav-icon {
@@ -108,7 +108,7 @@ main {
     </main>
 </div>
 
-<!-- Footer mới -->
+<!-- Footer pill -->
 <div class="footer-wrapper">
     <div class="nav-btn active" onclick="switchTab('home', this)">
         <div class="nav-icon">🏠</div>
