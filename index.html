@@ -16,7 +16,6 @@
     height: 100vh;
   }
 
-  /* HEADER cố định */
   .header {
     background: #1c1c1e;
     padding: 15px;
@@ -30,7 +29,6 @@
     transition: all 0.25s ease;
   }
 
-  /* FOOTER cố định */
   .footer {
     background: #1c1c1e;
     padding: 10px;
@@ -41,7 +39,6 @@
     z-index: 10;
   }
 
-  /* BODY */
   .content {
     flex: 1;
     margin-top: 80px;
@@ -66,23 +63,19 @@
 
 
 <script>
-  // PHÁT HIỆN ĐANG CHẠY TRONG TELEGRAM
   if (window.Telegram && Telegram.WebApp) {
     const header = document.getElementById("header");
     const content = document.getElementById("content");
 
-    // ⬆️⬆️ TĂNG CHIỀU CAO HEADER KHI CHẠY TRONG TELEGRAM ⬆️⬆️
-    
-    header.style.paddingTop = "140px";   // tăng chiều cao
-    header.style.paddingBottom = "40px";
-    header.style.fontSize = "28px";     // chữ to hơn
+    // 🟦🟦 HEADER X2 CHIỀU CAO (SIÊU TO) 🟦🟦
+    header.style.paddingTop = "80px";
+    header.style.paddingBottom = "80px";
+    header.style.fontSize = "30px";
 
-    // Đẩy content xuống theo chiều cao header mới
-    content.style.marginTop = "250px";
+    // Đẩy content xuống theo chiều cao mới (~200px)
+    content.style.marginTop = "220px";
 
-    // Mở rộng giao diện Telegram
-    const tg = Telegram.WebApp;
-    tg.expand();
+    Telegram.WebApp.expand();
   }
 </script>
 
