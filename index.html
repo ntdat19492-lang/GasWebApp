@@ -50,45 +50,47 @@
             border-radius: 8px;
         }
 
-        /* --- FOOTER MỚI --- */
-        footer {
-            height: 90px;
-            background-color: #2c2c2c;   /* Giống content-box */
-            border-top: 1px solid #3a3a3a;
+        /* --- FOOTER CONTAINER (hình chữ nhật bo góc) --- */
+        .footer-wrapper {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: #000000;
+            padding: 12px 10px;
+            border-radius: 18px; /* Bo tròn */
             display: flex;
             justify-content: space-around;
-            align-items: flex-start;
-            padding-top: 7px;
+            gap: 8px;
         }
 
+        /* --- NÚT TRONG FOOTER --- */
         .nav-btn {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 8px;
-            margin: 0 5px;
-            border-radius: 10px;
+            padding: 8px 6px;
+            border-radius: 12px; /* nút bo góc */
             cursor: pointer;
             opacity: 0.6;
             transition: 0.2s;
-            border: 2px solid transparent;
+            background: transparent; /* mặc định trong suốt */
         }
 
         .nav-btn.active {
             opacity: 1;
-            background-color: #3a3a3a; /* Nền khi chọn */
-            border: 2px solid #0088cc; /* Khung highlight */
+            background: #3a3a3a; /* nền cho nút được chọn */
         }
 
         .nav-icon {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 22px;
+            margin-bottom: 4px;
             color: #0088cc;
         }
 
         .nav-text {
-            font-size: 12px;
+            font-size: 11px;
         }
     </style>
 </head>
@@ -102,28 +104,29 @@
         <div class="content-box">Home nội dung 2</div>
         <div class="content-box">Home nội dung 3</div>
     </main>
+</div>
 
-    <footer>
-        <div class="nav-btn active" onclick="switchTab('home', this)">
-            <div class="nav-icon">🏠</div>
-            <div class="nav-text">Home</div>
-        </div>
+<!-- Footer mới (bo góc, nổi, cách đáy 10px) -->
+<div class="footer-wrapper">
+    <div class="nav-btn active" onclick="switchTab('home', this)">
+        <div class="nav-icon">🏠</div>
+        <div class="nav-text">Home</div>
+    </div>
 
-        <div class="nav-btn" onclick="switchTab('search', this)">
-            <div class="nav-icon">🔍</div>
-            <div class="nav-text">Search</div>
-        </div>
+    <div class="nav-btn" onclick="switchTab('search', this)">
+        <div class="nav-icon">🔍</div>
+        <div class="nav-text">Search</div>
+    </div>
 
-        <div class="nav-btn" onclick="switchTab('chat', this)">
-            <div class="nav-icon">💬</div>
-            <div class="nav-text">Chat</div>
-        </div>
+    <div class="nav-btn" onclick="switchTab('chat', this)">
+        <div class="nav-icon">💬</div>
+        <div class="nav-text">Chat</div>
+    </div>
 
-        <div class="nav-btn" onclick="switchTab('profile', this)">
-            <div class="nav-icon">👤</div>
-            <div class="nav-text">Profile</div>
-        </div>
-    </footer>
+    <div class="nav-btn" onclick="switchTab('profile', this)">
+        <div class="nav-icon">👤</div>
+        <div class="nav-text">Profile</div>
+    </div>
 </div>
 
 
