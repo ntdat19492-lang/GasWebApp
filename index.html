@@ -24,7 +24,7 @@
     z-index: 10;
     display: flex;
     justify-content: center;
-    align-items: center;   /* căn giữa theo chiều cao */
+    align-items: center;
     font-size: 24px;
     transition: all 0.25s ease;
   }
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
 
   const run = () => {
-    header.style.minHeight = "200px";   // Không bao giờ bị override
+    header.style.minHeight = "200px";   
     header.style.display = "flex";
     header.style.alignItems = "center";
     header.style.justifyContent = "center";
@@ -80,11 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
     Telegram.WebApp.ready();
     run();
   } else {
-    // Debug mode khi mở ngoài Telegram
-    run();
+    run(); // debug ngoài Telegram
   }
 });
-  }
 </script>
+
 </body>
 </html>
