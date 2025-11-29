@@ -61,12 +61,6 @@ main {
     height: 60px;
 }
 
-/* Spacer màu đen phía dưới footer */
-.footer-spacer {
-    height: 85px; /* Cao hơn footer một chút để cover phần main */
-    background-color: #1a1a1a; /* Giống background html */
-}
-
 .nav-btn {
     flex: 1;
     display: flex;
