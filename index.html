@@ -1,101 +1,89 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Telegram WebApp Layout</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 <style>
   body {
     margin: 0;
     padding: 0;
-    background: #0f1112;
+    background: #0f0f0f;      /* Dark theme giống Telegram */
     color: white;
-    font-family: system-ui, sans-serif;
-    overflow: hidden; /* quan trọng: ngăn body cuộn */
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
   }
 
-  /* HEADER FIXED */
+  /* HEADER cố định */
   .header {
+    background: #1c1c1e;
+    padding: 12px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: #141619;
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    box-sizing: border-box;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
     z-index: 10;
+    transition: all 0.3s ease;
   }
 
-  /* FOOTER FIXED */
+  /* FOOTER cố định */
   .footer {
+    background: #1c1c1e;
+    padding: 10px;
+    text-align: center;
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: #141619;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 16px;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
     z-index: 10;
   }
 
-  /* VÙNG CUỘN GIỮA */
+  /* BODY luôn nằm giữa */
   .content {
-    position: absolute;
-    top: 60px;    /* bằng chiều cao header */
-    bottom: 60px; /* bằng chiều cao footer */
-    left: 0;
-    right: 0;
+    flex: 1;
+    margin-top: 70px;    /* Tránh đè lên header */
+    margin-bottom: 60px; /* Tránh đè lên footer */
 
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 16px;
-    box-sizing: border-box;
-    background: #0f1112;
-  }
-
-  /* Demo item */
-  .item {
-    background: #1a1d20;
-    padding: 14px;
-    margin-bottom: 12px;
-    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 </style>
-</head>
 
+</head>
 <body>
 
-  <div class="header">
-    <strong>Mini App Header</strong>
-  </div>
+  <div class="header" id="header">Mini App Demo</div>
 
   <div class="content" id="content">
-    <div class="item">Nội dung 1</div>
-    <div class="item">Nội dung 2</div>
-    <div class="item">Nội dung 3</div>
-    <div class="item">Nội dung 4</div>
-    <div class="item">Nội dung 5</div>
-    <div class="item">Nội dung 6 (cuộn xuống sẽ thấy)</div>
-    <div class="item">Nội dung 7</div>
-    <div class="item">Nội dung 8</div>
-    <div class="item">Nội dung 9</div>
+    Nội dung nằm giữa và không bao giờ đè lên header/footer.
   </div>
 
-  <div class="footer">
-    <button style="background:#2a9df4;color:white;border:none;padding:12px 20px;border-radius:10px;">
-      Nút Footer
-    </button>
-  </div>
+  <div class="footer">© 2025 - Footer luôn hiển thị</div>
+
+<script>
+  // ---- KIỂM TRA NẾU ĐANG CHẠY TRONG TELEGRAM ----
+  if (window.Telegram && Telegram.WebApp) {
+    const header = document.getElementById("header");
+    const content = document.getElementById("content");
+
+    // Tăng kích thước header
+    header.style.padding = "25px";
+    header.style.fontSize = "26px";
+
+    // Đẩy nội dung xuống thêm
+    content.style.marginTop = "110px";
+
+    // Áp dụng theme Telegram
+    const tg = Telegram.WebApp;
+    tg.expand();      // mở rộng chiều cao webapp
+    tg.enableClosingConfirmation(false);
+  }
+</script>
 
 </body>
 </html>
