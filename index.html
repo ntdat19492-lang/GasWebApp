@@ -14,56 +14,56 @@
 
         html, body {
             height: 100%;
-            overflow: hidden; /* Khóa scroll ngoài body */
+            overflow: hidden;
             font-family: "Segoe UI", Roboto, sans-serif;
-            background-color: #1e1e1e; /* Telegram Dark Background */
+            background-color: #1e1e1e;
             color: #e1e1e1;
-            -webkit-touch-callout: none; /* Chrome/iOS Safari */
-            -webkit-user-select: none;   /* Chrome/iOS Safari */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
         }
 
-        /* Container tổng */
         .container {
             display: flex;
             flex-direction: column;
             height: 100%;
-            overscroll-behavior: none; /* Khóa vuốt xuống minimize app */
+            overscroll-behavior: none;
         }
 
         /* Header */
         header {
             height: 90px;
-            background-color: #2a2a2a; /* Màu đậm hơn body */
+            background-color: #2a2a2a;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end; /* căn dưới dọc */
+            justify-content: center; /* căn giữa ngang */
+            border-bottom: 1px solid #3a3a3a;
             font-size: 20px;
             font-weight: bold;
-            border-bottom: 1px solid #3a3a3a;
+            padding-bottom: 10px;
         }
 
         /* Footer */
         footer {
-            height: 90px;
+            height: 80px;
             background-color: #2a2a2a;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start; /* căn trên dọc */
+            justify-content: center; /* căn giữa ngang */
             border-top: 1px solid #3a3a3a;
+            padding-top: 10px;
         }
 
         /* Nội dung chính */
         main {
             flex: 1;
-            overflow-y: auto; /* Cho phép scroll nội dung chính */
+            overflow-y: auto;
             padding: 10px;
         }
 
-        /* Scrollbar kiểu Telegram Dark */
         main::-webkit-scrollbar {
             width: 8px;
         }
@@ -77,7 +77,6 @@
             border-radius: 4px;
         }
 
-        /* Nội dung mẫu */
         .content-box {
             background-color: #2c2c2c;
             padding: 15px;
@@ -90,7 +89,7 @@
     <div class="container">
         <header>Header</header>
         <main>
-            <!-- Nội dung scrollable -->
+            <!-- 10 nội dung mẫu -->
             <div class="content-box">Nội dung 1</div>
             <div class="content-box">Nội dung 2</div>
             <div class="content-box">Nội dung 3</div>
@@ -100,6 +99,7 @@
             <div class="content-box">Nội dung 7</div>
             <div class="content-box">Nội dung 8</div>
             <div class="content-box">Nội dung 9</div>
+            <div class="content-box">Nội dung 10</div>
         </main>
         <footer>Footer</footer>
     </div>
