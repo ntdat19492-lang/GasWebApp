@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Bật chế độ fullscreen khi mở từ màn hình chính -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Kiểu hiển thị: fullscreen -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Tên ứng dụng khi lưu ra màn hình chính -->
     <meta name="apple-mobile-web-app-title" content="GBP">
     <title>Telegram Dark MiniApp</title>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
             height: 100%;
             overflow: hidden;
-            font-family: "Segoe UI", Roboto, sans-serif;
             background-color: #1e1e1e;
             color: #e1e1e1;
+            font-family: "Segoe UI", Roboto, sans-serif;
         }
 
         .container {
@@ -52,14 +50,15 @@
             border-radius: 8px;
         }
 
+        /* --- FOOTER MỚI --- */
         footer {
             height: 90px;
-            background-color: #1e1e1e;
-            border-top: 1px solid #2b2b2b;
+            background-color: #2c2c2c;   /* Giống content-box */
+            border-top: 1px solid #3a3a3a;
             display: flex;
             justify-content: space-around;
             align-items: flex-start;
-            padding-top: 5px;
+            padding-top: 7px;
         }
 
         .nav-btn {
@@ -67,13 +66,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 8px;
+            margin: 0 5px;
+            border-radius: 10px;
             cursor: pointer;
-            opacity: 0.5;
+            opacity: 0.6;
             transition: 0.2s;
+            border: 2px solid transparent;
         }
 
         .nav-btn.active {
             opacity: 1;
+            background-color: #3a3a3a; /* Nền khi chọn */
+            border: 2px solid #0088cc; /* Khung highlight */
         }
 
         .nav-icon {
@@ -93,7 +98,6 @@
     <header id="headerTitle">Home</header>
 
     <main id="mainContent">
-        <!-- Nội dung Home mặc định -->
         <div class="content-box">Home nội dung 1</div>
         <div class="content-box">Home nội dung 2</div>
         <div class="content-box">Home nội dung 3</div>
@@ -122,18 +126,15 @@
     </footer>
 </div>
 
+
 <script>
     function switchTab(tab, btn) {
-        // đổi nút active
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        // đổi title header
         document.getElementById("headerTitle").innerText = tab.toUpperCase();
-
-        // thay nội dung trong main
         const main = document.getElementById("mainContent");
-        main.innerHTML = ""; // xoá nội dung cũ
+        main.innerHTML = "";
 
         if (tab === "home") {
             main.innerHTML = `
@@ -167,7 +168,6 @@
             `;
         }
 
-        // auto scroll về đầu
         main.scrollTop = 0;
     }
 </script>
