@@ -8,7 +8,7 @@
   body {
     margin: 0;
     padding: 0;
-    background: #0f0f0f;      /* Dark theme giống Telegram */
+    background: #0f0f0f;
     color: white;
     font-family: sans-serif;
     display: flex;
@@ -19,7 +19,7 @@
   /* HEADER cố định */
   .header {
     background: #1c1c1e;
-    padding: 12px;
+    padding: 15px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -27,7 +27,7 @@
     top: 0;
     width: 100%;
     z-index: 10;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
   }
 
   /* FOOTER cố định */
@@ -41,12 +41,11 @@
     z-index: 10;
   }
 
-  /* BODY luôn nằm giữa */
+  /* BODY */
   .content {
     flex: 1;
-    margin-top: 70px;    /* Tránh đè lên header */
-    margin-bottom: 60px; /* Tránh đè lên footer */
-
+    margin-top: 80px;
+    margin-bottom: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,28 +59,30 @@
   <div class="header" id="header">Mini App Demo</div>
 
   <div class="content" id="content">
-    Nội dung nằm giữa và không bao giờ đè lên header/footer.
+    Nội dung nằm bên dưới header & luôn căn giữa.
   </div>
 
-  <div class="footer">© 2025 - Footer luôn hiển thị</div>
+  <div class="footer">© Footer cố định</div>
+
 
 <script>
-  // ---- KIỂM TRA NẾU ĐANG CHẠY TRONG TELEGRAM ----
+  // PHÁT HIỆN ĐANG CHẠY TRONG TELEGRAM
   if (window.Telegram && Telegram.WebApp) {
     const header = document.getElementById("header");
     const content = document.getElementById("content");
 
-    // Tăng kích thước header
-    header.style.padding = "125px";
-    header.style.fontSize = "26px";
+    // ⬆️⬆️ TĂNG CHIỀU CAO HEADER KHI CHẠY TRONG TELEGRAM ⬆️⬆️
+    
+    header.style.paddingTop = "40px";   // tăng chiều cao
+    header.style.paddingBottom = "40px";
+    header.style.fontSize = "28px";     // chữ to hơn
 
-    // Đẩy nội dung xuống thêm
-    content.style.marginTop = "110px";
+    // Đẩy content xuống theo chiều cao header mới
+    content.style.marginTop = "150px";
 
-    // Áp dụng theme Telegram
+    // Mở rộng giao diện Telegram
     const tg = Telegram.WebApp;
-    tg.expand();      // mở rộng chiều cao webapp
-    tg.enableClosingConfirmation(false);
+    tg.expand();
   }
 </script>
 
