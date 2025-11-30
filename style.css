@@ -45,6 +45,11 @@ main {
     margin: 0 20px 10px;
     border-radius: 20px;
     height: 50px;
+
+    display: flex;           /* bật flexbox */
+    align-items: center;     /* căn dọc giữa */
+    padding-left: 15px;      /* cách trái 15px */
+    box-sizing: border-box;  /* tính padding vào width */
 }
 
 footer {
