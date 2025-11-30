@@ -55,7 +55,8 @@ footer {
 
 .footer-wrapper {
     position: fixed;
-    margin: 0 20px;
+    left: 20px;
+    right: 20px;
     background: #2b2b2b;
     border-radius: 30px;
     display: flex;
