@@ -34,9 +34,3 @@ function switchTab(tab, btn) {
 
 // Mặc định load home.html
 loadPage("home");
-
-document.addEventListener("DOMContentLoaded", () => {
-    if (window.Telegram && window.Telegram.WebApp) {
-        document.getElementById("headerTitle").style.height = "95px"; // header Telegram
-    }
-});
