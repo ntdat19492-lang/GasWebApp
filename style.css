@@ -50,6 +50,8 @@ main {
 
 footer {
     position: relative;
+    height: 85px;
+    background-color: #1a1a1a;
 }
 
 .footer-wrapper {
@@ -62,11 +64,6 @@ footer {
     display: flex;
     justify-content: space-around;
     height: 60px;
-}
-
-.footer-spacer {
-    height: 85px;
-    background-color: #1a1a1a;
 }
 
 .nav-btn {
