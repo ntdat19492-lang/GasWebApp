@@ -9,12 +9,13 @@
 
 <title>GBP</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
 <div class="container">
+
     <header id="headerTitle">
         Home
         <button id="refreshBtn">⟳</button>
@@ -24,32 +25,40 @@
         <!-- Nội dung load động -->
     </main>
 
-    <!-- Spacer đen phía dưới main để footer không bị nhìn xuyên -->
-    <div class="footer-spacer"></div>
+    <!-- BẮT ĐẦU FOOTER -->
+    <footer>
+
+        <!-- Spacer đen để tránh nhìn xuyên -->
+        <div class="footer-spacer"></div>
+
+        <!-- Footer thật -->
+        <div class="footer-wrapper">
+            <div class="nav-btn active" onclick="switchTab('home', this)">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-text">Home</div>
+            </div>
+
+            <div class="nav-btn" onclick="switchTab('search', this)">
+                <div class="nav-icon">🔍</div>
+                <div class="nav-text">Search</div>
+            </div>
+
+            <div class="nav-btn" onclick="switchTab('chat', this)">
+                <div class="nav-icon">💬</div>
+                <div class="nav-text">Chat</div>
+            </div>
+
+            <div class="nav-btn" onclick="switchTab('profile', this)">
+                <div class="nav-icon">👤</div>
+                <div class="nav-text">Profile</div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- KẾT THÚC FOOTER -->
+
 </div>
 
-<div class="footer-wrapper">
-    <div class="nav-btn active" onclick="switchTab('home', this)">
-        <div class="nav-icon">🏠</div>
-        <div class="nav-text">Home</div>
-    </div>
-
-    <div class="nav-btn" onclick="switchTab('search', this)">
-        <div class="nav-icon">🔍</div>
-        <div class="nav-text">Search</div>
-    </div>
-
-    <div class="nav-btn" onclick="switchTab('chat', this)">
-        <div class="nav-icon">💬</div>
-        <div class="nav-text">Chat</div>
-    </div>
-
-    <div class="nav-btn" onclick="switchTab('profile', this)">
-        <div class="nav-icon">👤</div>
-        <div class="nav-text">Profile</div>
-    </div>
-</div>
-
-<script src="app.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>
