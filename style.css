@@ -32,7 +32,7 @@ header {
     background: transparent;
     border: none;
     font-size: 32px;
-    color: #e1e1e1;
+    color: #e1a1e1;
     cursor: pointer;
 }
 
@@ -48,6 +48,10 @@ main {
     border-radius: 20px;
 }
 
+footer {
+    position: relative;
+}
+
 .footer-wrapper {
     position: fixed;
     bottom: 25px;
@@ -60,10 +64,9 @@ main {
     height: 60px;
 }
 
-/* Spacer màu đen phía dưới footer */
 .footer-spacer {
-    height: 85px; /* Cao hơn footer để che phần main */
-    background-color: #1a1a1a; /* Giống màu background html */
+    height: 85px;
+    background-color: #1a1a1a;
 }
 
 .nav-btn {
