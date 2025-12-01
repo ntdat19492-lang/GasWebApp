@@ -1,6 +1,6 @@
 // Nút refresh
 document.getElementById("refreshBtn").addEventListener("click", () => {
-    window.location.reload();
+    loadPage(currentTab);  // Load lại trang đúng tab hiện tại
 });
 
 async function loadPage(page) {
@@ -22,7 +22,7 @@ async function loadPage(page) {
             });
         }
 
-    } catch(err) {
+    } catch (err) {
         main.innerHTML = `<div class='content-box'>Không tải được</div>`;
     }
 }
@@ -42,6 +42,7 @@ function switchTab(tab, btn) {
 
 let logBuffer = [];
 
+// Thêm log vào logBuffer
 function addLog(text) {
     logBuffer.push(text);
 
