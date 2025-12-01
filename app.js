@@ -62,7 +62,7 @@ window.addEventListener("load", () => {
         tg.ready();
         // Set chiều cao header
         const header = document.getElementById("headerTitle");
-        header.style.height = "120px";
+        header.style.height = "90px";
       } else {
         addLog("Không nhận được Telegram WebApp API");
       }
