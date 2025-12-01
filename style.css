@@ -41,37 +41,19 @@ main {
     overflow-y: auto;
 }
 
-/* .content-box {
-    background-color: #2b2b2b;
-    margin: 0 20px 10px;
-    border-radius: 20px;
-    /* height: 50px; */
-    /* font-size: 16px;
-    display: flex;           /* bật flexbox */
-    /* align-items: center;     /* căn dọc giữa */
-    /* padding-left: 15px;      /* cách trái 15px */ */
-    /* box-sizing: border-box;  /* tính padding vào width */
-    /* padding: 15px;
-} */ */ */ */ */
-
 .content-box {
     background-color: #2b2b2b;
     margin: 0 20px 10px;
     border-radius: 20px;
-
+    height: 50px;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    padding: 15px;  /* padding tất cả các hướng */
+    display: flex; 
+    align-items: center; 
     box-sizing: border-box;
-
-    /* Đảm bảo chiều cao tối thiểu là 2 lần padding cộng với chiều cao nội dung */
-    min-height: calc(2 * 15px + 16px);  /* 2 lần padding + font-size */
-    
-    /* Để chiều cao tự động thay đổi khi có nhiều dòng */
+    /* padding-left: 15px; */
+    min-height: calc(2 * 15px + 16px);
     height: auto;
 }
-
 
 footer {
     position: relative;
