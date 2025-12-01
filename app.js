@@ -54,17 +54,17 @@ function addLog(text) {
 }
 
 window.addEventListener("load", () => {
-  addLog("👉 window.load chạy");
+    const tg = window.Telegram?.WebApp;
+    addLog("Đã nhận được Telegram WebApp API");
 
-  const tg = window.Telegram?.WebApp;
-
-  if (tg) {
-    addLog("👉 Telegram WebApp detected");
-    tg.ready();
-    addLog("✔️ Header height set 90px cho Telegram WebApp UI");
-  } else {
-    addLog("❌ Không mở trong Telegram WebApp, giữ nguyên header");
-  }
+    if (tg) {
+        tg.ready();
+        // Set chiều cao header
+        const header = document.getElementById("headerTitle");
+        header.style.height = "90px";
+      } else {
+        addLog("Không nhận được Telegram WebApp API");
+      }
 });
 
 // Mặc định load home
