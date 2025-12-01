@@ -37,11 +37,17 @@ async function loadPage(page) {
     const main = document.getElementById("mainContent");
 
     try {
-        const res = await fetch(`${page}.html`);
-        const html = await res.text();
+        let html = "";
+
+        if (page === "home") {
+            html = `<div class="content-box">Đây là nội dung Home</div>`;
+        } else if (page === "chat") {
+            html = `<div class="log-container"></div><div class="content-box">Đây là tab Chat</div>`;
+        }
+
         main.innerHTML = html;
 
-        // Nếu load vào tab chat → render log
+        // Render log nếu tab chat
         if (page === "chat") {
             const logContainer = main.querySelector(".log-container");
             logBuffer.forEach(text => {
@@ -51,6 +57,7 @@ async function loadPage(page) {
                 logContainer.appendChild(box);
             });
         }
+
     } catch (err) {
         main.innerHTML = `<div class='content-box'>Không tải được</div>`;
     }
