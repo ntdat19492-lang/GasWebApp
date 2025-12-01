@@ -35,12 +35,29 @@ function switchTab(tab, btn) {
 // Mặc định load home.html
 loadPage("home");
 
-window.addEventListener("load", () => {
-    const tg = window.Telegram?.WebApp;
+function addLog(text) {
+  const box = document.createElement("div");
+  box.className = "content-box";
+  box.textContent = text;
+  logContainer.appendChild(box);
+}
 
-    if (tg) {
-      tg.ready();
-      // 👉 Đổi trực tiếp chiều cao thẻ header
-      document.getElementById("header").style.height = "90px";
-     }
+// Khi mở Telegram WebApp
+window.addEventListener("load", () => {
+  const tg = window.Telegram?.WebApp;
+
+  addLog("👉 window.load chạy");
+
+  if (tg) {
+    addLog("👉 Telegram WebApp detected");
+    tg.ready();
+    const header = document.getElementById("header");
+    header.style.height = "90px";
+    addLog("✔️ Header height set 90px cho Telegram WebApp UI");
+  } else {
+    addLog("❌ Không mở trong Telegram WebApp, giữ nguyên header");
+  }
+
+  // Mặc định load home
+  loadPage("home");
 });
