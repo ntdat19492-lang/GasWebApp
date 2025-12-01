@@ -56,9 +56,9 @@ function addLog(text) {
 // Mở Webapp bằng Telegram điều chỉnh chiều cao header
 window.addEventListener("load", () => {
     const tg = window.Telegram?.WebApp;
-    addLog("Đã nhận được Telegram WebApp API");
 
     if (tg) {
+        addLog("Đã nhận được Telegram WebApp API");
         tg.ready();
         // Set chiều cao header
         const header = document.getElementById("headerTitle");
