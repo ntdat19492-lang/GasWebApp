@@ -53,19 +53,22 @@ function addLog(text) {
     }
 }
 
-// Mở Webapp bằng Telegram điều chỉnh chiều cao header
-window.addEventListener("load", () => {
-    const tg = window.Telegram?.WebApp;
+function isTelegramWebApp() {
+    return (
+        window.Telegram &&
+        window.Telegram.WebApp &&
+        typeof window.Telegram.WebApp.ready === "function"
+    );
+}
 
-    if (tg) {
+window.addEventListener("DOMContentLoaded", () => {
+    if (isTelegramWebApp()) {
         addLog("Đã nhận được Telegram WebApp API");
-        tg.ready();
-        // Set chiều cao header
         const header = document.getElementById("headerTitle");
         header.style.height = "100px";
-      } else {
+    } else {
         addLog("Không nhận được Telegram WebApp API");
-      }
+    }
 });
 
 // Mặc định load home
