@@ -11,7 +11,7 @@ async function loadPage(page) {
         main.innerHTML = html;
 
         // Nếu tab home, thêm sự kiện reload
-        if (page === "home") {
+        if (page === "profile") {
             const reloadBtn = document.getElementById("reloadBtn");
             if (reloadBtn) {
                 reloadBtn.addEventListener("click", () => {
