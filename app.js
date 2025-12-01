@@ -52,7 +52,7 @@ function addLog(text) {
         logContainer.appendChild(box);
     }
 }
-
+// Mở Webapp bằng Telegram điều chỉnh chiều cao header
 window.addEventListener("load", () => {
     const tg = window.Telegram?.WebApp;
     addLog("Đã nhận được Telegram WebApp API");
@@ -61,7 +61,7 @@ window.addEventListener("load", () => {
         tg.ready();
         // Set chiều cao header
         const header = document.getElementById("headerTitle");
-        header.style.height = "90px";
+        header.style.height = "120px";
       } else {
         addLog("Không nhận được Telegram WebApp API");
       }
