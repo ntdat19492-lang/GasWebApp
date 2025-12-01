@@ -1,9 +1,7 @@
-// Nút refresh
-document.getElementById("reloadBtn").addEventListener("click", () => {
-    // Reload toàn bộ trang
-    window.location.reload();
-});
+let currentTab = "home"; // tab hiện tại
+let logBuffer = [];
 
+// Load nội dung tab
 async function loadPage(page) {
     const main = document.getElementById("mainContent");
 
@@ -12,41 +10,52 @@ async function loadPage(page) {
         const html = await res.text();
         main.innerHTML = html;
 
-        // Nếu load vào tab chat → render log
+        // Nếu tab home, thêm sự kiện reload
+        if (page === "home") {
+            const reloadBtn = document.getElementById("reloadBtn");
+            if (reloadBtn) {
+                reloadBtn.addEventListener("click", () => {
+                    window.location.reload();
+                });
+            }
+        }
+
+        // Nếu tab chat → render log
         if (page === "chat") {
             const logContainer = main.querySelector(".log-container");
-            logBuffer.forEach(text => {
-                const box = document.createElement("div");
-                box.className = "content-box";
-                box.textContent = text;
-                logContainer.appendChild(box);
-            });
+            if (logContainer) {
+                logContainer.innerHTML = ''; // xóa log cũ
+                logBuffer.forEach(text => {
+                    const box = document.createElement("div");
+                    box.className = "content-box";
+                    box.textContent = text;
+                    logContainer.appendChild(box);
+                });
+            }
         }
 
     } catch (err) {
         main.innerHTML = `<div class='content-box'>Không tải được</div>`;
+        console.error(err);
     }
 }
 
-let currentTab = "home"; // mặc định home
-
 // Chuyển tab
 function switchTab(tab, btn) {
-    currentTab = tab; // cập nhật tab hiện tại
+    currentTab = tab;
+
     document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 
-    document.getElementById("headerTitle").childNodes[0].nodeValue = tab.toUpperCase();
+    const header = document.getElementById("headerTitle");
+    header.textContent = tab.toUpperCase(); // safe hơn childNodes[0].nodeValue
 
     loadPage(tab);
 }
 
-let logBuffer = [];
-
-// Thêm log vào logBuffer
+// Thêm log vào chat
 function addLog(text) {
     logBuffer.push(text);
-
     const main = document.getElementById("mainContent");
     const logContainer = main.querySelector(".log-container");
 
@@ -58,6 +67,7 @@ function addLog(text) {
     }
 }
 
+// Kiểm tra Telegram WebApp
 function isTelegramWebApp() {
     return (
         window.Telegram &&
@@ -81,7 +91,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
         addLog("Không nhận được Telegram WebApp API");
     }
-});
 
-// Mặc định load home
-loadPage("home");
+    // Load tab mặc định
+    loadPage(currentTab);
+});
