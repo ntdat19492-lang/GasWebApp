@@ -58,7 +58,8 @@ function isTelegramWebApp() {
         window.Telegram &&
         window.Telegram.WebApp &&
         typeof window.Telegram.WebApp.ready === "function" &&
-        typeof window.Telegram.WebApp.initData === "string"
+        typeof window.Telegram.WebApp.initData === "string" &&
+        window.Telegram.WebApp.initData.length > 0
     );
 }
 
