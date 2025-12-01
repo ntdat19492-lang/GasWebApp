@@ -27,6 +27,8 @@ async function loadPage(page) {
     }
 }
 
+const curentTab = {}
+
 // Chuyển tab
 function switchTab(tab, btn) {
     currentTab = tab; // cập nhật tab hiện tại
