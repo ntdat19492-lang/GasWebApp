@@ -16,6 +16,7 @@ async function loadPage(page) {
             if (reloadBtn) {
                 reloadBtn.addEventListener("click", () => {
                     window.location.reload();
+                    addLog("đã click")
                 });
             }
         }
