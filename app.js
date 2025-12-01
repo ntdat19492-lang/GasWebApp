@@ -75,9 +75,8 @@ window.addEventListener("DOMContentLoaded", () => {
         const header = document.getElementById("headerTitle");
         header.style.height = "100px";
         Telegram.WebApp.ready();
-        addLog(Telegram.WebApp.ready());
         Telegram.WebApp.expand();
-        addLog(Telegram.WebApp.expand())
+        addLog("isExpanded: " + Telegram.WebApp.isExpanded);
     } else {
         addLog("Không nhận được Telegram WebApp API");
     }
