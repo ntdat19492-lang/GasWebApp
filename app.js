@@ -74,11 +74,11 @@ window.addEventListener("DOMContentLoaded", () => {
         addLog("Đã nhận được Telegram WebApp API");
         const header = document.getElementById("headerTitle");
         header.style.height = "100px";
+        Telegram.WebApp.ready();
+        Telegram.WebApp.expand();
     } else {
         addLog("Không nhận được Telegram WebApp API");
     }
-    Telegram.WebApp.ready();
-    Telegram.WebApp.expand();
 });
 
 // Mặc định load home
