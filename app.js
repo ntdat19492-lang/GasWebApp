@@ -1,6 +1,6 @@
-// Nút refresh
-document.getElementById("refreshBtn").addEventListener("click", () => {
-    loadPage(currentTab);  // Load lại trang đúng tab hiện tại
+// Nút update
+document.getElementById("reloadBtn").addEventListener("click", () => {
+    window.location.reload();
 });
 
 async function loadPage(page) {
@@ -26,8 +26,6 @@ async function loadPage(page) {
         main.innerHTML = `<div class='content-box'>Không tải được</div>`;
     }
 }
-
-let currentTab = "home"; // mặc định home
 
 // Chuyển tab
 function switchTab(tab, btn) {
