@@ -54,11 +54,25 @@ main {
     height: calc(2 * padding + font-size);
 }
 
-.content-box:hover {
+button.content-box {
+    all: unset; /* xóa hết style mặc định của button */
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #2b2b2b;
+    color: #e1e1e1;
+    border: 1px solid #3a3a3a;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+button.content-box:hover {
     background-color: #333;
 }
 
-.content-box:active {
+button.content-box:active {
     transform: scale(0.96);
     background-color: #222;
 }
