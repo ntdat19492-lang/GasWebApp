@@ -1,6 +1,7 @@
 // Nút refresh
-document.getElementById("refreshBtn").addEventListener("click", () => {
-    loadPage(currentTab);  // Load lại trang đúng tab hiện tại
+document.getElementById("reloadBtn").addEventListener("click", () => {
+    // Reload toàn bộ trang
+    window.location.reload();
 });
 
 async function loadPage(page) {
