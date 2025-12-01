@@ -27,7 +27,7 @@ async function loadPage(page) {
     }
 }
 
-const curentTab = {}
+const curentTab = "home"
 
 // Chuyển tab
 function switchTab(tab, btn) {
