@@ -32,14 +32,19 @@ function switchTab(tab, btn) {
     loadPage(tab);
 }
 
-// Mặc định load home.html
-loadPage("home");
-
+// Hàm thêm log
 function addLog(text) {
-  const box = document.createElement("div");
-  box.className = "content-box";
-  box.textContent = text;
-  logContainer.appendChild(box);
+  const main = document.getElementById("mainContent"); // Lấy phần tử chính chứa nội dung
+  const logContainer = main.querySelector(".log-container"); // Tìm phần tử chứa log bên trong mainContent
+
+  if (logContainer) {
+    const box = document.createElement("div");
+    box.className = "content-box";
+    box.textContent = text;  // Đưa text vào content-box
+    logContainer.appendChild(box);
+  } else {
+    console.error("Không tìm thấy phần tử log-container trong chat.html");
+  }
 }
 
 // Khi mở Telegram WebApp
@@ -57,7 +62,7 @@ window.addEventListener("load", () => {
   } else {
     addLog("❌ Không mở trong Telegram WebApp, giữ nguyên header");
   }
-
-  // Mặc định load home
-  loadPage("home");
 });
+
+// Mặc định load home.html
+loadPage("home");
