@@ -26,16 +26,6 @@ header {
     padding-bottom: 20px;
 }
 
-#refreshBtn {
-    position: absolute;
-    right: 20px;
-    background: transparent;
-    border: none;
-    font-size: 32px;
-    color: #e1e1e1;
-    cursor: pointer;
-}
-
 main {
     flex: 1;
     overflow-y: auto;
