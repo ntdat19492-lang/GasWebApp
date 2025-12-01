@@ -26,11 +26,6 @@ header {
     padding-bottom: 20px;
 }
 
-/* Khi mở trong Telegram WebApp UI mới */
-tg-webapp .header {
-    height: 90px;
-}
-
 #refreshBtn {
     position: absolute;
     right: 20px;
