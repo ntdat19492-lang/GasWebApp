@@ -77,6 +77,8 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
         addLog("Không nhận được Telegram WebApp API");
     }
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
 });
 
 // Mặc định load home
