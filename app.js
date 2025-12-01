@@ -63,7 +63,9 @@ function isTelegramWebApp() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    if (isTelegramWebApp()) {
+    const isTG = isTelegramWebApp();
+    addLog("isTelegramWebApp() = " + isTG);
+    if (isTG) {
         addLog("Đã nhận được Telegram WebApp API");
         const header = document.getElementById("headerTitle");
         header.style.height = "100px";
