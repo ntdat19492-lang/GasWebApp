@@ -34,3 +34,18 @@ function switchTab(tab, btn) {
 
 // Mặc định load home.html
 loadPage("home");
+
+function detectTelegram() {
+      const tg = window.Telegram?.WebApp;
+
+      if (tg) {
+        // báo Telegram rằng webapp đã sẵn sàng
+        tg.ready();
+
+        // thêm class để đổi CSS
+        document.documentElement.classList.add("tg-webapp");
+      }
+    }
+
+    // chạy khi load trang
+    window.addEventListener("load", detectTelegram);
