@@ -54,6 +54,15 @@ main {
     height: calc(2 * padding + font-size);
 }
 
+.content-box:hover {
+    background-color: #333;
+}
+
+.content-box:active {
+    transform: scale(0.96);
+    background-color: #222;
+}
+
 footer {
     position: relative;
     height: 85px;
