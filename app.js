@@ -27,8 +27,11 @@ async function loadPage(page) {
     }
 }
 
+let currentTab = "home"; // mặc định home
+
 // Chuyển tab
 function switchTab(tab, btn) {
+    currentTab = tab; // cập nhật tab hiện tại
     document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 
