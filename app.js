@@ -12,15 +12,24 @@ async function loadPage(page) {
         if (!res.ok) throw new Error("HTTP " + res.status);
 
         const html = await res.text();
-        main.innerHTML = html;
+        
+        // Kiểm tra xem trang cần load có chứa phần tử .log-container không
+        if (page === "chat" && main.querySelector(".log-container")) {
+            const logContainer = main.querySelector(".log-container");
+            main.innerHTML = html; // Load trang vào
+            main.querySelector(".log-container").replaceWith(logContainer); // Thêm lại log-container
+        } else {
+            main.innerHTML = html;
+        }
+        
         main.scrollTop = 0;
-
     } catch (err) {
         main.innerHTML = `
             <div class="content-box">Không tải được file (${page}.html)</div>
         `;
     }
 }
+
 
 // Chuyển tab
 function switchTab(tab, btn) {
