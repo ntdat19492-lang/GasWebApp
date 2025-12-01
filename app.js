@@ -90,4 +90,3 @@ window.addEventListener("DOMContentLoaded", () => {
     // Mặc định load home
     loadPage("home");
 });
-</s
