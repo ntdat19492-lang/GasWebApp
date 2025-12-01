@@ -52,6 +52,7 @@ function addLog(text) {
         logContainer.appendChild(box);
     }
 }
+
 // Mở Webapp bằng Telegram điều chỉnh chiều cao header
 window.addEventListener("load", () => {
     const tg = window.Telegram?.WebApp;
