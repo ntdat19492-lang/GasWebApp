@@ -3,7 +3,8 @@ let logBuffer = [];
 const tabTitles = {
   home: "Trang Chủ",
   setting: "Cài Đặt",
-  log: "Log"
+  log: "Log",
+  search: 'search'
 };
 
 
