@@ -45,18 +45,17 @@ main {
 
 /* Đảm bảo các button có kiểu như content-box */
 button.content-box {
-    margin: 0 20px 10px;
-    padding: 15px;          /* Đảm bảo padding của button */
-    border-radius: 20px;
     background-color: #2b2b2b;
+    margin: 0 20px 10px;  /* Đảm bảo button có khoảng cách bên ngoài */
+    padding: 15px;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    height: calc(2 * padding + font-size);
-    border: none;           /* Loại bỏ border mặc định của button */
-    outline: none;          /* Loại bỏ viền màu xanh khi focus */
-    cursor: pointer;       /* Đổi con trỏ khi hover lên button */
+    display: block;       /* Đảm bảo button có thể nhận chiều rộng */
+    width: 100%;          /* Button chiếm chiều rộng của phần tử cha */
+    border-radius: 20px;
+    height: auto;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 /* Hiệu ứng hover */
