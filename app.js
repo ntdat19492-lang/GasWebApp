@@ -26,13 +26,24 @@ async function loadPage(page) {
 }
 
 function settingHTML() {
-  const reloadBtn = document.getElementById("reloadBtn");
-  if (reloadBtn) {
-    reloadBtn.addEventListener("click", () => {
+  document.getElementById("reloadBtn").addEventListener("click", () => {
     window.location.reload();
     addLog("đã click")
-    });
-  }
+  });
+  document.getElementById('createAccBtn').addEventListener('click', function () {
+    const inputDiv = document.getElementById('createAccInputs');
+    const button = this; // Lấy đối tượng button hiện tại
+
+    if (inputDiv.style.display === 'none' || inputDiv.style.display === '') {
+        // Hiển thị các input và mở rộng chiều cao của button
+        inputDiv.style.display = 'block';
+        button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
+    } else {
+        // Ẩn các input và thu nhỏ chiều cao của button
+        inputDiv.style.display = 'none';
+        button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
+    }
+  });
 }
 
 function logHTML() {
