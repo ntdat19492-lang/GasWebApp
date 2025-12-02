@@ -27,7 +27,7 @@ async function loadPage(page) {
 function settingHTML() {
   document.getElementById("reloadBtn").addEventListener("click", () => {
     window.location.reload();
-    addLog("đã click")
+    loadPage("setting");
   });
   document.getElementById('createAccBtn').addEventListener('click', function () {
     const inputDiv = document.getElementById('createAccInputs');
