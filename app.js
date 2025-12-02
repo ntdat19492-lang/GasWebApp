@@ -1,4 +1,3 @@
-let currentTab = "home"; // tab hiện tại
 let logBuffer = [];
 const tabTitles = {
   home: "Trang Chủ",
@@ -63,7 +62,6 @@ function logHTML() {
 
 // Chuyển tab
 function switchTab(tab, btn) {
-  currentTab = tab;
   document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
   loadPage(tab);
@@ -99,5 +97,5 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("headerTitle").style.height = "100px";
   }
   // Load tab mặc định
-  loadPage(currentTab);
+  loadPage("home");
 });
