@@ -31,6 +31,7 @@ function settingHTML() {
 }
 
 function logHTML() {
+  const main = document.getElementById("mainContent");
   const logContainer = main.querySelector(".log-container");
   if (logContainer) {
     logContainer.innerHTML = ''; // xóa log cũ
