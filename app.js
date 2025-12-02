@@ -4,7 +4,7 @@ const tabTitles = {
   home: "Trang Chủ",
   setting: "Cài Đặt",
   log: "Log",
-  search: 'search'
+  search: 'Search'
 };
 
 
