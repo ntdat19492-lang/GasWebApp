@@ -38,6 +38,7 @@ function settingHTML() {
         // Hiển thị các input và mở rộng chiều cao của button
         inputDiv.style.display = 'block';
         button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
+        button.classList.remove('active'); // Loại bỏ trạng thái "clicked" của button
     } else {
         // Ẩn các input và thu nhỏ chiều cao của button
         inputDiv.style.display = 'none';
