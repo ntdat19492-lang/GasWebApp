@@ -13,7 +13,7 @@ async function loadPage(page) {
 
   // 🔹 Set header ngay khi load page
   const header = document.getElementById("headerTitle");
-  header.textContent = tabTitles[page] || page.toUpperCase();
+  header.textContent = tabTitles[page];
 
   try {
     const res = await fetch(`${page}.html`);
