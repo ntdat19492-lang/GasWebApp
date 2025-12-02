@@ -7,20 +7,16 @@ const tabTitles = {
   search: 'Tìm Kiếm'
 };
 
-
 // Load nội dung tab
 async function loadPage(page) {
   const main = document.getElementById("mainContent");
-
   // 🔹 Set header ngay khi load page
   const header = document.getElementById("headerTitle");
   header.textContent = tabTitles[page];
-
   try {
     const res = await fetch(`${page}.html`);
     const html = await res.text();
     main.innerHTML = html;
-
     if (page === "setting") settingHTML();
     if (page === "log") logHTML();
   } catch (err) {
@@ -28,7 +24,6 @@ async function loadPage(page) {
     console.error(err);
   }
 }
-
 
 function settingHTML() {
   const reloadBtn = document.getElementById("reloadBtn");
@@ -57,13 +52,8 @@ function logHTML() {
 // Chuyển tab
 function switchTab(tab, btn) {
   currentTab = tab;
-
   document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
-
-  // const header = document.getElementById("headerTitle");
-  // header.textContent = tab.toUpperCase(); // safe hơn childNodes[0].nodeValue
-
   loadPage(tab);
 }
 
@@ -72,7 +62,6 @@ function addLog(text) {
   logBuffer.push(text);
   const main = document.getElementById("mainContent");
   const logContainer = main.querySelector(".log-container");
-
   if (logContainer) {
     const box = document.createElement("div");
     box.className = "content-box";
@@ -105,7 +94,6 @@ window.addEventListener("DOMContentLoaded", () => {
   } else {
     addLog("Không nhận được Telegram WebApp API");
   }
-
   // Load tab mặc định
   loadPage(currentTab);
 });
