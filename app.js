@@ -1,24 +1,33 @@
 let currentTab = "home"; // tab hiện tại
 let logBuffer = [];
+const tabTitles = {
+  home: "Trang Chủ",
+  setting: "Cài Đặt",
+  log: "Log"
+};
+
 
 // Load nội dung tab
 async function loadPage(page) {
   const main = document.getElementById("mainContent");
+
+  // 🔹 Set header ngay khi load page
+  const header = document.getElementById("headerTitle");
+  header.textContent = tabTitles[page] || page.toUpperCase();
 
   try {
     const res = await fetch(`${page}.html`);
     const html = await res.text();
     main.innerHTML = html;
 
-    // Nếu tab home, thêm sự kiện reload
-    if (page === "profile") settingHTML();
-    // Nếu tab chat → render log
-    if (page === "chat") logHTML();
+    if (page === "setting") settingHTML();
+    if (page === "log") logHTML();
   } catch (err) {
     main.innerHTML = `<div class='content-box'>Không tải được</div>`;
     console.error(err);
   }
 }
+
 
 function settingHTML() {
   const reloadBtn = document.getElementById("reloadBtn");
@@ -51,8 +60,8 @@ function switchTab(tab, btn) {
   document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
 
-  const header = document.getElementById("headerTitle");
-  header.textContent = tab.toUpperCase(); // safe hơn childNodes[0].nodeValue
+  // const header = document.getElementById("headerTitle");
+  // header.textContent = tab.toUpperCase(); // safe hơn childNodes[0].nodeValue
 
   loadPage(tab);
 }
