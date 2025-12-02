@@ -50,7 +50,7 @@ button.content-box {
     padding: 15px;
     font-size: 16px;
     display: block;       /* Đảm bảo button có thể nhận chiều rộng */
-    width: 100%;          /* Button chiếm chiều rộng của phần tử cha */
+    width: calc(100% - 40px);          /* Button chiếm chiều rộng của phần tử cha */
     border-radius: 20px;
     height: auto;
     border: none;
