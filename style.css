@@ -29,30 +29,31 @@ header {
 main {
     flex: 1;
     overflow-y: auto;
+	font-size: 16px;
 }
 
-/* Cập nhật kiểu dáng cho input để chúng trông giống như button */
 .content-box {
     background-color: #2b2b2b;
-    margin: 0 20px 10px;
+    margin: 0 5% 10px;
     border-radius: 20px;
-    font-size: 16px;
     display: flex;
     align-items: center;
     box-sizing: border-box;
     padding: 15px;
     height: calc(2 * padding + font-size);
+    position: relative;    /* Thêm dòng này */
 }
 
-/* Thêm khoảng cách giữa các input trong div */
-.create-acc-inputs input {
-    margin-bottom: 10px;
-}
-
-/* Hiệu ứng khi input xuất hiện */
-.create-acc-inputs input:focus {
-    outline: none;
-    background-color: #333;
+.createaccbox {
+    background-color: #2b2b2b;
+    margin: 0 5% 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 15px;
+    height: calc(2 * padding + font-size);
+    position: relative;    /* Thêm dòng này */
 }
 
 /* Điều chỉnh chiều cao của button khi hiển thị các input */
@@ -63,16 +64,17 @@ button.content-box.open {
 /* Đảm bảo các button có kiểu như content-box */
 button.content-box {
     background-color: #2b2b2b;
-    margin: 0 20px 10px;  /* Đảm bảo button có khoảng cách bên ngoài */
+    margin: 0 5% 10px;  /* Đảm bảo button có khoảng cách bên ngoài */
     padding: 15px;
     font-size: 16px;
     display: block;       /* Đảm bảo button có thể nhận chiều rộng */
-    width: calc(100% - 40px);          /* Button chiếm chiều rộng của phần tử cha */
+    width: 90%;       /* Button chiếm chiều rộng của phần tử cha */
     border-radius: 20px;
     height: auto;
     border: none;
     outline: none;
     cursor: pointer;
+	color: #e1e1e1;
 }
 
 /* Hiệu ứng hover */
@@ -106,6 +108,7 @@ footer {
     display: flex;
     justify-content: space-around;
     height: 60px;
+	width: 90%;
 }
 
 .nav-btn {
@@ -134,3 +137,70 @@ footer {
 .nav-text {
     font-size: 11px;
 }
+
+/* Sắp xếp DỌC và CĂN GIỮA ở layer bên trong */
+.form-wrapper {
+    display: flex;
+    flex-direction: column;     /* sắp xếp theo chiều dọc */
+    align-items: center;        /* căn giữa theo chiều ngang */
+}
+
+/* Label */
+.form-wrapper .title {
+    font-size: 14px;
+    color: #e1e1e1;
+    width: 90%;
+    text-align: left;
+	transform: translateX(8%);
+	margin-bottom: 2px;
+}
+
+/* Inputs */
+.form-wrapper input {
+    width: 80%;
+    background: #2b2b2b;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #e1e1e1;
+	margin-bottom: 15px;
+}
+
+.form-wrapper input:focus {
+    outline: none;
+    border-color: #0088cc;
+    background: #333;
+}
+
+/* Message */
+.form-wrapper .message {
+    min-height: 18px;
+    color: #ff4d4d;
+    font-size: 13px;
+    text-align: left;
+	margin-bottom: 15px;
+	transform: translateX(8%);
+	width: 90%;
+}
+
+/* Button */
+.form-wrapper button {
+    width: 80%;
+    background: #0088cc;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-wrapper button:hover {
+    background: #0099dd;
+}
+
+.form-wrapper button:active {
+    transform: scale(0.97);
+}
+

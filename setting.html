@@ -8,10 +8,21 @@
     Tạo tài khoản
 </button>
 <!-- Các input sẽ xuất hiện khi nhấn "Tạo tài khoản" -->
-<div id="createAccInputs" class="create-acc-inputs" style="display: none;">
-    <input type="text" id="username" placeholder="Nhập tên tài khoản" class="content-box">
-    <input type="password" id="password" placeholder="Nhập mật khẩu" class="content-box">
-    <input type="email" id="email" placeholder="Nhập email" class="content-box">
+<div id="createAccInputs" class="createaccbox" style="display: none;">
+    <div class="form-wrapper">
+        <label class="title">Tên đăng nhập</label>
+        <input type="text" id="reg-username" placeholder="Nhập tên đăng nhập">
+
+        <label class="title">Mật khẩu</label>
+        <input type="password" id="reg-password" placeholder="Nhập mật khẩu">
+
+        <label class="title">Nhập lại mật khẩu</label>
+        <input type="password" id="reg-repassword" placeholder="Nhập lại mật khẩu">
+
+        <p class="message" id="reg-message"></p>
+
+        <button id="btnRegister">Đăng ký</button>
+    </div>
 </div>
 <button id="reloadBtn" class="content-box">
     Cập nhật phiên bản mới
