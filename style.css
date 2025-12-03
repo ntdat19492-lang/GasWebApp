@@ -150,7 +150,7 @@ footer {
     color: #e1e1e1;
     width: 90%;
     text-align: left;
-	transform: translateX(3%);
+	transform: translateX(4%);
 	margin-bottom: 5px;
 }
 
@@ -178,13 +178,13 @@ footer {
     font-size: 13px;
     text-align: left;
 	margin-bottom: 20px;
-	transform: translateX(3%);
+	transform: translateX(4%);
 	width: 90%;
 }
 
 /* Button */
 .form-wrapper button {
-    width: 80%;
+    width: 90%;
     background: #0088cc;
     padding: 12px;
     border-radius: 12px;
