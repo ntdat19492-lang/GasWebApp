@@ -7,6 +7,7 @@
 	--fontSheader: 20px;
 	--fontSmain: 16px;
 	--borderR: 20px;
+	--borderInput: 10px;
 }
 
 html, body {
@@ -119,7 +120,7 @@ main {
 
 /* Label */
 .formwrapper .title {
-	margin-left: var(--borderR);
+	margin-left: var(--borderInput);
 	margin-bottom: 5px;
 	font-size: 14px;
 }
@@ -129,7 +130,7 @@ main {
 	background-color: var(--bgcreateacc);
     border: 1px solid #666;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: var(--borderInput);
     color: var(--textcolor);
 	margin-bottom: 20px;
 }
@@ -146,7 +147,7 @@ main {
     color: #ff4d4d;
     font-size: 13px;
 	margin-bottom: 20px;
-	margin-left: var(--borderR);
+	margin-left: var(--borderInput);
 }
 
 /* Button */
