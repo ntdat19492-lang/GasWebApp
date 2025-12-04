@@ -75,20 +75,21 @@ document.getElementById('btnRegister').addEventListener('click', function(event)
         },
         body: JSON.stringify({ name: name, password: password })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            alert('Đăng ký thành công!');
-        } else {
-            alert('Có lỗi xảy ra, vui lòng thử lại!');
-        }
-    })
-    .catch(error => {
-        alert('Có lỗi xảy ra khi gửi dữ liệu!');
-        console.error(error);
-    });
-});
+	.then(response => response.json())
+	.then(data => {
+		console.log(data);  // Kiểm tra dữ liệu trả về từ server
 
+		if (data.status === 'success') {
+			alert('Đăng ký thành công!');
+		} else {
+			alert('Có lỗi xảy ra, vui lòng thử lại!');
+		}
+	})
+	.catch(error => {
+		alert('Có lỗi xảy ra khi gửi dữ liệu!');
+		console.error('Error: ', error);  // Log chi tiết lỗi
+	});
+	});
 }
 
 function logHTML() {
