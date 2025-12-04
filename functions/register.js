@@ -1,23 +1,27 @@
 export async function onRequestPost(context) {
-  try {
-    const body = await context.request.json();
+    try {
+        // Lấy body JSON từ client (web app)
+        const body = await context.request.json();
+        const { name, password } = body;
 
-    const res = await fetch(context.env.https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
+        // Gửi sang GAS Web App
+        const gasUrl = "https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec";
 
-    const data = await res.json();
+        const gasResponse = await fetch(gasUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, password })
+        });
 
-    return new Response(JSON.stringify(data), {
-      headers: { "Content-Type": "application/json" },
-    });
+        const result = await gasResponse.json();
 
-  } catch (err) {
-    return new Response(JSON.stringify({ status: "error", message: err.toString() }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+        return new Response(JSON.stringify(result), {
+            headers: { "Content-Type": "application/json" }
+        });
+
+    } catch (err) {
+        return new Response(JSON.stringify({ status: "error", message: err.toString() }), {
+            headers: { "Content-Type": "application/json" }
+        });
+    }
 }
