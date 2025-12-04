@@ -44,6 +44,34 @@ function settingHTML() {
 		button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
 		}
 	});
+	document.getElementById("btnRegister").addEventListener("click", async () => {
+	    const username = document.getElementById("regUsername").value.trim();
+	    const password = document.getElementById("regPassword").value.trim();
+	    const repass = document.getElementById("regRepassword").value.trim();
+	    const msg = document.getElementById("regmessage");
+	
+	    if (!username || !password) {
+	        msg.textContent = "Không được bỏ trống";
+	        return;
+	    }
+	
+	    if (password !== repass) {
+	        msg.textContent = "Mật khẩu không khớp";
+	        return;
+	    }
+	
+	    msg.textContent = "Đang gửi...";
+	
+	    const res = await fetch("/api/register", {
+	        method: "POST",
+	        headers: { "Content-Type": "application/json" },
+	        body: JSON.stringify({ username, password })
+	    });
+	
+	    const data = await res.json();
+	
+	    msg.textContent = data.message;
+	});
 }
 
 function logHTML() {
