@@ -68,7 +68,7 @@ document.getElementById('btnRegister').addEventListener('click', function(event)
     }
 
     // Gửi dữ liệu đến Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec', {
+    fetch('/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
