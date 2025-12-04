@@ -104,6 +104,7 @@ main {
 	color: var(--textcolor);
 	margin-left: 0%;
 	border: none;
+	font-size: var(--fontSmain);
 }
 
 /* Sắp xếp DỌC và CĂN GIỮA ở layer bên trong */
@@ -126,7 +127,7 @@ main {
 /* Inputs */
 .formwrapper input {
 	background-color: var(--bgcreateacc);
-    border: 1px solid #444;
+    border: 1px solid #666;
     padding: 15px;
     border-radius: 10px;
     color: var(--textcolor);
