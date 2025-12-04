@@ -1,32 +1,34 @@
-<button id="infoBtn" class="buttonbox">
+<button id="infoBtn" class="contentbox buttonbox">
     Thông tin tài khoản
 </button>
-<button id="listAccBtn" class="buttonbox">
+
+<button id="listAccBtn" class="contentbox buttonbox">
     Danh sách tài khoản
 </button>
-<button id="createAccBtn" class="buttonbox">
-    Tạo tài khoản
-</button>
-<!-- Các input sẽ xuất hiện khi nhấn "Tạo tài khoản" -->
-<div id="createAccInputs" class="createaccbox" style="display: none;">
-    <div class="form-wrapper">
-        <label class="title">Tên đăng nhập</label>
-        <input type="text" id="reg-username" placeholder="Nhập tên đăng nhập">
 
-        <label class="title">Mật khẩu</label>
-        <input type="password" id="reg-password" placeholder="Nhập mật khẩu">
-
-        <label class="title">Nhập lại mật khẩu</label>
-        <input type="password" id="reg-repassword" placeholder="Nhập lại mật khẩu">
-
-        <p class="message" id="reg-message"></p>
-
-        <button id="btnRegister">Đăng ký</button>
-    </div>
+<div class="bgbuttonbox">
+	<button id="createAccBtn" class="contentbox createbutton">
+		Tạo tài khoản
+	</button>
+	<!-- Các input sẽ xuất hiện khi nhấn "Tạo tài khoản" -->
+	<div id="createAccInputs" style="display: none;">
+		<div class = 'formwrapper'>
+			<label class="title">Tên đăng nhập</label>
+			<input type="text" id="reg-username" placeholder="Nhập tên đăng nhập">
+			<label class="title">Mật khẩu</label>
+			<input type="password" id="reg-password" placeholder="Nhập mật khẩu">
+			<label class="title">Nhập lại mật khẩu</label>
+			<input type="password" id="reg-repassword" placeholder="Nhập lại mật khẩu">
+			<p class="message" id="reg-message"></p>
+			<button id="btnRegister">Đăng ký</button>
+		</div>
+	</div>
 </div>
-<button id="reloadBtn" class="buttonbox">
+
+<button id="reloadBtn" class="contentbox buttonbox">
     Cập nhật phiên bản mới
 </button>
-<button id="logoutBtn" class="buttonbox">
+
+<button id="logoutBtn" class="contentbox buttonbox">
     Đăng xuất
 </button>
