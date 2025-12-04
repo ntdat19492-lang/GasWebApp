@@ -73,7 +73,7 @@ main {
 
 /* Đảm bảo các button có kiểu như content-box */
 .buttonbox {
-    background-color: #2b2b2b;
+    background-color: var(--bgcolorcontentbox);
     margin: 0 5% 10px;  /* Đảm bảo button có khoảng cách bên ngoài */
     padding: 15px;
     font-size: 16px;
