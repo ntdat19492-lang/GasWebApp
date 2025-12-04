@@ -67,7 +67,7 @@ main {
 }
 
 /* Điều chỉnh chiều cao của button khi hiển thị các input */
-button.content-box.open {
+.buttonbox.open {
     height: auto; /* Tự động mở rộng chiều cao */
 }
 
@@ -88,18 +88,18 @@ button.content-box.open {
 }
 
 /* Hiệu ứng hover */
-button.content-box:hover {
+.buttonbox:hover {
     background-color: #333;
 }
 
 /* Hiệu ứng khi click */
-button.content-box:active {
+.buttonbox:active {
     transform: scale(0.96);
     background-color: #222;
 }
 
 /* Đảm bảo button không bị focus với viền */
-button.content-box:focus {
+.buttonbox:focus {
     outline: none;
 }
 
