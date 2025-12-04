@@ -131,10 +131,11 @@ main {
 .formwrapper input {
 	background-color: var(--bgcreateacc);
     border: 1px solid #666;
-    padding: 15px;
+    padding: 10px;
     border-radius: var(--borderInput);
     color: var(--textcolor);
 	margin-bottom: 20px;
+	font-size: 16px;
 }
 
 .formwrapper input:focus {

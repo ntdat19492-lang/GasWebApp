@@ -51,10 +51,10 @@ function logHTML() {
   if (logContainer) {
     logContainer.innerHTML = ''; // xóa log cũ
     logBuffer.forEach(text => {
-    const box = document.createElement("div");
-    box.className = "content-box";
-    box.textContent = text;
-    logContainer.appendChild(box);
+      const box = document.createElement("div");
+      box.className = "content-box";
+      box.textContent = text;
+      logContainer.appendChild(box);
     });
   }
 }
@@ -90,11 +90,28 @@ function isTelegramWebApp() {
   );
 }
 
+// Tính năng ẩn bàn phím ảo khi click ra ngoài input
+function setupInputBlur() {
+  // Lắng nghe sự kiện click trên toàn bộ trang
+  document.addEventListener('click', function(event) {
+    // Kiểm tra nếu người dùng không click vào input
+    if (!event.target.closest('input')) {
+      // Nếu không phải click vào input, gọi blur() cho tất cả các input
+      document.querySelectorAll('input').forEach(function(input) {
+        input.blur();
+      });
+    }
+  });
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   const isTG = isTelegramWebApp();
   if (isTG) {
     document.getElementById("headerTitle").style.height = "100px";
   }
+  // Thiết lập tính năng ẩn bàn phím khi click ra ngoài input
+  setupInputBlur();
+  
   // Load tab mặc định
   loadPage("home");
 });
