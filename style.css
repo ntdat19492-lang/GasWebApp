@@ -117,8 +117,7 @@ main {
     flex-direction: column;     /* sắp xếp theo chiều dọc */
 	width: 80%;
 	margin-left: 10%;
-	margin-top: 40px;
-	transform: translateY(-20px);
+	margin-top: 20px;
 }
 
 /* Label */
@@ -151,6 +150,7 @@ main {
     font-size: 13px;
 	margin-bottom: 20px;
 	margin-left: var(--borderInput);
+	transform: translateY(-15px);
 }
 
 /* Button */
@@ -162,6 +162,7 @@ main {
     color: white;
     border: none;
     cursor: pointer;
+	transform: translateY(-15px);
 }
 
 .formwrapper button:active {
