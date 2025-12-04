@@ -110,8 +110,8 @@ main {
 .formwrapper {
     display: flex;
     flex-direction: column;     /* sắp xếp theo chiều dọc */
-	width: 90%;
-	margin-left: 5%;
+	width: 80%;
+	margin-left: 10%;
 	margin-top: 20px;
 	transform: translateY(-10px);
 }
