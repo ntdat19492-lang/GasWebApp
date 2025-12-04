@@ -45,28 +45,50 @@ function settingHTML() {
 		}
 	});
 	
-	document.getElementById('btnRegister').addEventListener('click', function(event) {
-		event.preventDefault();
+document.getElementById('btnRegister').addEventListener('click', function(event) {
+    event.preventDefault();
 
-		// Lấy thông tin từ form
-		const name = document.getElementById('regUsername').value;
-		const pasword = document.getElementById('regPassword').value;
-		const repasword = document.getElementById('regRepassword').value;
+    // Lấy thông tin từ form
+    const name = document.getElementById('regUsername').value;
+    const password = document.getElementById('regPassword').value;
+    const repassword = document.getElementById('regRepassword').value;
 
-		// Gửi dữ liệu đến Google Apps Script
-		fetch('https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec', {
-			method: 'POST',
-			headers: {
-			'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ name: name, pasword: pasword})
-		})
-		.then(response => response.json())
-		.catch(error => {
-			alert('There was an error submitting the form.');
-			console.error(error);
-		});
-	});
+    // Kiểm tra mật khẩu và mật khẩu xác nhận có khớp không
+    if (password !== repassword) {
+        document.getElementById('regmessage').innerText = "Mật khẩu không khớp!";
+        document.getElementById('regmessage').style.color = "red";
+        return; // Dừng lại nếu mật khẩu không khớp
+    }
+
+    // Kiểm tra mật khẩu có đủ dài (ví dụ: từ 6 đến 32 ký tự)
+    if (password.length < 6 || password.length > 32) {
+        document.getElementById('regmessage').innerText = "Mật khẩu phải có độ dài từ 6 đến 32 ký tự!";
+        document.getElementById('regmessage').style.color = "red";
+        return;
+    }
+
+    // Gửi dữ liệu đến Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name, password: password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Đăng ký thành công!');
+        } else {
+            alert('Có lỗi xảy ra, vui lòng thử lại!');
+        }
+    })
+    .catch(error => {
+        alert('Có lỗi xảy ra khi gửi dữ liệu!');
+        console.error(error);
+    });
+});
+
 }
 
 function logHTML() {
