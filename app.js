@@ -44,52 +44,6 @@ function settingHTML() {
 		button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
 		}
 	});
-	
-document.getElementById('btnRegister').addEventListener('click', function(event) {
-    event.preventDefault();
-
-    // Lấy thông tin từ form
-    const name = document.getElementById('regUsername').value;
-    const password = document.getElementById('regPassword').value;
-    const repassword = document.getElementById('regRepassword').value;
-
-    // Kiểm tra mật khẩu và mật khẩu xác nhận có khớp không
-    if (password !== repassword) {
-        document.getElementById('regmessage').innerText = "Mật khẩu không khớp!";
-        document.getElementById('regmessage').style.color = "red";
-        return; // Dừng lại nếu mật khẩu không khớp
-    }
-
-    // Kiểm tra mật khẩu có đủ dài (ví dụ: từ 6 đến 32 ký tự)
-    if (password.length < 6 || password.length > 32) {
-        document.getElementById('regmessage').innerText = "Mật khẩu phải có độ dài từ 6 đến 32 ký tự!";
-        document.getElementById('regmessage').style.color = "red";
-        return;
-    }
-
-    // Gửi dữ liệu đến Google Apps Script
-    fetch('/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: name, password: password })
-    })
-	.then(response => response.json())
-	.then(data => {
-		console.log(data);  // Kiểm tra dữ liệu trả về từ server
-
-		if (data.status === 'success') {
-			alert('Đăng ký thành công!');
-		} else {
-			alert('Có lỗi xảy ra, vui lòng thử lại!');
-		}
-	})
-	.catch(error => {
-		alert('Có lỗi xảy ra khi gửi dữ liệu!');
-		console.error('Error: ', error);  // Log chi tiết lỗi
-	});
-	});
 }
 
 function logHTML() {
