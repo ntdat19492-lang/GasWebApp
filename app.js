@@ -68,7 +68,7 @@ function settingHTML() {
 	  	const res = await fetch("./register", {
 	    	method: "POST",
 	    	headers: { "Content-Type": "application/json" },
-	    	body: body
+	    	body: JSON.stringify(body)
 	    });
 		
 	  	const data = await res.json(); // Phản hồi từ server
