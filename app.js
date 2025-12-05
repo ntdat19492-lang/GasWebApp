@@ -67,11 +67,7 @@ function settingHTML() {
 	    });
 		
 	  	const data = await res.json(); // Phản hồi từ server
-		if (data.ok) {
-			addLog("✅ Đăng ký thành công!");
-		} else {
-			addLog(`❌ Lỗi: ${data.message}`);
-		}
+		addLog(`❌ Lỗi: ${data.message}`);
  	});
 }
 
