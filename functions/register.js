@@ -1,6 +1,6 @@
 export async function onRequestPost({ request }) {
   try {
-    const body = await request.json().catch(() => null);
+    const body = await request.json();
     const { username, password } = body;
     const gasUrl = "https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec";
 
