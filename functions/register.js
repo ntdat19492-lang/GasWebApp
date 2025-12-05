@@ -1,23 +1,22 @@
 export async function onRequestPost({ request }) {
   try {
-    // Đọc dữ liệu gửi từ client
-    const body = await request.json();
+    const body = await request.json().catch(() => null);
 
-    // Lấy thông tin từ body
-    const { username, password } = body;
-
-    // Kiểm tra nếu tên đăng nhập và mật khẩu hợp lệ (ví dụ: không trống)
-    if (!username || !password) {
+    if (!body) {
       return new Response(JSON.stringify({
         ok: false,
-        message: "Tên đăng nhập và mật khẩu không được để trống"
+        error: "Client gửi dữ liệu không phải JSON"
       }), {
         headers: { "Content-Type": "application/json" },
-        status: 400 // Bad Request
       });
     }
 
-    // Gửi request tới Google Apps Script (GAS)
+    const { username, password } = body;
+
+    // Log bước 1
+    const debug1 = { step: "Cloudflare nhận request", body };
+
+    // --- Fetch GAS ---
     const gasUrl = "https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec";
 
     const gasRes = await fetch(gasUrl, {
@@ -30,31 +29,31 @@ export async function onRequestPost({ request }) {
       })
     });
 
-    // Đọc phản hồi từ GAS
     let gasJson = null;
 
-    // Kiểm tra xem phản hồi có phải là JSON hợp lệ không
     try {
-      gasJson = await gasRes.json();  // Lấy dữ liệu JSON từ phản hồi của GAS
+      gasJson = await gasRes.json();
     } catch (err) {
-      // Nếu không phải JSON hợp lệ, xử lý lỗi và hiển thị thông báo
-      gasJson = { ok: false, error: "GAS không trả JSON hợp lệ", raw: await gasRes.text() };
+      gasJson = { ok: false, error: "GAS không trả JSON", raw: await gasRes.text() };
     }
 
-    // Trả về kết quả từ GAS cho client
-    return new Response(JSON.stringify(gasJson), {
+    // Log bước 2
+    const debug2 = { step: "GAS phản hồi", gasJson };
+
+    return new Response(JSON.stringify({
+      ok: true,
+      debug1,
+      debug2
+    }), {
       headers: { "Content-Type": "application/json" }
     });
 
-  } catch (error) {
-    // Lỗi xử lý
-    console.error("Lỗi khi xử lý request:", error);
+  } catch (err) {
     return new Response(JSON.stringify({
       ok: false,
-      message: "Đã xảy ra lỗi, vui lòng thử lại sau."
+      error: "Lỗi Cloudflare: " + err.message
     }), {
       headers: { "Content-Type": "application/json" },
-      status: 500 // Internal Server Error
     });
   }
 }
