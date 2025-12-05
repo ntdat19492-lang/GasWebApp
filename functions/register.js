@@ -33,10 +33,12 @@ export async function onRequestPost({ request }) {
     // Đọc phản hồi từ GAS
     let gasJson = null;
 
+    // Kiểm tra xem phản hồi có phải là JSON hợp lệ không
     try {
       gasJson = await gasRes.json();  // Lấy dữ liệu JSON từ phản hồi của GAS
     } catch (err) {
-      gasJson = { ok: false, error: "GAS không trả JSON", raw: await gasRes.text() };
+      // Nếu không phải JSON hợp lệ, xử lý lỗi và hiển thị thông báo
+      gasJson = { ok: false, error: "GAS không trả JSON hợp lệ", raw: await gasRes.text() };
     }
 
     // Trả về kết quả từ GAS cho client
