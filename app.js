@@ -74,8 +74,16 @@ function settingHTML() {
 	      })
 	    });
 	
-	    const data = await res.json();
-	
+	    let data;
+			try {
+			  data = await res.json();
+			} catch (err) {
+			  addLog("❌ Cloudflare trả về NON-JSON: " + err.message);
+			  const txt = await res.text();
+			  addLog("📄 Raw response: " + txt);
+			  return;
+			}
+
 	    addLog("📥 Phản hồi từ Cloudflare: " + JSON.stringify(data));
 	
 	  } catch (err) {
