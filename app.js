@@ -74,6 +74,8 @@ function settingHTML() {
 	  	const data = await res.json(); // Phản hồi từ server
 		if (data.gasJson.ok) {
 			thongbaoTrangThaiDangKy.style.color = 'green';
+		} else {
+			thongbaoTrangThaiDangKy.style.color = 'red';
 		}
 		thongbaoTrangThaiDangKy.textContent = data.gasJson.message;
  	});
