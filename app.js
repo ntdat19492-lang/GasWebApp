@@ -52,12 +52,12 @@ function settingHTML() {
 		const thongbao = document.getElementById("regmessage");
 	
 	  	if (!username || !password || !repass) {
-	    	thongbao.textContent("❌ Chưa nhập thông tin");
+	    	thongbao.textContent = "❌ Chưa nhập thông tin";
 	    	return;
 	  	}
 	
 	  	if (password !== repass) {
-	    	thongbao.textContent("❌ Mật khẩu nhập lại không khớp");
+	    	thongbao.textContent = "❌ Mật khẩu nhập lại không khớp";
 	    	return;
 	  	}
 	
