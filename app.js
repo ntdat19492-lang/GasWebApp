@@ -46,14 +46,12 @@ function settingHTML() {
 	});
 	
 	document.getElementById("btnRegister").addEventListener("click", async () => {
-	  const username = document.getElementById("regUsername").value.trim();
-	  const password = document.getElementById("regPassword").value.trim();
-	  const repass = document.getElementById("regRepassword").value.trim();
-	
-	  addLog("Bắt đầu đăng ký…");
+	  const username = document.getElementById("regUsername").value;
+	  const password = document.getElementById("regPassword").value;
+	  const repass = document.getElementById("regRepassword").value;
 	
 	  if (!username || !password || !repass) {
-	    addLog("❌ Thiếu dữ liệu");
+	    addLog("❌ Chưa nhập thông tin");
 	    return;
 	  }
 	
@@ -62,34 +60,12 @@ function settingHTML() {
 	    return;
 	  }
 	
-	  addLog("📤 Gửi dữ liệu lên Cloudflare…");
-	
-	  try {
-	    const res = await fetch("./register", {
-	      method: "POST",
-	      headers: { "Content-Type": "application/json" },
-	      body: JSON.stringify({
-	        username,
-	        password
-	      })
+	  const res = await fetch("./register", {
+	    method: "POST",
+	    headers: { "Content-Type": "application/json" },
+	    body: JSON.stringify({username, password})
 	    });
-	
-	    let data;
-			try {
-			  data = await res.json();
-			} catch (err) {
-			  addLog("❌ Cloudflare trả về NON-JSON: " + err.message);
-			  const txt = await res.text();
-			  addLog("📄 Raw response: " + txt);
-			  return;
-			}
-
-	    addLog("📥 Phản hồi từ Cloudflare: " + JSON.stringify(data));
-	
-	  } catch (err) {
-	    addLog("❌ Lỗi fetch Cloudflare: " + err.message);
-	  }
-	});
+ 	});
 }
 
 function logHTML() {
