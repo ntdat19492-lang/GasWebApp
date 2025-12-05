@@ -45,7 +45,6 @@ function settingHTML() {
     }
   });
 
-  // Lắng nghe sự kiện click để thực hiện đăng ký
   document.getElementById("btnRegister").addEventListener("click", async () => {
     const username = document.getElementById("regUsername").value;
     const password = document.getElementById("regPassword").value;
@@ -71,8 +70,20 @@ function settingHTML() {
         body: JSON.stringify({ username, password })
       });
   
-      const data = await res.json(); // Phản hồi từ server
+      // Kiểm tra xem server có trả về dữ liệu không
+      const responseText = await res.text();  // Chúng ta đọc toàn bộ dữ liệu như text trước
+      let data = {};
+      
+      // Nếu có dữ liệu trả về, cố gắng phân tích cú pháp JSON
+      try {
+        data = JSON.parse(responseText);
+      } catch (error) {
+        console.error("Lỗi khi phân tích cú pháp JSON:", error);
+        addText("❌ Lỗi phân tích dữ liệu từ server");
+        return;
+      }
   
+      // Kiểm tra phản hồi từ server
       if (data.ok) {
         addText(`✅ ${data.message}`);
       } else {
