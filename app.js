@@ -71,13 +71,14 @@ function settingHTML() {
       });
   
       // Kiểm tra xem server có trả về dữ liệu không
-      const responseText = await res.text();  // Chúng ta đọc toàn bộ dữ liệu như text trước
+      const responseText = await res.text();  // Đọc dữ liệu dưới dạng text
       let data = {};
-      
-      // Nếu có dữ liệu trả về, cố gắng phân tích cú pháp JSON
+  
+      // Kiểm tra xem phản hồi có phải là JSON hợp lệ không
       try {
-        data = JSON.parse(responseText);
+        data = JSON.parse(responseText); // Cố gắng phân tích JSON
       } catch (error) {
+        // Nếu không phải JSON hợp lệ, xử lý lỗi và hiển thị thông báo
         console.error("Lỗi khi phân tích cú pháp JSON:", error);
         addText("❌ Lỗi phân tích dữ liệu từ server");
         return;
