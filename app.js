@@ -67,6 +67,7 @@ function settingHTML() {
 	    });
 		
 	  	const data = await res.json(); // Phản hồi từ server
+		addLog(data);
 		addLog(`❌ Lỗi: ${data.message}`);
  	});
 }
