@@ -52,13 +52,13 @@ document.getElementById("btnRegister").addEventListener("click", async () => {
 
   // Kiểm tra nếu thông tin chưa được nhập đầy đủ
   if (!username || !password || !repass) {
-    addLog("❌ Chưa nhập thông tin");
+    thongbaotrangthaiDangKy("❌ Chưa nhập thông tin");
     return;
   }
 
   // Kiểm tra mật khẩu và nhập lại mật khẩu có khớp không
   if (password !== repass) {
-    addLog("❌ Mật khẩu nhập lại không khớp");
+    thongbaotrangthaiDangKy("❌ Mật khẩu nhập lại không khớp");
     return;
   }
 
@@ -73,15 +73,20 @@ document.getElementById("btnRegister").addEventListener("click", async () => {
     const data = await res.json(); // Phản hồi từ server
 
     if (data.ok) {
-      addLog("✅ Đăng ký thành công!");
-    } else {
-      addLog(`❌ Lỗi: ${data.message}`);
+    	const input = document.getElementById('regmessage');
+		input.color = green;
     }
+	thongbaotrangthaiDangKy(`${data.message}`);
   } catch (error) {
     console.error("Lỗi khi gửi request:", error);
-    addLog("❌ Đã xảy ra lỗi khi gửi dữ liệu");
+    thongbaotrangthaiDangKy("❌ Đã xảy ra lỗi khi gửi dữ liệu");
   }
 });
+}
+
+function thongbaotrangthaiDangKy(text) {
+	const input = document.getElementById('regmessage');
+	input.textContent = text;
 }
 
 function logHTML() {
