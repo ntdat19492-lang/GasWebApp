@@ -50,19 +50,19 @@ function settingHTML() {
     const username = document.getElementById("regUsername").value;
     const password = document.getElementById("regPassword").value;
     const repass = document.getElementById("regRepassword").value;
-
+  
     // Kiểm tra nếu thông tin chưa được nhập đầy đủ
     if (!username || !password || !repass) {
       addText("❌ Chưa nhập thông tin");
       return;
     }
-
+  
     // Kiểm tra mật khẩu và nhập lại mật khẩu có khớp không
     if (password !== repass) {
       addText("❌ Mật khẩu nhập lại không khớp");
       return;
     }
-
+  
     // Gửi dữ liệu đăng ký lên server (Cloudflare Pages Function)
     try {
       const res = await fetch("/api/register", {
@@ -70,10 +70,9 @@ function settingHTML() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
       });
-
+  
       const data = await res.json(); // Phản hồi từ server
-
-      // Hiển thị thông báo dựa trên kết quả từ server
+  
       if (data.ok) {
         addText(`✅ ${data.message}`);
       } else {
