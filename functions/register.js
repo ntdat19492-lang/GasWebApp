@@ -1,59 +1,41 @@
 export async function onRequestPost({ request }) {
   try {
-    const body = await request.json().catch(() => null);
+    // Đọc dữ liệu gửi từ client
+    const body = await request.json();
 
-    if (!body) {
+    // Lấy thông tin từ body
+    const { username, password } = body;
+
+    // Kiểm tra nếu tên đăng nhập và mật khẩu hợp lệ (ví dụ: không trống)
+    if (!username || !password) {
       return new Response(JSON.stringify({
         ok: false,
-        error: "Client gửi dữ liệu không phải JSON"
+        message: "Tên đăng nhập và mật khẩu không được để trống"
       }), {
         headers: { "Content-Type": "application/json" },
+        status: 400 // Bad Request
       });
     }
 
-    const { username, password } = body;
-
-    // Log bước 1
-    const debug1 = { step: "Cloudflare nhận request", body };
-
-    // --- Fetch GAS ---
-    const gasUrl = "https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec";
-
-    const gasRes = await fetch(gasUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        action: "register",
-        username,
-        password
-      })
-    });
-
-    let gasJson = null;
-
-    try {
-      gasJson = await gasRes.json();
-    } catch (err) {
-      gasJson = { ok: false, error: "GAS không trả JSON", raw: await gasRes.text() };
-    }
-
-    // Log bước 2
-    const debug2 = { step: "GAS phản hồi", gasJson };
+    // Giả sử bạn sẽ làm gì đó với username và password, ví dụ: lưu vào Google Sheets, kiểm tra trùng lặp, etc.
+    // Trong ví dụ này, chúng ta giả sử quá trình đăng ký thành công
 
     return new Response(JSON.stringify({
       ok: true,
-      debug1,
-      debug2
+      message: "Đăng ký thành công"
     }), {
       headers: { "Content-Type": "application/json" }
     });
 
-  } catch (err) {
+  } catch (error) {
+    // Lỗi xử lý
+    console.error("Lỗi khi xử lý request:", error);
     return new Response(JSON.stringify({
       ok: false,
-      error: "Lỗi Cloudflare: " + err.message
+      message: "Đã xảy ra lỗi, vui lòng thử lại sau."
     }), {
       headers: { "Content-Type": "application/json" },
+      status: 500 // Internal Server Error
     });
   }
 }
