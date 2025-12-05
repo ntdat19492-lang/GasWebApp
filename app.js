@@ -44,6 +44,44 @@ function settingHTML() {
 		button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
 		}
 	});
+	
+	document.getElementById("btnRegister").addEventListener("click", async () => {
+	  const username = document.getElementById("regUsername").value.trim();
+	  const password = document.getElementById("regPassword").value.trim();
+	  const repass = document.getElementById("regRepassword").value.trim();
+	
+	  addLog("Bắt đầu đăng ký…");
+	
+	  if (!username || !password || !repass) {
+	    addLog("❌ Thiếu dữ liệu");
+	    return;
+	  }
+	
+	  if (password !== repass) {
+	    addLog("❌ Mật khẩu nhập lại không khớp");
+	    return;
+	  }
+	
+	  addLog("📤 Gửi dữ liệu lên Cloudflare…");
+	
+	  try {
+	    const res = await fetch("https://your-domain.pages.dev/api/register", {
+	      method: "POST",
+	      headers: { "Content-Type": "application/json" },
+	      body: JSON.stringify({
+	        username,
+	        password
+	      })
+	    });
+	
+	    const data = await res.json();
+	
+	    addLog("📥 Phản hồi từ Cloudflare: " + JSON.stringify(data));
+	
+	  } catch (err) {
+	    addLog("❌ Lỗi fetch Cloudflare: " + err.message);
+	  }
+	});
 }
 
 function logHTML() {
