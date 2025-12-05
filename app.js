@@ -45,34 +45,43 @@ function settingHTML() {
 		}
 	});
 	
-	document.getElementById("btnRegister").addEventListener("click", async () => {
-	  	const username = document.getElementById("regUsername").value;
-	  	const password = document.getElementById("regPassword").value;
-	  	const repass = document.getElementById("regRepassword").value;
-	
-	  	if (!username || !password || !repass) {
-	    	addLog("❌ Chưa nhập thông tin");
-	    	return;
-	  	}
-	
-	  	if (password !== repass) {
-	    	addLog("❌ Mật khẩu nhập lại không khớp");
-	    	return;
-	  	}
-	
-	  	const res = await fetch("./register", {
-	    	method: "POST",
-	    	headers: { "Content-Type": "application/json" },
-	    	body: JSON.stringify({username, password})
-	    });
-		
-	  	const data = await res.json(); // Phản hồi từ server
-		if (data.ok) {
-			addLog("✅ Đăng ký thành công!");
-		} else {
-			addLog(`❌ Lỗi: ${data.message}`);
-		}
- 	});
+document.getElementById("btnRegister").addEventListener("click", async () => {
+  const username = document.getElementById("regUsername").value;
+  const password = document.getElementById("regPassword").value;
+  const repass = document.getElementById("regRepassword").value;
+
+  // Kiểm tra nếu thông tin chưa được nhập đầy đủ
+  if (!username || !password || !repass) {
+    addLog("❌ Chưa nhập thông tin");
+    return;
+  }
+
+  // Kiểm tra mật khẩu và nhập lại mật khẩu có khớp không
+  if (password !== repass) {
+    addLog("❌ Mật khẩu nhập lại không khớp");
+    return;
+  }
+
+  // Gửi dữ liệu đăng ký lên server (Cloudflare Pages Function)
+  try {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.json(); // Phản hồi từ server
+
+    if (data.ok) {
+      addLog("✅ Đăng ký thành công!");
+    } else {
+      addLog(`❌ Lỗi: ${data.message}`);
+    }
+  } catch (error) {
+    console.error("Lỗi khi gửi request:", error);
+    addLog("❌ Đã xảy ra lỗi khi gửi dữ liệu");
+  }
+});
 }
 
 function logHTML() {
@@ -96,7 +105,7 @@ function switchTab(tab, btn) {
   loadPage(tab);
 }
 
-// Thêm log vào chat
+// Thêm log vào màn hình chính
 function addLog(text) {
   logBuffer.push(text);
   const main = document.getElementById("mainContent");
