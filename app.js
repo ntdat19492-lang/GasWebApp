@@ -65,7 +65,7 @@ function settingHTML() {
 	  addLog("📤 Gửi dữ liệu lên Cloudflare…");
 	
 	  try {
-	    const res = await fetch("https://your-domain.pages.dev/api/register", {
+	    const res = await fetch("./functions/register", {
 	      method: "POST",
 	      headers: { "Content-Type": "application/json" },
 	      body: JSON.stringify({
