@@ -17,13 +17,30 @@ export async function onRequestPost({ request }) {
       });
     }
 
-    // Giả sử bạn sẽ làm gì đó với username và password, ví dụ: lưu vào Google Sheets, kiểm tra trùng lặp, etc.
-    // Trong ví dụ này, chúng ta giả sử quá trình đăng ký thành công
+    // Gửi request tới Google Apps Script (GAS)
+    const gasUrl = "https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec";
 
-    return new Response(JSON.stringify({
-      ok: true,
-      message: "Đăng ký thành công"
-    }), {
+    const gasRes = await fetch(gasUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "register",
+        username,
+        password
+      })
+    });
+
+    // Đọc phản hồi từ GAS
+    let gasJson = null;
+
+    try {
+      gasJson = await gasRes.json();  // Lấy dữ liệu JSON từ phản hồi của GAS
+    } catch (err) {
+      gasJson = { ok: false, error: "GAS không trả JSON", raw: await gasRes.text() };
+    }
+
+    // Trả về kết quả từ GAS cho client
+    return new Response(JSON.stringify(gasJson), {
       headers: { "Content-Type": "application/json" }
     });
 
