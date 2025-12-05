@@ -1,7 +1,7 @@
 export async function onRequestPost({ request }) {
   try {
     const body = await request.json().catch(() => null);
-
+    addLog(`${JSON.stringify(body)}`);
     if (!body) {
       return new Response(JSON.stringify({
         ok: false,
