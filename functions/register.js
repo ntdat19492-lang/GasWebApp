@@ -21,16 +21,7 @@ export async function onRequestPost({ request }) {
       gasJson = { ok: false, error: "GAS không trả JSON", raw: await gasRes.text() };
     }
 
-    // Log bước 2
-    const debug2 = { step: "GAS phản hồi", gasJson };
-
-    return new Response(JSON.stringify({
-      ok: true,
-      debug1,
-      debug2
-    }), {
-      headers: { "Content-Type": "application/json" }
-    });
+    return new Response(JSON.stringify({gasJson}), {headers: { "Content-Type": "application/json" }});
 
   } catch (err) {
     return new Response(JSON.stringify({
