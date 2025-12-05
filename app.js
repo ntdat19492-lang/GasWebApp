@@ -61,14 +61,14 @@ function settingHTML() {
 	    	return;
 	  	}
 
-		const data ={};
-		data.username = username;
-		data.password = password;
+		const body ={};
+		body.username = username;
+		body.password = password;
 	
 	  	const res = await fetch("./register", {
 	    	method: "POST",
 	    	headers: { "Content-Type": "application/json" },
-	    	body: data
+	    	body: body
 	    });
 		
 	  	const data = await res.json(); // Phản hồi từ server
