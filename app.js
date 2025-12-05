@@ -57,7 +57,7 @@ function settingHTML() {
 	  	}
 	
 	  	if (password !== repass) {
-	    	thongbaoTrangThaiDangKy.textContent = "❌ Mật khẩu nhập lại không khớp";
+	    	thongbaoTrangThaiDangKy.textContent = "❌ Mật khẩu không đúng";
 	    	return;
 	  	}
 	
