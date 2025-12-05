@@ -49,14 +49,16 @@ function settingHTML() {
 	  	const username = document.getElementById("regUsername").value;
 	  	const password = document.getElementById("regPassword").value;
 	  	const repass = document.getElementById("regRepassword").value;
+		const thongbaoId = document.getElementById("regmessage");
+		const thongbao = thongbaoId.textContent;
 	
 	  	if (!username || !password || !repass) {
-	    	addLog("❌ Chưa nhập thông tin");
+	    	thongbao("❌ Chưa nhập thông tin");
 	    	return;
 	  	}
 	
 	  	if (password !== repass) {
-	    	addLog("❌ Mật khẩu nhập lại không khớp");
+	    	thongbao("❌ Mật khẩu nhập lại không khớp");
 	    	return;
 	  	}
 	
