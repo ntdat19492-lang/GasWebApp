@@ -25,68 +25,71 @@ async function loadPage(page) {
 }
 
 function settingHTML() {
-	document.getElementById("reloadBtn").addEventListener("click", () => {
-		window.location.reload();
-	});
-	
-	document.getElementById('createAccBtn').addEventListener('click', function () {
-	const inputDiv = document.getElementById('createAccInputs');
-	const button = this; // Lấy đối tượng button hiện tại
+  document.getElementById("reloadBtn").addEventListener("click", () => {
+    window.location.reload();
+  });
 
-	if (inputDiv.style.display === 'none' || inputDiv.style.display === '') {
-		// Hiển thị các input và mở rộng chiều cao của button
-		inputDiv.style.display = 'block';
-		button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
-		button.classList.remove('active'); // Loại bỏ trạng thái "clicked" của button
-	} else {
-		// Ẩn các input và thu nhỏ chiều cao của button
-		inputDiv.style.display = 'none';
-		button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
-		}
-	});
-	
-document.getElementById("btnRegister").addEventListener("click", async () => {
-  const username = document.getElementById("regUsername").value;
-  const password = document.getElementById("regPassword").value;
-  const repass = document.getElementById("regRepassword").value;
+  document.getElementById('createAccBtn').addEventListener('click', function () {
+    const inputDiv = document.getElementById('createAccInputs');
+    const button = this; // Lấy đối tượng button hiện tại
 
-  // Kiểm tra nếu thông tin chưa được nhập đầy đủ
-  if (!username || !password || !repass) {
-    addText("❌ Chưa nhập thông tin");
-    return;
-  }
-
-  // Kiểm tra mật khẩu và nhập lại mật khẩu có khớp không
-  if (password !== repass) {
-    addText("❌ Mật khẩu nhập lại không khớp");
-    return;
-  }
-
-  // Gửi dữ liệu đăng ký lên server (Cloudflare Pages Function)
-  try {
-    const res = await fetch("/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password })
-    });
-
-    const data = await res.json(); // Phản hồi từ server
-
-    if (data.ok) {
-      addText(${data.message});
+    if (inputDiv.style.display === 'none' || inputDiv.style.display === '') {
+      // Hiển thị các input và mở rộng chiều cao của button
+      inputDiv.style.display = 'block';
+      button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
+      button.classList.remove('active'); // Loại bỏ trạng thái "clicked" của button
     } else {
-      addText(${data.message});
+      // Ẩn các input và thu nhỏ chiều cao của button
+      inputDiv.style.display = 'none';
+      button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
     }
-  } catch (error) {
-    console.error("Lỗi khi gửi request:", error);
-    addLog("❌ Đã xảy ra lỗi khi gửi dữ liệu");
-  }
-});
+  });
+
+  // Lắng nghe sự kiện click để thực hiện đăng ký
+  document.getElementById("btnRegister").addEventListener("click", async () => {
+    const username = document.getElementById("regUsername").value;
+    const password = document.getElementById("regPassword").value;
+    const repass = document.getElementById("regRepassword").value;
+
+    // Kiểm tra nếu thông tin chưa được nhập đầy đủ
+    if (!username || !password || !repass) {
+      addText("❌ Chưa nhập thông tin");
+      return;
+    }
+
+    // Kiểm tra mật khẩu và nhập lại mật khẩu có khớp không
+    if (password !== repass) {
+      addText("❌ Mật khẩu nhập lại không khớp");
+      return;
+    }
+
+    // Gửi dữ liệu đăng ký lên server (Cloudflare Pages Function)
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json(); // Phản hồi từ server
+
+      // Hiển thị thông báo dựa trên kết quả từ server
+      if (data.ok) {
+        addText(`✅ ${data.message}`);
+      } else {
+        addText(`❌ Lỗi: ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Lỗi khi gửi request:", error);
+      addText("❌ Đã xảy ra lỗi khi gửi dữ liệu");
+    }
+  });
 }
 
+// Hàm thêm thông báo vào phần tử <p> với id="regmessage"
 function addText(text) {
-	const pElement = document.getElementById('regmessage');
-	pElement.textContent = text;
+  const pElement = document.getElementById('regmessage');
+  pElement.textContent = text;
 }
 
 function logHTML() {
@@ -151,11 +154,4 @@ function setupInputBlur() {
 window.addEventListener("DOMContentLoaded", () => {
   const isTG = isTelegramWebApp();
   if (isTG) {
-    document.getElementById("headerTitle").style.height = "100px";
-  }
-  // Thiết lập tính năng ẩn bàn phím khi click ra ngoài input
-  setupInputBlur();
-  
-  // Load tab mặc định
-  loadPage("home");
-});
+    document.getElementById("headerTitle").style.height =
