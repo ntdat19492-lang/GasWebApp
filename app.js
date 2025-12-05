@@ -52,13 +52,13 @@ document.getElementById("btnRegister").addEventListener("click", async () => {
 
   // Kiểm tra nếu thông tin chưa được nhập đầy đủ
   if (!username || !password || !repass) {
-    thongbaotrangthaiDangKy("❌ Chưa nhập thông tin");
+    addText("❌ Chưa nhập thông tin");
     return;
   }
 
   // Kiểm tra mật khẩu và nhập lại mật khẩu có khớp không
   if (password !== repass) {
-    thongbaotrangthaiDangKy("❌ Mật khẩu nhập lại không khớp");
+    addText("❌ Mật khẩu nhập lại không khớp");
     return;
   }
 
@@ -73,20 +73,20 @@ document.getElementById("btnRegister").addEventListener("click", async () => {
     const data = await res.json(); // Phản hồi từ server
 
     if (data.ok) {
-    	const input = document.getElementById('regmessage');
-		input.color = green;
+      addText(${data.message});
+    } else {
+      addText(${data.message});
     }
-	thongbaotrangthaiDangKy(`${data.message}`);
   } catch (error) {
     console.error("Lỗi khi gửi request:", error);
-    thongbaotrangthaiDangKy("❌ Đã xảy ra lỗi khi gửi dữ liệu");
+    addLog("❌ Đã xảy ra lỗi khi gửi dữ liệu");
   }
 });
 }
 
-function thongbaotrangthaiDangKy(text) {
-	const input = document.getElementById('regmessage');
-	input.textContent = text;
+function addText(text) {
+	const pElement = document.getElementById('regmessage');
+	pElement.textContent = text;
 }
 
 function logHTML() {
