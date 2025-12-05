@@ -1,21 +1,7 @@
 export async function onRequestPost({ request }) {
   try {
     const body = await request.json().catch(() => null);
-    if (!body) {
-      return new Response(JSON.stringify({
-        ok: false,
-        error: "Client gửi dữ liệu không phải JSON"
-      }), {
-        headers: { "Content-Type": "application/json" },
-      });
-    }
-
     const { username, password } = body;
-
-    // Log bước 1
-    const debug1 = { step: "Cloudflare nhận request", body };
-
-    // --- Fetch GAS ---
     const gasUrl = "https://script.google.com/macros/s/AKfycbwi-porgZXeTWAZ7MoAUXYzqJAL9Eh7wbcUV2ItAnWHLfYeTIQLeLiTkn9RmFEUVhiuMQ/exec";
 
     const gasRes = await fetch(gasUrl, {
@@ -23,8 +9,8 @@ export async function onRequestPost({ request }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         action: "register",
-        username,
-        password
+        username: body.username,
+        password: body.password
       })
     });
 
