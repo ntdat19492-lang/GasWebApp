@@ -72,9 +72,10 @@ function settingHTML() {
 	    });
 		
 	  	const data = await res.json(); // Phản hồi từ server
-		addLog(data);
-		addLog(`❌ Lỗi: ${data.message}`);
-		addLog(`Response: ${JSON.stringify(data)}`);
+		if (data.gasJson.ok) {
+			thongbaoTrangThaiDangKy.color = 'green';
+		}
+		thongbaoTrangThaiDangKy.textContent = data.gasJson.message;
  	});
 }
 
