@@ -60,11 +60,15 @@ function settingHTML() {
 	    	thongbaoTrangThaiDangKy.textContent = "❌ Mật khẩu không đúng";
 	    	return;
 	  	}
+
+		const data ={};
+		data.username = username;
+		data.password = password;
 	
 	  	const res = await fetch("./register", {
 	    	method: "POST",
 	    	headers: { "Content-Type": "application/json" },
-	    	body: JSON.stringify({username, password})
+	    	body: data
 	    });
 		
 	  	const data = await res.json(); // Phản hồi từ server
