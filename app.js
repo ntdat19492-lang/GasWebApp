@@ -154,4 +154,11 @@ function setupInputBlur() {
 window.addEventListener("DOMContentLoaded", () => {
   const isTG = isTelegramWebApp();
   if (isTG) {
-    document.getElementById("headerTitle").style.height =
+    document.getElementById("headerTitle").style.height = "100px";
+  }
+  // Thiết lập tính năng ẩn bàn phím khi click ra ngoài input
+  setupInputBlur();
+
+  // Load tab mặc định
+  loadPage("home");
+});
