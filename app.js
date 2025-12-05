@@ -49,15 +49,15 @@ function settingHTML() {
 	  	const username = document.getElementById("regUsername").value;
 	  	const password = document.getElementById("regPassword").value;
 	  	const repass = document.getElementById("regRepassword").value;
-		const thongbao = document.getElementById("regmessage");
+		const thongbaoTrangThaiDangKy = document.getElementById("regmessage").textContent;
 	
 	  	if (!username || !password || !repass) {
-	    	thongbao.textContent = "❌ Chưa nhập thông tin";
+	    	thongbaoTrangThaiDangKy = "❌ Chưa nhập thông tin";
 	    	return;
 	  	}
 	
 	  	if (password !== repass) {
-	    	thongbao.textContent = "❌ Mật khẩu nhập lại không khớp";
+	    	thongbaoTrangThaiDangKy = "❌ Mật khẩu nhập lại không khớp";
 	    	return;
 	  	}
 	
