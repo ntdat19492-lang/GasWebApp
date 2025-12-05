@@ -21,7 +21,7 @@ export async function onRequestPost({ request }) {
       gasJson = { ok: false, error: "GAS không trả JSON", raw: await gasRes.text() };
     }
 
-    return new Response(JSON.stringify({gasJson}), {headers: { "Content-Type": "application/json" }});
+    return new Response(gasJson);
 
   } catch (err) {
     return new Response(JSON.stringify({
