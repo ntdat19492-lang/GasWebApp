@@ -166,14 +166,16 @@ main {
 
 /* Button */
 .formwrapper button {
-    background: #0088cc;
+    background: var(--textcolor);
     padding: 12px;
-    border-radius: 12px;
+    border-radius: 19px;
     font-size: 14px;
-    color: white;
+    color: var(--bgcolor);
     border: none;
     cursor: pointer;
 	transform: translateY(-15px);
+    width: 90%;
+    margin-left: 5%;
 }
 
 .formwrapper button:active {
