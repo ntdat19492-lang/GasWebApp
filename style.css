@@ -221,3 +221,8 @@ footer {
 .nav-text {
     font-size: 11px;
 }
+
+/* Ẩn input */
+.hidden {
+  display: none;
+}
