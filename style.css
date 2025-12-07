@@ -104,6 +104,11 @@ main {
 	border-radius: var(--borderR);
 }
 
+/* Khi mở thì thêm class "active" để hiện viền */
+.bgbuttonbox.active {
+  border-color: white;
+}
+
 .createbutton {
 	width: 100%;
 	display: block;       /* Đảm bảo button có thể nhận chiều rộng */
