@@ -49,7 +49,7 @@ main {
 }
 
 .contentbox {
-    background-color: var(--bgcolorcontentbox);
+    border: 2px solid white;
     margin: 0 5% 10px;
     border-radius: var(--borderR);
     display: flex;
