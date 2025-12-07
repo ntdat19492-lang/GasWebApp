@@ -38,6 +38,7 @@ function settingHTML() {
 		inputDiv.style.display = 'block';
 		button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
 		button.classList.remove('active'); // Loại bỏ trạng thái "clicked" của button
+    document.getElementById("bg").style.visibility = "visible";
 	} else {
 		// Ẩn các input và thu nhỏ chiều cao của button
 		inputDiv.style.display = 'none';
@@ -49,7 +50,7 @@ function settingHTML() {
 	  	const username = document.getElementById("regUsername").value;
 	  	const password = document.getElementById("regPassword").value;
 	  	const repass = document.getElementById("regRepassword").value;
-		const thongbaoTrangThaiDangKy = document.getElementById("regmessage");
+		  const thongbaoTrangThaiDangKy = document.getElementById("regmessage");
 	
 	  	if (!username || !password || !repass) {
 	    	thongbaoTrangThaiDangKy.textContent = "❌ Chưa nhập thông tin";
@@ -61,9 +62,9 @@ function settingHTML() {
 	    	return;
 	  	}
 
-		const body ={};
-		body.username = username;
-		body.password = password;
+		  const body ={};
+		  body.username = username;
+	  	body.password = password;
 	
 	  	const res = await fetch("./register", {
 	    	method: "POST",
