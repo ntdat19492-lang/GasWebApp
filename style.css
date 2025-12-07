@@ -66,6 +66,7 @@ main {
     cursor: pointer;
 	color: var(--textcolor);
 	font-size: var(--fontSmain);
+    background-color: transparent;
 }
 
 /* Hiệu ứng hover */
