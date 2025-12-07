@@ -96,7 +96,8 @@ main {
 }
 
 .bgbuttonbox {
-	background-color: var(--bgcreateacc);
+	background-color: transparent;
+    border: 1px solid white;
 	width: 90%;
 	margin-left: 5%;
 	margin-bottom: 10px;
