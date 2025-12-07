@@ -106,14 +106,14 @@ main {
 
 /* Khi mở thì thêm class "active" để hiện viền */
 .bgbuttonbox.active {
-  border-color: white;
+  border-color: var(--bgcreateacc);
 }
 
 .createbutton {
 	width: 100%;
 	display: block;       /* Đảm bảo button có thể nhận chiều rộng */
 	color: var(--textcolor);
-	border: 1px solid white;
+	border: 1px solid var(--textcolor);
 	font-size: var(--fontSmain);
     background-color: transparent;
     margin-left: 0%;
