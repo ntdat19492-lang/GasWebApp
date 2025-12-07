@@ -30,20 +30,11 @@ function settingHTML() {
 	});
 	
 	document.getElementById('createAccBtn').addEventListener('click', function () {
-	    const inputDiv = document.getElementById('createAccInputs');
-	    const button = this; // Lấy đối tượng button hiện tại
+    const box = document.getElementById("formwrapper");
+    const wrapper = document.getElementById("bgbutton");
 
-	    if (inputDiv.style.display === 'none' || inputDiv.style.display === '') {
-		    // Hiển thị các input và mở rộng chiều cao của button
-		    inputDiv.style.display = 'block';
-		    button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
-		    button.classList.remove('active'); // Loại bỏ trạng thái "clicked" của button
-        document.getElementById("bgbuttonbox").style.visibility = "visible";
-	    } else {
-		    // Ẩn các input và thu nhỏ chiều cao của button
-		    inputDiv.style.display = 'none';
-		    button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
-		  }
+    box.classList.toggle("hidden");
+    wrapper.classList.toggle("sctive");
 	});
 	
 	document.getElementById("btnRegister").addEventListener("click", async () => {
