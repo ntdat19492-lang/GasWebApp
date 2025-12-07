@@ -100,7 +100,7 @@ main {
     border: 1px solid transparent;
 	width: 90%;
 	margin-left: 5%;
-	margin-bottom: 0;
+	margin-bottom: 10px;
 	border-radius: var(--borderR);
 }
 
