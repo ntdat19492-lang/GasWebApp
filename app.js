@@ -31,7 +31,7 @@ function settingHTML() {
 	
 	document.getElementById('createAccBtn').addEventListener('click', function () {
     const box = document.getElementById("formwrapper");
-    const wrapper = document.getElementById("bgbutton");
+    const wrapper = document.getElementById("bgbuttonbox");
 
     box.classList.toggle("hidden");
     wrapper.classList.toggle("sctive");
