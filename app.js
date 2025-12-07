@@ -34,7 +34,7 @@ function settingHTML() {
     const wrapper = document.getElementById("bgbuttonbox");
 
     box.classList.toggle("hidden");
-    wrapper.classList.toggle("sctive");
+    wrapper.classList.toggle("active");
 	});
 	
 	document.getElementById("btnRegister").addEventListener("click", async () => {
