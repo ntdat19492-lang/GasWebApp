@@ -80,6 +80,13 @@ function settingHTML() {
 		}
 		thongbaoTrangThaiDangKy.textContent = data.gasJson.message;
  	});
+  document.getElementById("menuBtn").addEventListener("click", () => {
+    const box = document.getElementById("inputBox");
+    const wrapper = document.getElementById("menuWrapper");
+
+    box.classList.toggle("hidden");
+    wrapper.classList.toggle("active"); // Thêm/ẩn viền bao quanh
+});
 }
 
 function logHTML() {
