@@ -38,7 +38,7 @@ function settingHTML() {
 		inputDiv.style.display = 'block';
 		button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
 		button.classList.remove('active'); // Loại bỏ trạng thái "clicked" của button
-    document.getElementById("bg").style.visibility = "visible";
+    document.getElementById("bgbuttonbox").style.visibility = "visible";
 	} else {
 		// Ẩn các input và thu nhỏ chiều cao của button
 		inputDiv.style.display = 'none';
