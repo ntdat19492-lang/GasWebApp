@@ -138,10 +138,10 @@ main {
 
 /* Inputs */
 .formwrapper input {
-	background-color: var(--bgcreateacc);
+	background-color: transparent;
     border: 1px solid #666;
     padding: 10px;
-    border-radius: var(--borderInput);
+    border-radius: 18px;
     color: var(--textcolor);
 	margin-bottom: 20px;
 	font-size: 16px;
