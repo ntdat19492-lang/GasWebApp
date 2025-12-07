@@ -102,7 +102,6 @@ main {
 	margin-left: 5%;
 	margin-bottom: 10px;
 	border-radius: var(--borderR);
-    visibility: hidden;
 }
 
 .createbutton {
