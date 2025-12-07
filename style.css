@@ -49,9 +49,9 @@ main {
 }
 
 .contentbox {
-    border: 2px solid white;
+    border: 1px solid white;
     margin: 0 5% 10px;
-    border-radius: var(--borderR);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     box-sizing: border-box;
