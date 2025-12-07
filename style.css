@@ -43,9 +43,9 @@ header {
 main {
     flex: 1;
     overflow-y: auto;
-	font-size: var(--fontSmain);
-	color: var(--textcolor);
-	width: 100%;
+    font-size: var(--fontSmain);
+    color: var(--textcolor);
+    width: 100%;
 }
 
 .contentbox {
