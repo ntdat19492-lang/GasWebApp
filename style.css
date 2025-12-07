@@ -110,6 +110,7 @@ main {
 	border: 1px solid white;
 	font-size: var(--fontSmain);
     background-color: transparent;
+    margin-left: 0%;
 }
 
 /* Sắp xếp DỌC và CĂN GIỮA ở layer bên trong */
