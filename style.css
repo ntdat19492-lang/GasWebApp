@@ -106,7 +106,7 @@ main {
 
 /* Khi mở thì thêm class "active" để hiện viền */
 .bgbuttonbox.active {
-  border-color: var(--bgcreateacc);
+  border-color: var(--textcolor);
 }
 
 .createbutton {
