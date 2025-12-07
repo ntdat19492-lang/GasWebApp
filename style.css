@@ -61,7 +61,6 @@ main {
 
 .buttonbox {
     display: block;       /* Đảm bảo button có thể nhận chiều rộng */
-    border: none;
     outline: none;
     cursor: pointer;
 	color: var(--textcolor);
