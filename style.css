@@ -2,12 +2,12 @@
 :root {
     --bgcolor: #1a1a1a;
     --textcolor: #e1e1e1;
-	--bgcolorcontentbox: #2b2b2b;
-	--bgcreateacc: #3a3a3a;
+    --bgcolorcontentbox: #2b2b2b;
+    --bgcreateacc: #3a3a3a;
 	--fontSheader: 20px;
-	--fontSmain: 16px;
-	--borderR: 20px;
-	--borderInput: 10px;
+    --fontSmain: 16px;
+    --borderR: 20px;
+    --borderInput: 10px;
 }
 
 html, body {
