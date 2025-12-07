@@ -170,7 +170,7 @@ main {
     padding: 12px;
     border-radius: 19px;
     font-size: 14px;
-    color: var(--bgcolor);
+    color: black;
     border: none;
     cursor: pointer;
 	transform: translateY(-15px);
