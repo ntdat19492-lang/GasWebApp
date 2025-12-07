@@ -103,11 +103,17 @@ main {
 	margin-bottom: 10px;
 	border-radius: var(--borderR);
     overflow: hidden;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s
 }
 
 /* Khi mở thì thêm class "active" để hiện viền */
 .bgbuttonbox.active {
-  border-color: var(--textcolor);
+    border-color: var(--textcolor);
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .createbutton {
