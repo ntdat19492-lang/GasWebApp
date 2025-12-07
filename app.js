@@ -30,20 +30,20 @@ function settingHTML() {
 	});
 	
 	document.getElementById('createAccBtn').addEventListener('click', function () {
-	const inputDiv = document.getElementById('createAccInputs');
-	const button = this; // Lấy đối tượng button hiện tại
+	    const inputDiv = document.getElementById('createAccInputs');
+	    const button = this; // Lấy đối tượng button hiện tại
 
-	if (inputDiv.style.display === 'none' || inputDiv.style.display === '') {
-		// Hiển thị các input và mở rộng chiều cao của button
-		inputDiv.style.display = 'block';
-		button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
-		button.classList.remove('active'); // Loại bỏ trạng thái "clicked" của button
-    document.getElementById("bgbuttonbox").style.visibility = "visible";
-	} else {
-		// Ẩn các input và thu nhỏ chiều cao của button
-		inputDiv.style.display = 'none';
-		button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
-		}
+	    if (inputDiv.style.display === 'none' || inputDiv.style.display === '') {
+		    // Hiển thị các input và mở rộng chiều cao của button
+		    inputDiv.style.display = 'block';
+		    button.classList.add('open'); // Thêm class 'open' để mở rộng chiều cao
+		    button.classList.remove('active'); // Loại bỏ trạng thái "clicked" của button
+        document.getElementById("bgbuttonbox").style.visibility = "visible";
+	    } else {
+		    // Ẩn các input và thu nhỏ chiều cao của button
+		    inputDiv.style.display = 'none';
+		    button.classList.remove('open'); // Loại bỏ class 'open' để thu nhỏ chiều cao
+		  }
 	});
 	
 	document.getElementById("btnRegister").addEventListener("click", async () => {
@@ -73,20 +73,13 @@ function settingHTML() {
 	    });
 		
 	  	const data = await res.json(); // Phản hồi từ server
-		if (data.gasJson.ok) {
-			thongbaoTrangThaiDangKy.style.color = 'green';
-		} else {
-			thongbaoTrangThaiDangKy.style.color = 'red';
-		}
-		thongbaoTrangThaiDangKy.textContent = data.gasJson.message;
- 	});
-  document.getElementById("menuBtn").addEventListener("click", () => {
-    const box = document.getElementById("inputBox");
-    const wrapper = document.getElementById("menuWrapper");
-
-    box.classList.toggle("hidden");
-    wrapper.classList.toggle("active"); // Thêm/ẩn viền bao quanh
-});
+		  if (data.gasJson.ok) {
+			  thongbaoTrangThaiDangKy.style.color = 'green';
+		  } else {
+			  thongbaoTrangThaiDangKy.style.color = 'red';
+		  }
+		  thongbaoTrangThaiDangKy.textContent = data.gasJson.message;
+ 	  });
 }
 
 function logHTML() {
