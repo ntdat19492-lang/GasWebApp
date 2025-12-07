@@ -107,9 +107,9 @@ main {
 	width: 100%;
 	display: block;       /* Đảm bảo button có thể nhận chiều rộng */
 	color: var(--textcolor);
-	margin-left: 0%;
-	border: none;
+	border: 1px solid white;
 	font-size: var(--fontSmain);
+    background-color: transparent;
 }
 
 /* Sắp xếp DỌC và CĂN GIỮA ở layer bên trong */
