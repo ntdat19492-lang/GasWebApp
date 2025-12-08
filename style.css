@@ -20,4 +20,6 @@ html, body {
 	font-size: var(--font16);
 	display: flex;
 	justify-content: center;
+	width: 100%;
+	height: 100%;
 }
