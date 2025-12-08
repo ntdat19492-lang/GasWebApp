@@ -121,6 +121,7 @@ button.dangKyBtn {
 	margin-left: var(--borderInput);
 	margin-bottom: 5px;
 	font-size: 14px;
+    color: #666
 }
 
 /* Inputs */
@@ -129,14 +130,13 @@ button.dangKyBtn {
     border: 1px solid white;
     padding: 10px;
     border-radius: 18px;
-    color: var(--textcolor);
+    color: white;
 	margin-bottom: 20px;
 	font-size: 16px;
 }
 
 .inputformDangKy input:focus {
     outline: none;
-    border-color: white;
 }
 
 /* Message */
