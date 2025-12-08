@@ -23,10 +23,6 @@ html, body {
     flex-direction: column;
     overscroll-behavior: none;
     position: fixed;
-    top: env(safe-area-inset-top);
-    left: 0;
-    width: 100vw;
-    height: calc(100vh + env(safe-area-inset-bottom));
     background: url("assets/img/background3.jpeg") center/cover no-repeat;
 }
 
@@ -193,7 +189,7 @@ footer {
 }
 
 .footer-wrapper {
-    position: absolute; /* Chắc chắn footer wrapper luôn ở dưới */
+    position: fix; /* Chắc chắn footer wrapper luôn ở dưới */
     bottom: 0;
     left: 0;
     width: 100%;
