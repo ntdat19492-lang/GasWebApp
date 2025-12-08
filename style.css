@@ -18,20 +18,19 @@ html, body {
     font-family: "Segoe UI", Roboto, sans-serif;
 	user-select: none;
     -webkit-text-size-adjust: none;
-    background-image: url("assets/img/background2.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
-    min-height: 100vh;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
     overscroll-behavior: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("assets/img/backgtound3.jpeg") center/cover no-repeat;
+    z-index: -1; /* để content nằm trên */
 }
 
 header {
