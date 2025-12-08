@@ -4,6 +4,8 @@
     --textcolor: #e1e1e1;
     --bgcolorcontentbox: #2b2b2b;
     --bgcreateacc: #3a3a3a;
+    --fontSheader: 20px;
+    --fontSmain: 16px;
     --borderR: 20px;
     --borderInput: 10px;
 }
@@ -15,17 +17,221 @@ html, body {
 	user-select: none;
     -webkit-text-size-adjust: none;
 	background: url("assets/img/background3.jpeg") center/cover no-repeat;
-	font-size: 16px;
-	display: flex;
-	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: none;
+    position: fixed;
 	width: 100%;
 	height: 100%;
 }
 
 header {
-	position: fixed;
-	height: 60px;
-	font-size: 20px;
-	font-weight: bold;
-	padding-bottom: 0;
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: var(--fontSheader);
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+main {
+    flex: 1;
+    overflow-y: auto;
+    font-size: var(--fontSmain);
+    color: var(--textcolor);
+    width: 100%;
+}
+
+.contentbox {
+    border: 1px solid white;
+    margin: 0 5% 10px;
+    border-radius: var(--borderR);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 15px;
+	width: 90%;
+}
+
+.buttonbox {
+    display: block;       /* Đảm bảo button có thể nhận chiều rộng */
+    outline: none;
+    border: 1px solid white;
+    cursor: pointer;
+	color: var(--textcolor);
+	font-size: var(--fontSmain);
+    background-color: transparent;
+}
+
+/* Hiệu ứng hover */
+@media (hover: hover) and (pointer: fine) {
+    .buttonbox:hover {
+        background-color: #333;
+    }
+	.formwrapper button:hover {
+		background: #0099dd;
+	}
+}
+
+/* Hiệu ứng khi click */
+.buttonbox:active {
+    transform: scale(0.96);
+    background-color: #222;
+}
+
+/* Đảm bảo button không bị focus với viền */
+.buttonbox:focus {
+    outline: none;
+}
+
+/* Điều chỉnh chiều cao của button khi hiển thị các input */
+.buttonbox.open {
+    height: auto; /* Tự động mở rộng chiều cao */
+}
+
+.bgbuttonbox {
+	background-color: transparent;
+    border: 1px solid transparent;
+	width: 90%;
+	margin-left: 5%;
+	margin-bottom: 10px;
+	border-radius: var(--borderR);
+    overflow: hidden;
+    backdrop-filter: blur(5px);          /* làm mờ nền phía sau */
+    -webkit-backdrop-filter: blur(5px);  /* hỗ trợ Safari */
+}
+
+/* Khi mở thì thêm class "active" để hiện viền */
+.bgbuttonbox.active {
+    border-color: var(--textcolor);
+}
+
+.createbutton {
+	width: 100%;
+	display: block;       /* Đảm bảo button có thể nhận chiều rộng */
+	color: var(--textcolor);
+	border: 1px solid var(--textcolor);
+	font-size: var(--fontSmain);
+    background-color: transparent;
+    margin-left: 0%;
+    margin-bottom: 0;
+    opacity: 1;
+}
+
+/* Sắp xếp DỌC và CĂN GIỮA ở layer bên trong */
+.formwrapper {
+    display: flex;
+    flex-direction: column;     /* sắp xếp theo chiều dọc */
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 20px;
+}
+
+/* Label */
+.formwrapper .title {
+	margin-left: var(--borderInput);
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+/* Inputs */
+.formwrapper input {
+	background-color: transparent;
+    border: 1px solid #666;
+    padding: 10px;
+    border-radius: 18px;
+    color: var(--textcolor);
+	margin-bottom: 20px;
+	font-size: 16px;
+}
+
+.formwrapper input:focus {
+    outline: none;
+    border-color: #0088cc;
+    background: #333;
+}
+
+/* Message */
+.formwrapper .message {
+    min-height: 18px;
+    color: #ff4d4d;
+    font-size: 13px;
+	margin-bottom: 20px;
+	margin-left: var(--borderInput);
+	transform: translateY(-15px);
+}
+
+/* Button */
+.formwrapper button {
+    background: var(--textcolor);
+    padding: 12px;
+    border-radius: 19px;
+    font-size: 14px;
+    color: black;
+    border: none;
+    cursor: pointer;
+	transform: translateY(-15px);
+    width: 90%;
+    margin-left: 5%;
+}
+
+.formwrapper button:active {
+    transform: scale(0.97) translateY(-15px);
+}
+
+footer {
+    position: relative;
+    height: 85px;
+	bottom: 0; /* Đảm bảo footer luôn ở dưới */
+}
+
+.footer-wrapper {
+    position: absolute; /* Chắc chắn footer wrapper luôn ở dưới */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #2b2b2b;
+}
+
+.nav-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.2s;
+    border-radius: 30px;
+}
+
+.nav-btn.active {
+    opacity: 1;
+    background: #3a3a3a;
+}
+
+.nav-icon {
+    font-size: 22px;
+    margin-bottom: 3px;
+    color: #0088cc;
+}
+
+.nav-text {
+    font-size: 11px;
+}
+
+/* Ẩn input */
+.hidden {
+  display: none;
 }
