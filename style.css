@@ -14,11 +14,14 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-color: var(--bgcolor);
     color: var(--textcolor);
     font-family: "Segoe UI", Roboto, sans-serif;
 	user-select: none;
     -webkit-text-size-adjust: none;
+    background-image: url(":assets/img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .container {
