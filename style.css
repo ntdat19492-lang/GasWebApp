@@ -98,7 +98,7 @@ button.contentbox.open {
 
 /* Khi mở thì thêm class "active" để hiện viền */
 .formDangKy.active {
-    border-color: var(--textcolor);
+    border-color: var(--borderColor);
 }
 
 button.dangKyBtn {
