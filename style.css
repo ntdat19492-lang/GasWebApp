@@ -29,7 +29,7 @@ html, body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: url("assets/img/backgtound3.jpeg") center/cover no-repeat;
+    background: url("assets/img/background3.jpeg") center/cover no-repeat;
     z-index: -1; /* để content nằm trên */
 }
 
