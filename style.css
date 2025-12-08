@@ -11,8 +11,6 @@
 }
 
 html, body {
-    height: 100%;
-    width: 100%;
     overflow: hidden;
     color: var(--textcolor);
     font-family: "Segoe UI", Roboto, sans-serif;
@@ -30,7 +28,6 @@ html, body {
     width: 100vw;
     height: 100vh;
     background: url("assets/img/background3.jpeg") center/cover no-repeat;
-    z-index: -1; /* để content nằm trên */
 }
 
 header {
