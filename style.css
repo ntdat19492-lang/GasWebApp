@@ -184,8 +184,8 @@ footer {
     position: absolute; /* Chắc chắn footer wrapper luôn ở dưới */
     left: 0;
     width: 90%;
-    height: 60px;
-	margin: 0 5% 25px;
+    height: 55px;
+	margin: 0 5% 30px;
     display: flex;
     justify-content: space-around;
 	border: 1px solid var(--borderColor);  
