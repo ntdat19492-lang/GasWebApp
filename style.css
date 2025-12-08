@@ -18,7 +18,7 @@ html, body {
     font-family: "Segoe UI", Roboto, sans-serif;
 	user-select: none;
     -webkit-text-size-adjust: none;
-    background-image: url(".assets/img/Background.jpeg");
+    background-image: url("assets/img/Background.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
