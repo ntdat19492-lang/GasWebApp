@@ -126,7 +126,7 @@ button.dangKyBtn {
 /* Inputs */
 .inputformDangKy input {
 	background-color: transparent;
-    border: 1px solid #666;
+    border: 1px solid #999;
     padding: 10px;
     border-radius: 18px;
     color: var(--textcolor);
@@ -136,8 +136,8 @@ button.dangKyBtn {
 
 .inputformDangKy input:focus {
     outline: none;
-    border-color: #0088cc;
-    background: #333;
+    border-color: white;
+    background: #999;
 }
 
 /* Message */
