@@ -188,7 +188,7 @@ footer {
 	margin: 0 5% 30px;
     display: flex;
     justify-content: space-around;
-	border: 1px solid var(--borderColor);  
+	border: 1px solid white;  
     border-radius: 30px;
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
