@@ -108,6 +108,8 @@ main {
 	margin-bottom: 10px;
 	border-radius: var(--borderR);
     overflow: hidden;
+    backdrop-filter: blur(5px);          /* làm mờ nền phía sau */
+    -webkit-backdrop-filter: blur(5px);  /* hỗ trợ Safari */
 }
 
 /* Khi mở thì thêm class "active" để hiện viền */
