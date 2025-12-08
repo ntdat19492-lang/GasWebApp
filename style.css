@@ -4,8 +4,6 @@
     --textcolor: #e1e1e1;
     --bgcolorcontentbox: #2b2b2b;
     --bgcreateacc: #3a3a3a;
-    --fontSheader: 20px;
-    --font16: 16px;
     --borderR: 20px;
     --borderInput: 10px;
 }
@@ -17,9 +15,17 @@ html, body {
 	user-select: none;
     -webkit-text-size-adjust: none;
 	background: url("assets/img/background3.jpeg") center/cover no-repeat;
-	font-size: var(--font16);
+	font-size: 16px;
 	display: flex;
 	justify-content: center;
 	width: 100%;
 	height: 100%;
+}
+
+header {
+	position: fixed;
+	height: 60px;
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 0;
 }
