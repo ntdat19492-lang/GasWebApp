@@ -169,7 +169,7 @@ button.dangKyBtn {
 }
 
 #logoutBtn {
-	color: red;
+  color: red;  /* Đổi màu chữ thành đỏ */
 }
 
 footer {
