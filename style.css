@@ -18,4 +18,6 @@ html, body {
     -webkit-text-size-adjust: none;
 	background: url("assets/img/background3.jpeg") center/cover no-repeat;
 	font-size: var(--font16);
+	display: flex;
+	justify-content: center;
 }
