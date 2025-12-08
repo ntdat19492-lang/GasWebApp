@@ -168,6 +168,10 @@ button.dangKyBtn {
     transform: scale(0.97) translateY(-15px);
 }
 
+#logoutBtn {
+	color: red;
+}
+
 footer {
     height: 85px;
 	bottom: 0; /* Đảm bảo footer luôn ở dưới */
