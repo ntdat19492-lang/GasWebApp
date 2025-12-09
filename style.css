@@ -107,8 +107,14 @@ button.dangKyBtn {
     margin-bottom: 0;
 }
 
-.inputformDangKy {
+.inputDangKyGroup {
     position: relative;
+}
+
+label.inputDangKy {
+    position: relative;
+    left: 5px;
+    top: 10px;
 }
 
 /* Sắp xếp DỌC và CĂN GIỮA ở layer bên trong */
