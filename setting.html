@@ -1,37 +1,26 @@
-<button id="infoBtn" class="contentbox">
-	Thông tin tài khoản
-</button>
+<!-- HTML (sửa gọn, sửa thừa divs, thêm type="button", labels for) -->
+<button id="infoBtn" class="contentbox" type="button">Thông tin tài khoản</button>
+<button id="listAccBtn" class="contentbox" type="button">Danh sách tài khoản</button>
 
-<button id="listAccBtn" class="contentbox">
-	Danh sách tài khoản
-</button>
+<div id="bgbuttonbox" class="formDangKy">
+  <button id="createAccBtn" class="contentbox dangKyBtn" type="button">Đăng ký</button>
 
-<div id="bgbuttonbox"  class="formDangKy">
-	<button id="createAccBtn" class="contentbox dangKyBtn">
-		Đăng ký
-	</button>
-	<!-- Các input sẽ xuất hiện khi nhấn "Tạo tài khoản" -->
-	<div id="createAccInputs" class="hidden inputformDangKy">
-		<div class="inputDangKyGroup">
-			<input type="text" id="regUsername1" class="inputDangKy" placeholder=" " />
-			<label>Tên Đăng Nhập</label>
-		</div>
-	
-			<label class="title">Tên đăng nhập</label>
-			<input type="text" id="regUsername" placeholder="Nhập Tên đăng nhập">
-			<label class="title">Mật khẩu</label>
-			<input type="password" id="regPassword" placeholder="Mật khẩu">
-			<label class="title">Nhập lại mật khẩu</label>
-			<input type="password" id="regRepassword" placeholder="Nhập lại mật khẩu">
-			<p class="message" id="regmessage"></p>
-			<button id="btnRegister">Đăng ký</button>
-	</div>
+  <div id="createAccInputs" class="hidden inputformDangKy">
+    <div class="inputDangKyGroup">
+      <input type="text" id="regUsername" class="inputDangKy" placeholder=" " />
+      <label>Tên Đăng Nhập</label>
+    </div>
+
+    <label class="title" for="regPassword">Mật khẩu</label>
+    <input type="password" id="regPassword" placeholder="Mật khẩu">
+
+    <label class="title" for="regRepassword">Nhập lại mật khẩu</label>
+    <input type="password" id="regRepassword" placeholder="Nhập lại mật khẩu">
+
+    <p class="message" id="regmessage"></p>
+    <button id="btnRegister" type="button">Đăng ký</button>
+  </div>
 </div>
 
-<button id="reloadBtn" class="contentbox">
-	Cập nhật phiên bản mới
-</button>
-
-<button id="logoutBtn" class="contentbox">
-	Đăng xuất
-</button>
+<button id="reloadBtn" class="contentbox" type="button">Cập nhật phiên bản mới</button>
+<button id="logoutBtn" class="contentbox" type="button">Đăng xuất</button>
