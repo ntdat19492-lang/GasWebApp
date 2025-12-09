@@ -7,6 +7,7 @@
     --borderR: 20px;
     --borderInput: 10px;
 	--borderColor: #8a8a8a;
+    --fontSmain: 16px; /* thêm */
 }
 
 html, body {
