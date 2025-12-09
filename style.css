@@ -117,66 +117,6 @@ label.inputDangKy {
     top: 10px;
 }
 
-/* Sắp xếp DỌC và CĂN GIỮA ở layer bên trong */
-.inputformDangKy {
-    display: flex;
-    flex-direction: column;     /* sắp xếp theo chiều dọc */
-	width: 80%;
-	margin-left: 10%;
-	margin-top: 20px;
-}
-
-/* Label */
-.inputformDangKy .title {
-	margin-left: var(--borderInput);
-	margin-bottom: 5px;
-	font-size: 14px;
-    color: green;
-}
-
-/* Inputs */
-.inputformDangKy input {
-	background-color: transparent;
-    border: 1px solid white;
-    padding: 10px;
-    border-radius: 18px;
-    color: white;
-	margin-bottom: 20px;
-	font-size: 16px;
-}
-
-.inputformDangKy input:focus {
-    outline: none;
-}
-
-/* Message */
-.inputformDangKy .message {
-    min-height: 18px;
-    color: #ff4d4d;
-    font-size: 13px;
-	margin-bottom: 20px;
-	margin-left: var(--borderInput);
-	transform: translateY(-15px);
-}
-
-/* Button */
-.inputformDangKy button {
-    background: var(--textcolor);
-    padding: 12px;
-    border-radius: 19px;
-    font-size: 14px;
-    color: black;
-    border: none;
-    cursor: pointer;
-	transform: translateY(-15px);
-    width: 90%;
-    margin-left: 5%;
-}
-
-.inputformDangKy button:active {
-    transform: scale(0.97) translateY(-15px);
-}
-
 #logoutBtn {
   color: red;  /* Đổi màu chữ thành đỏ */
 }
