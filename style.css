@@ -117,6 +117,7 @@ button.dangKyBtn {
 .inputDangKyGroup {
     position: relative;
     margin-top: 40px;
+    width: 100%;
 }
 
 .inputDangKyGroup input {
