@@ -110,16 +110,17 @@ button.dangKyBtn {
 
 .inputDangKyGroup {
     position: relative;
+    width: 80%;
+    margin-left: 5%;
 }
 
 .inputDangKy {
-    width: 80%;
     padding: 10px;
     background: transparent;
     outline: none;
     border-radius: 18px;
     border: 1px solid white;
-    margin: 40px 0 0 10%;
+    margin-top: 40px;
 }
 
 label.inputDangKy {
