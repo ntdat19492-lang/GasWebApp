@@ -108,13 +108,7 @@ button.dangKyBtn {
     margin-bottom: 0;
 }
 
-.inputDangKy {
-    width: 100%;
-    padding: 15px;
-    background: transparent;
-    outline: none;
-    border-radius: 23px;
-    border: 1px solid white;
+.inputformDangKy {
     display: flex;
     flex-direction: column;   /* Sắp xếp theo chiều dọc */
     align-items: center; 
@@ -126,6 +120,16 @@ button.dangKyBtn {
     margin-left: 10%;
     margin-top: 40px;
 }
+
+.inputDangKyGroup input {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    outline: none;
+    border-radius: 23px;
+    border: 1px solid white;
+}
+
 
 .inputDangKyGroup label {
     position: absolute;
