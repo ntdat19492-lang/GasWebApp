@@ -6,8 +6,8 @@
     --bgcreateacc: #3a3a3a;
     --borderR: 20px;
     --borderInput: 10px;
-	--borderColor: #8a8a8a;
-    --fontSmain: 16px; /* thêm */
+    --borderColor: #8a8a8a;
+    --fontSmain: 16px;
 }
 
 html, body {
@@ -130,11 +130,10 @@ button.dangKyBtn {
     border: 1px solid white;
 }
 
-
 .inputDangKyGroup label {
     position: absolute;
     left: 15px;
-    top: 55px;
+    top: 15px;
 }
 
 #logoutBtn {
