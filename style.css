@@ -111,7 +111,8 @@ button.dangKyBtn {
 .inputformDangKy {
     display: flex;
     flex-direction: column;   /* Sắp xếp theo chiều dọc */
-    align-items: center; 
+    align-items: center;
+    width: 100%;
 }
 
 .inputDangKyGroup {
