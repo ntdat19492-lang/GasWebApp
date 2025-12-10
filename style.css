@@ -136,11 +136,17 @@ button.dangKyBtn {
     top: 15px;
 }
 
+#regmessage {
+    font-size: 14px;
+    color: red
+    margin: 5px 0 21px calc(10% + 15px);
+}
+
 #btnRegister {
     width: 70%;
     margin-left: 15%;
     margin-bottom: 20px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 #logoutBtn {
