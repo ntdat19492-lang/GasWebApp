@@ -148,6 +148,7 @@ button.dangKyBtn {
     margin-left: 15%;
     margin-bottom: 20px;
     font-size: 14px;
+    padding: 12px;
 }
 
 #logoutBtn {
