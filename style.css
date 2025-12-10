@@ -111,22 +111,23 @@ button.dangKyBtn {
 .inputDangKyGroup {
     position: relative;
     width: 80%;
-    margin-left: 5%;
+    margin-left: 10%;
 }
 
 .inputDangKy {
-    padding: 10px;
+    width: 100;
+    padding: 15px;
     background: transparent;
     outline: none;
-    border-radius: 18px;
+    border-radius: 23px;
     border: 1px solid white;
     margin-top: 40px;
 }
 
-label.inputDangKy {
+label.inputDangKyGroup {
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 15px;
+    top: 15px;
 }
 
 #logoutBtn {
