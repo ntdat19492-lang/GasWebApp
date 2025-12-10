@@ -122,6 +122,7 @@ button.dangKyBtn {
 
 .inputDangKyGroup input {
     width: 80%;
+    margin-left: 10%;
     padding: 15px;
     background: transparent;
     outline: none;
