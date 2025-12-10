@@ -113,12 +113,13 @@ button.dangKyBtn {
 }
 
 .inputDangKy {
-    width: 90%;
+    width: 80%;
     padding: 10px;
     background: transparent;
     outline: none;
     border-radius: 18px;
     border: 1px solid white;
+    margin: 40px 0 0 10%;
 }
 
 label.inputDangKy {
