@@ -112,6 +112,13 @@ button.dangKyBtn {
     position: relative;
 }
 
+.inputDangKy {
+    width: 90%;
+    padding: 19px;
+    background: transparent;
+    outline: none;
+}
+
 label.inputDangKy {
     position: relative;
     left: 5px;
