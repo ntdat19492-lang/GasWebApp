@@ -136,6 +136,13 @@ button.dangKyBtn {
     top: 15px;
 }
 
+#btnRegister {
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
 #logoutBtn {
   color: red;  /* Đổi màu chữ thành đỏ */
 }
