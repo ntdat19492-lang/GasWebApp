@@ -54,8 +54,8 @@ button.contentbox {
     display: block;       /* Đảm bảo button có thể nhận chiều rộng */
     outline: none;
     cursor: pointer;
-	color: var(--textcolor);
-	font-size: var(--fontSmain);
+    color: var(--textcolor);
+    font-size: var(--fontSmain);
     background-color: transparent;
 }
 
