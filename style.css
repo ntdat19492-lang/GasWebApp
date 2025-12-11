@@ -112,6 +112,7 @@ button.dangKyBtn {
     flex-direction: column;   /* Sắp xếp theo chiều dọc */
     align-items: center;
     width: 100%;
+    margin: 0;
 }
 
 .inputDangKyGroup {
