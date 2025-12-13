@@ -1,15 +1,58 @@
-<div class="contentbox">Home nội dung 1</div>
-<div class="contentbox">Home nội dung 2</div>
-<div class="contentbox">Home nội dung 3</div>
-<div class="contentbox">Home nội dung 1</div>
-<div class="contentbox">Home nội dung 2</div>
-<div class="contentbox">Home nội dung 3</div>
-<div class="contentbox">Home nội dung 1</div>
-<div class="contentbox">Home nội dung 2</div>
-<div class="contentbox">Home nội dung 3</div>
-<div class="contentbox">Home nội dung 1</div>
-<div class="contentbox">Home nội dung 2</div>
-<div class="contentbox">Home nội dung 3</div>
-<div class="contentbox">Home nội dung 1</div>
-<div class="contentbox">Home nội dung 2</div>
-<div class="contentbox">Home nội dung 3</div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GBP">
+<title>GBP</title>
+<link rel="stylesheet" href="./style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+
+<body>
+<header id="headerTitle">Home</header>
+
+<main id="mainContent">
+    <div class="contentbox">Home nội dung 1</div>
+    <div class="contentbox">Home nội dung 2</div>
+    <div class="contentbox">Home nội dung 3</div>
+    <div class="contentbox">Home nội dung 1</div>
+    <div class="contentbox">Home nội dung 2</div>
+    <div class="contentbox">Home nội dung 3</div>
+    <div class="contentbox">Home nội dung 1</div>
+    <div class="contentbox">Home nội dung 2</div>
+    <div class="contentbox">Home nội dung 3</div>
+    <div class="contentbox">Home nội dung 1</div>
+    <div class="contentbox">Home nội dung 2</div>
+    <div class="contentbox">Home nội dung 3</div>
+    <div class="contentbox">Home nội dung 1</div>
+    <div class="contentbox">Home nội dung 2</div>
+    <div class="contentbox">Home nội dung 3</div>
+</main>
+    
+<footer>
+    <div class="footer-wrapper">
+        <div class="nav-btn active" onclick="switchTab('home', this)">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">Trang Chủ</div>
+        </div>
+        <div class="nav-btn" onclick="switchTab('search', this)">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-text">Tìm Kiếm</div>
+        </div>
+        <div class="nav-btn" onclick="switchTab('log', this)">
+            <div class="nav-icon">💬</div>
+            <div class="nav-text">Log</div>
+        </div>
+        <div class="nav-btn" onclick="switchTab('setting', this)">
+            <div class="nav-icon">👤</div>
+            <div class="nav-text">Cài Đặt</div>
+        </div>
+    </div>
+</footer>
+
+<script src="./app.js"></script>
+</body>
+</html>
