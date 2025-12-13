@@ -64,6 +64,10 @@ input:-webkit-autofill:focus {
   transition: border-color 0.3s ease, color 0.3s ease;
   padding-left: 18px;
   box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;  /* Loại bỏ outline mặc định */
 }
 
 .inputDangKy {
@@ -146,5 +150,6 @@ input:-webkit-autofill:focus {
 #mopopupDangNhap {
 	transform: translateY(-20px);
 }
+
 
 
