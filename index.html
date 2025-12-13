@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="GBP">
-<title>GBP</title>
-<link rel="stylesheet" href="./style.css">
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GBP">
+  <title>GBP</title>
+  <link rel="stylesheet" href="./index.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
 <body>
-<header id="headerTitle">Home</header>
-
-<main id="mainContent"><!-- Nội dung load động --></main>
-    
-<footer>
-    <div class="footer-wrapper">
-        <div class="nav-btn active" onclick="switchTab('home', this)">
-            <div class="nav-icon">🏠</div>
-            <div class="nav-text">Trang Chủ</div>
-        </div>
-        <div class="nav-btn" onclick="switchTab('search', this)">
-            <div class="nav-icon">🔍</div>
-            <div class="nav-text">Tìm Kiếm</div>
-        </div>
-        <div class="nav-btn" onclick="switchTab('log', this)">
-            <div class="nav-icon">💬</div>
-            <div class="nav-text">Log</div>
-        </div>
-        <div class="nav-btn" onclick="switchTab('setting', this)">
-            <div class="nav-icon">👤</div>
-            <div class="nav-text">Cài Đặt</div>
-        </div>
+  <div id='dangNhap' class='formDangNhap'>
+    <div class='titleDangNhap'>Đăng Nhập</div>
+	
+    <div class='inputGroup'>
+      <input type='text' id='username' class='inputDangNhap' placeholder='' required>
+      <label for='username'>Tên đăng nhập</label>
     </div>
-</footer>
+  
+    <div class='inputGroup'>
+      <input type='password' id='password' class='inputDangNhap' placeholder='' required>
+      <label for='password'>Mật khẩu</label>
+    </div>
+	
+	<p class="message" id="thongbaoDangNhap"></p>
+	
+	<div class="checkboxGroup">
+		<input type="checkbox" id="remember">
+		<label for="remember">Ghi nhớ đăng nhập</label>
+	</div>
+	
+	<button type='button' class='dangnhapBtn' id='dangnhapBtn'>Đăng Nhập</button>
+	<button type='button' class='chuyenTab' id='mopopupDangKy'>Bạn chưa có tài khoản? Đăng Ký</button>
+  </div>
+  
+  <div id='dangKy' class='formDangNhap' display='none'>
+    <div class='titleDangNhap titleDangKy'>Đăng Ký</div>
+	
+    <div class='inputGroup'>
+      <input type='text' id='regusername' class='inputDangNhap inputDangKy' placeholder='' required>
+      <label for='regusername'>Tên đăng nhập</label>
+    </div>
+  
+    <div class='inputGroup'>
+      <input type='password' id='regpassword' class='inputDangNhap inputDangKy' placeholder='' required>
+      <label for='regpassword'>Mật khẩu</label>
+    </div>
+	
+    <div class='inputGroup'>
+      <input type='password' id='regrepassword' class='inputDangNhap inputDangKy' placeholder='' required>
+      <label for='regrepassword'>Nhập lại mật khẩu</label>
+    </div>
+	
+	<p class="message" id="thongbaoDangKy"></p>	
+	<button type='button' class='dangnhapBtn' id='dangkyBtn'>Đăng Ký</button>
+	<button type='button' class='chuyenTab' id='mopopupDangNhap'>Bạn đã có tài khoản? Đăng Nhập</button>
+  </div>
 
-<script src="./app.js"></script>
+  <script src="./index.js"></script>
 </body>
+
 </html>
