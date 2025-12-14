@@ -86,7 +86,7 @@ input:-webkit-autofill:focus {
   color: #999999; /* Màu chữ khi focus vào input */
 }
 
-.inputDangNhap:focus~label,
+.inputDangNhap:focus-visible~label,
 .inputDangNhap:not(:placeholder-shown)~label {
   top: -15px;                /* Di chuyển label lên trên 15px khi focus hoặc có nội dung */
   font-size: 12px;          /* Giữ font-size nhỏ hơn */
