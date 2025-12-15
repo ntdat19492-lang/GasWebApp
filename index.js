@@ -221,27 +221,6 @@ class LoginForm2 {
         FormUtils.showNotification('Redirecting to sign up page...', 'info', this.form);
     }
     
-    handleSocialLogin(e) {
-        const btn = e.currentTarget;
-        const isGoogle = btn.classList.contains('google-btn');
-        const provider = isGoogle ? 'Google' : 'Apple';
-        
-        // Add loading state with neon effect
-        btn.style.transform = 'scale(0.98)';
-        btn.style.boxShadow = '0 0 25px rgba(0, 255, 136, 0.4)';
-        btn.style.borderColor = 'var(--neon-primary)';
-        
-        setTimeout(() => {
-            btn.style.transform = 'scale(1)';
-            setTimeout(() => {
-                btn.style.boxShadow = '';
-                btn.style.borderColor = '';
-            }, 300);
-        }, 200);
-        
-        FormUtils.showNotification(`Connecting to ${provider}...`, 'info', this.form);
-    }
-    
     async handleSubmit(e) {
         e.preventDefault();
         
