@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #0a0a0f;
+    background: #151520;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -26,40 +26,8 @@ body {
 }
 
 .login-card {
-    background: #151520;
-    border: 1px solid #2a2a35;
-    border-radius: 16px;
     padding: 40px;
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
     position: relative;
-    backdrop-filter: blur(20px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.login-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #00ff88, transparent);
-    opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.login-card:hover::before {
-    opacity: 1;
-}
-
-.login-card:hover {
-    box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(0, 255, 136, 0.1),
-        0 0 40px rgba(0, 255, 136, 0.1);
-    transform: translateY(-2px);
 }
 
 .login-header {
