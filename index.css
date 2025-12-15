@@ -125,7 +125,6 @@ body {
 
 .input-wrapper input:focus ~ .input-line {
     width: calc(100%-32px);
-    left: 32px;
 }
 
 /* Password Toggle */
