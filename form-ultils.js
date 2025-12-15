@@ -2,17 +2,25 @@
 // This file contains common functionality used across all login forms
 
 class FormUtils {
-    static validateEmail(value) {
+    static validateUsername(value) {
         if (!value) {
-            return { isValid: false, message: 'Email address is required' };
+            return { isValid: false, message: 'Tên đăng nhập trống' };
         }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) {
-            return { isValid: false, message: 'Please enter a valid email address' };
+        
+        // 1️⃣ Kiểm tra độ dài
+        if (value.length < 6 || value.length > 16) {
+            return { isValid: false, message: 'Tên đăng nhập gồm 6 đến 16 ký tự' };
         }
+        
+        // 2️⃣ Kiểm tra ký tự đặc biệt
+        if (!/^[a-zA-Z0-9]+$/.test(value)) {
+            return { isValid: false, message: 'Tên đăng nhập không chứa ký tự đặc biệt' };
+        }
+        
+        // ✅ Hợp lệ
         return { isValid: true };
     }
-    
+
     static validatePassword(value) {
         if (!value) {
             return { isValid: false, message: 'Password is required' };
