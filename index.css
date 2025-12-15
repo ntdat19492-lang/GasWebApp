@@ -94,9 +94,11 @@ body {
 
 .input-wrapper input:focus + label,
 .input-wrapper input:valid + label {
-    transform: translateY(-32px) translateX(4px) scale(0.85);
+    transform: translateY(-37px) translateX(4px) scale(0.85);
     color: #00ff88;
     font-weight: 500;
+    background: #151520;
+    padding: 5px;
 }
 
 .input-wrapper label {
@@ -109,8 +111,7 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     transform-origin: left top;
-    background: #151520;
-    padding: 5px;
+
 }
 
 .input-line {
