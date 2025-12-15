@@ -127,7 +127,7 @@ body {
 }
 
 .input-wrapper input:focus ~ .input-line {
-    width: 90%;
+    width: 88%;
 }
 
 /* Password Toggle */
