@@ -379,11 +379,13 @@ class LoginForm2 {
         }, 300);
     }
     
-    simulateRedirect() {
-        // For demo, reset the form after 2 seconds
+    simulateLogin(formData) {
         setTimeout(() => {
-            this.resetForm();
-        }, 2000);
+        this.setLoading(false);
+
+        // chuyển sang trang home.html
+        window.location.href = './home.html';
+        }, 1500);
     }
     
     showLoginError(message) {
