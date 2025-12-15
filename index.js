@@ -332,7 +332,8 @@ class LoginForm2 {
             await FormUtils.simulateLogin(email, password);
             
             // Show success state
-            
+            this.showSuccessMessage();
+            window.location.href = 'home.html';
             
         } catch (error) {
             console.error('Login error:', error);
