@@ -2,7 +2,7 @@
 // This file contains common functionality used across all login forms
 
 class FormUtils {
-    static validateUsername(value) {
+    static validateEmail(value) {
         if (!value) {
             return { isValid: false, message: 'Tên đăng nhập trống' };
         }
