@@ -6,30 +6,24 @@ class FormUtils {
         if (!value) {
             return { isValid: false, message: 'Tên đăng nhập trống' };
         }
-        
         // 1️⃣ Kiểm tra độ dài
         if (value.length < 6 || value.length > 16) {
-            return { isValid: false, message: 'Tên đăng nhập gồm 6 đến 16 ký tự' };
+            return { isValid: false, message: 'Tên Đăng Nhập gồm 6 đến 16 ký tự' };
         }
-        
         // 2️⃣ Kiểm tra ký tự đặc biệt
         if (!/^[a-zA-Z0-9]+$/.test(value)) {
-            return { isValid: false, message: 'Tên đăng nhập không chứa ký tự đặc biệt' };
+            return { isValid: false, message: 'Tên Đăng Nhập không chứa ký tự đặc biệt' };
         }
-        
         // ✅ Hợp lệ
         return { isValid: true };
     }
 
     static validatePassword(value) {
         if (!value) {
-            return { isValid: false, message: 'Password is required' };
+            return { isValid: false, message: 'Mật khẩu trống' };
         }
-        if (value.length < 8) {
-            return { isValid: false, message: 'Password must be at least 8 characters long' };
-        }
-        if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value)) {
-            return { isValid: false, message: 'Password must contain uppercase, lowercase, and number' };
+        if (value.length < 6 || value.length > 16) {
+            return { isValid: false, message: 'Mật Khẩu gồm 6 đến 16 ký tự' };
         }
         return { isValid: true };
     }
