@@ -244,13 +244,12 @@ class LoginForm2 {
             const data = await res.json(); // Phản hồi từ server
             console.log(data);
             
-            // if (data.gasJson.ok) {
-            //     thongbaoTrangThaiDangKy.style.color = 'green';
-            // } else {
-            //     thongbaoTrangThaiDangKy.style.color = 'red';
-            // }
-            // thongbaoTrangThaiDangKy.textContent = data.gasJson.message;
-            // });
+            if (data.gasJson.success) {
+                window.location.href = 'home.html';
+            } else {
+                alert(data.gasJson.message);
+            }
+			
         } else {
             this.shakeForm();
         }
