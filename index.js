@@ -229,7 +229,28 @@ class LoginForm2 {
         const isValid = this.validateForm();
         
         if (isValid) {
-            await this.submitForm();
+            const username = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const body ={};
+            body.username = username;
+            body.password = password;
+
+            const res = await fetch("./login", {
+	    	    method: "POST",
+	    	    headers: { "Content-Type": "application/json" },
+	    	    body: JSON.stringify(body)
+	        });
+            
+            const data = await res.json(); // Phản hồi từ server
+            console.log(data);
+            
+            // if (data.gasJson.ok) {
+            //     thongbaoTrangThaiDangKy.style.color = 'green';
+            // } else {
+            //     thongbaoTrangThaiDangKy.style.color = 'red';
+            // }
+            // thongbaoTrangThaiDangKy.textContent = data.gasJson.message;
+            // });
         } else {
             this.shakeForm();
         }
@@ -315,34 +336,6 @@ class LoginForm2 {
             card.style.animation = '';
             card.style.boxShadow = '';
         }, 500);
-    }
-    
-    async submitForm() {
-        this.isSubmitting = true;
-        this.submitBtn.classList.add('loading');
-        
-        // Add neon loading effect
-        this.submitBtn.style.boxShadow = '0 0 30px rgba(0, 255, 136, 0.6)';
-        
-        try {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Use shared login simulation
-            await FormUtils.simulateLogin(email, password);
-            
-            // Show success state
-            this.showSuccessMessage();
-            window.location.href = 'home.html';
-            
-        } catch (error) {
-            console.error('Login error:', error);
-            this.showLoginError(error.message);
-        } finally {
-            this.isSubmitting = false;
-            this.submitBtn.classList.remove('loading');
-            this.submitBtn.style.boxShadow = '';
-        }
     }
     
     setupKeyboardShortcuts() {
