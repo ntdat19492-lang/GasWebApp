@@ -12,6 +12,7 @@ export async function onRequestPost({ request }) {
         password: body.password
       })
     });
+    console.log(body);
 
     let gasJson = null;
 
