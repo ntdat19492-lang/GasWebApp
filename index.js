@@ -234,6 +234,7 @@ class LoginForm2 {
             const body ={};
             body.username = username;
             body.password = password;
+			console.log(body);
 
             const res = await fetch("./login", {
 	    	    method: "POST",
