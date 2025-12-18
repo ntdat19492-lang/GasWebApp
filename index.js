@@ -229,7 +229,7 @@ class LoginForm2 {
         const isValid = this.validateForm();
         
         if (isValid) {
-            const username = document.getElementById("email").value;
+            const username = document.getElementById("email").value.toLowerCase();
             const password = document.getElementById("password").value;
             const body ={};
             body.username = username;
