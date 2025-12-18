@@ -250,7 +250,7 @@ class LoginForm2 {
             // console.log(data);
             
             if (data.gasJson.success) {
-                window.location.href = 'home.html';
+                this.loginSuccess();
             } else {
                 alert(data.gasJson.message);
             }
@@ -259,7 +259,19 @@ class LoginForm2 {
             this.shakeForm();
         }
     }
-    
+	async loginSuccess() {
+  		const body = document.body;
+
+  		try {
+    	const res = await fetch(`home.html`);
+    	const html = await res.text();
+    	body.innerHTML = html;
+  		} catch (err) {
+    		main.innerHTML = `<div class='content-box'>Không tải được</div>`;
+    		console.error(err);
+  		}
+	}
+
     validateForm() {
         let isValid = true;
         
