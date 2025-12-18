@@ -7,7 +7,7 @@ export async function onRequestPost({ request }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        action: "login",
+        action: "signIn",
         username: body.username,
         password: body.password
       })
