@@ -236,6 +236,10 @@ class LoginForm2 {
             body.password = password;
 			// console.log(body);
 
+			this.isSubmitting = true;
+			this.submitBtn.classList.add('loading');
+			this.submitBtn.style.boxShadow = '0 0 30px rgba(0, 255, 136, 0.6)';
+
             const res = await fetch("./signIn", {
 	    	    method: "POST",
 	    	    headers: { "Content-Type": "application/json" },
@@ -255,6 +259,33 @@ class LoginForm2 {
             this.shakeForm();
         }
     }
+
+	// async submitForm() {
+ //        this.isSubmitting = true;
+ //        this.submitBtn.classList.add('loading');
+        
+ //        // Add neon loading effect
+ //        this.submitBtn.style.boxShadow = '0 0 30px rgba(0, 255, 136, 0.6)';
+        
+ //        try {
+ //            const email = document.getElementById('email').value;
+ //            const password = document.getElementById('password').value;
+            
+ //            // Use shared login simulation
+ //            await FormUtils.simulateLogin(email, password);
+            
+ //            // Show success state
+ //            this.showSuccessMessage();
+            
+ //        } catch (error) {
+ //            console.error('Login error:', error);
+ //            this.showLoginError(error.message);
+ //        } finally {
+ //            this.isSubmitting = false;
+ //            this.submitBtn.classList.remove('loading');
+ //            this.submitBtn.style.boxShadow = '';
+ //        }
+ //    }
     
     validateForm() {
         let isValid = true;
