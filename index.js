@@ -272,6 +272,9 @@ class LoginForm2 {
     	const res = await fetch(`home.html`);
     	const html = await res.text();
     	body.innerHTML = html;
+        const script = document.createElement('script');
+        script.src = 'app.js';
+        document.body.appendChild(script);
   		} catch (err) {
     		main.innerHTML = `<div class='content-box'>Không tải được</div>`;
     		console.error(err);
