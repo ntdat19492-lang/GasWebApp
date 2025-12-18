@@ -234,16 +234,16 @@ class LoginForm2 {
             const body ={};
             body.username = username;
             body.password = password;
-			console.log(body);
+			// console.log(body);
 
-            const res = await fetch("./login", {
+            const res = await fetch("./signIn", {
 	    	    method: "POST",
 	    	    headers: { "Content-Type": "application/json" },
 	    	    body: JSON.stringify(body)
 	        });
             
             const data = await res.json(); // Phản hồi từ server
-            console.log(data);
+            // console.log(data);
             
             if (data.gasJson.success) {
                 window.location.href = 'home.html';
