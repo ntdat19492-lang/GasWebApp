@@ -263,6 +263,10 @@ class LoginForm2 {
     }
 	async loginSuccess() {
   		const body = document.body;
+		const link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.href = 'styles.css';
+		document.head.appendChild(link);
 
   		try {
     	const res = await fetch(`home.html`);
