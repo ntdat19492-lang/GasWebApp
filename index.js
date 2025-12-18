@@ -254,6 +254,7 @@ class LoginForm2 {
             } else {
                 alert(data.gasJson.message);
 				this.isSubmitting = true;
+				this.submitBtn.classList.remove('loading');
             }
 			
         } else {
