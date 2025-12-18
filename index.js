@@ -265,7 +265,7 @@ class LoginForm2 {
   		const body = document.body;
 		const link = document.createElement('link');
 		link.rel = 'stylesheet';
-		link.href = 'styles.css';
+		link.href = 'style.css';
 		document.head.appendChild(link);
 
   		try {
