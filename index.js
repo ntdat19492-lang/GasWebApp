@@ -253,7 +253,7 @@ class LoginForm2 {
                 this.loginSuccess();
             } else {
                 alert(data.gasJson.message);
-				this.isSubmitting = true;
+				this.isSubmitting = false;
 				this.submitBtn.classList.remove('loading');
             }
 			
