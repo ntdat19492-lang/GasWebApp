@@ -10,23 +10,6 @@
     --fontSmain: 16px;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
-    color: var(--textcolor);
-    font-family: "Segoe UI", Roboto, sans-serif;
-    user-select: none;
-    -webkit-text-size-adjust: none;
-    background: #151520;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overscroll-behavior: none;
-    overflow: hidden;
-}
-
 header {
     height: 60px;
     font-size: 24px;;
