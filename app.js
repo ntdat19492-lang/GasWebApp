@@ -9,13 +9,10 @@ const tabTitles = {
 // Load nội dung tab
 async function loadPage(page) {
   	const main = document.getElementById("mainContent");
-
-	if (page != 'home') {
 		// 🔹 Set header ngay khi load page
 		const header = document.getElementById("headerTitle");
 		const header = document.getElementById("headerTitle");
 		header.textContent = tabTitles[page];
-	}
   	  
   	try {
     	const res = await fetch(`${page}.html`);
