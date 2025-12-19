@@ -15,10 +15,7 @@ html, body {
     height: 100%;
     user-select: none;
     -webkit-text-size-adjust: none;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     overscroll-behavior: none;
     overflow: hidden;
 }
