@@ -1,12 +1,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
     --bgcolor: #1a1a1a;
-    --textcolor: #e1e1e1;
+    --textcolor: #a0a0b0;
     --bgcolorcontentbox: #2b2b2b;
     --bgcreateacc: #3a3a3a;
     --borderR: 20px;
     --borderInput: 10px;
-    --borderColor: #8a8a8a;
+    --borderColor: #1a1a25;
     --fontSmain: 16px;
 }
 
@@ -14,7 +14,7 @@ html, body {
     width: 100%;
     height: 100%;
     font-size: 16px;
-    color: #a0a0b0;
+    color: var(--textcolor);
     user-select: none;
     -webkit-text-size-adjust: none;
     flex-direction: column;
@@ -37,7 +37,8 @@ main {
 }
 
 .contentbox {
-    border: 1px solid var(--borderColor);  
+    border: 1px solid var(--borderColor);
+    background: var(--borderColor);
     border-radius: var(--borderR);
     width: 90%;
     margin: 0 5% 10px;
@@ -52,7 +53,7 @@ button.contentbox {
     cursor: pointer;
     color: var(--textcolor);
     font-size: var(--fontSmain);
-    background-color: transparent;
+    background-color: var(--borderColor);;
 }
 
 /* Hiệu ứng hover */
