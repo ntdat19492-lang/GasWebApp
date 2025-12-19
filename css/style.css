@@ -169,6 +169,7 @@ footer {
     border-radius: 30px;
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
+    background: #1a1a25;
 }
 
 .nav-btn {
