@@ -14,7 +14,7 @@ async function loadPage(page) {
 		header.textContent = tabTitles[page];
   	  
   	try {
-    	const res = await fetch(`${page}.html`);
+    	const res = await fetch(`html/${page}.html`);
     	const html = await res.text();
     	main.innerHTML = html;
     	if (page === "setting") settingHTML();
