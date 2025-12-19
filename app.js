@@ -11,7 +11,6 @@ async function loadPage(page) {
   	const main = document.getElementById("mainContent");
 		// 🔹 Set header ngay khi load page
 		const header = document.getElementById("headerTitle");
-		const header = document.getElementById("headerTitle");
 		header.textContent = tabTitles[page];
   	  
   	try {
