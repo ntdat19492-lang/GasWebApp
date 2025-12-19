@@ -13,6 +13,7 @@
 body {
     width: 100%;
     height: 100%;
+    color: #a0a0b0;
     user-select: none;
     -webkit-text-size-adjust: none;
     flex-direction: column;
