@@ -143,3 +143,5 @@ window.addEventListener("DOMContentLoaded", () => {
   	// Load tab mặc định
   	loadPage("home");
 });
+
+loadPage("home");
