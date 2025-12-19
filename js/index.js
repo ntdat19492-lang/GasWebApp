@@ -265,15 +265,15 @@ class LoginForm2 {
   		const body = document.body;
 		const link = document.createElement('link');
 		link.rel = 'stylesheet';
-		link.href = 'style.css';
+		link.href = 'css/style.css';
 		document.head.appendChild(link);
 
   		try {
-    	const res = await fetch(`main.html`);
+    	const res = await fetch(`html/main.html`);
     	const html = await res.text();
     	body.innerHTML = html;
         const script = document.createElement('script');
-        script.src = 'app.js';
+        script.src = 'js/app.js';
         document.body.appendChild(script);
   		} catch (err) {
     		main.innerHTML = `<div class='content-box'>Không tải được</div>`;
