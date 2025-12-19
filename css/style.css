@@ -23,11 +23,12 @@ html, body {
 }
 
 header {
-    height: 60px;
+    height: 80px;
     font-size: 2rem;
     color: #ffffff;
     font-weight: 600;
     letter-spacing: -0.02em;
+    margin-top: 10px;
 }
 
 main {
