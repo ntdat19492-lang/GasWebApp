@@ -123,22 +123,6 @@ class LoginForm2 {
         }
     }
     
-    setupSocialButtons() {
-        const socialButtons = document.querySelectorAll('.social-btn');
-        socialButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => this.handleSocialLogin(e));
-            
-            // Add hover glow effect
-            btn.addEventListener('mouseenter', () => {
-                btn.style.boxShadow = '0 4px 20px rgba(0, 255, 136, 0.2)';
-            });
-            
-            btn.addEventListener('mouseleave', () => {
-                btn.style.boxShadow = '';
-            });
-        });
-    }
-    
     addBackgroundEffects() {
         // Add mouse move parallax effect to glow orbs
         document.addEventListener('mousemove', (e) => {
@@ -273,7 +257,7 @@ class LoginForm2 {
     	const html = await res.text();
     	body.innerHTML = html;
         const script = document.createElement('script');
-        script.src = 'js/app.js';
+        script.src = 'js/main.js';
         document.body.appendChild(script);
   		} catch (err) {
     		main.innerHTML = `<div class='content-box'>Không tải được</div>`;
