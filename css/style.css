@@ -187,7 +187,7 @@ footer {
 
 .nav-btn.active {
     opacity: 1;
-    background: white;
+    background: linear-gradient(135deg, #00ff88, #0099ff);
 	color: black;
 }
 
