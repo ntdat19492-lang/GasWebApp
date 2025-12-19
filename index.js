@@ -269,7 +269,7 @@ class LoginForm2 {
 		document.head.appendChild(link);
 
   		try {
-    	const res = await fetch(`home.html`);
+    	const res = await fetch(`main.html`);
     	const html = await res.text();
     	body.innerHTML = html;
         const script = document.createElement('script');
