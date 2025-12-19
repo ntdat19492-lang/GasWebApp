@@ -38,7 +38,7 @@ main {
 
 .contentbox {
     border: 1px solid var(--borderColor);
-    background: var(--borderColor);
+    background: #1a1a25;
     border-radius: var(--borderR);
     width: 90%;
     margin: 0 5% 10px;
@@ -53,7 +53,7 @@ button.contentbox {
     cursor: pointer;
     color: var(--textcolor);
     font-size: var(--fontSmain);
-    background-color: var(--borderColor);;
+    background: #1a1a25;
 }
 
 /* Hiệu ứng hover */
