@@ -7,7 +7,6 @@ class LoginForm2 {
         this.submitBtn = this.form.querySelector('.login-btn');
         this.passwordToggle = document.getElementById('passwordToggle');
         this.passwordInput = document.getElementById('password');
-        this.successMessage = document.getElementById('successMessage');
         this.isSubmitting = false;
         
         this.validators = {
