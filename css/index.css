@@ -179,7 +179,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 32px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 16px;
 }
 
@@ -248,7 +248,6 @@ body {
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    white-space: nowrap;
 }
 
 .forgot-password:hover {
@@ -550,7 +549,6 @@ body {
     }
     
     .form-options {
-        
         align-items: flex-start;
         gap: 16px;
     }
