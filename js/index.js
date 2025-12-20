@@ -205,14 +205,14 @@ class LoginForm2 {
             this.shakeForm();
         }
     }
+    
 	async loginSuccess() {
-  		const body = document.body;
-		const link = document.createElement('link');
-		link.rel = 'stylesheet';
-		link.href = 'css/style.css';
-		document.head.appendChild(link);
-
   		try {
+            const body = document.body;
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'css/style.css';
+            document.head.appendChild(link);
             const res = await fetch(`html/main.html`);
             const html = await res.text();
             body.innerHTML = html;
