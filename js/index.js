@@ -173,22 +173,6 @@ class LoginForm2 {
         }
     }
     
-    handleForgotPassword(e) {
-        e.preventDefault();
-        // Add neon pulse effect
-        const link = e.target;
-        link.style.textShadow = '0 0 10px rgba(0, 255, 136, 0.8)';
-        link.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-            link.style.transform = 'scale(1)';
-            setTimeout(() => {
-                link.style.textShadow = '';
-            }, 200);
-        }, 150);
-        
-        FormUtils.showNotification('Password reset link would be sent to your email', 'info', this.form);
-    }
-    
     handleSignupLink(e) {
         e.preventDefault();
         // Add neon pulse effect
