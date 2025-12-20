@@ -550,7 +550,7 @@ body {
     }
     
     .form-options {
-        flex-direction: column;
+        
         align-items: flex-start;
         gap: 16px;
     }
