@@ -56,15 +56,8 @@ class LoginForm2 {
         
         // Forgot password link
         const forgotLink = document.querySelector('.forgot-password');
-        if (forgotLink) {
-            forgotLink.addEventListener('click', (e) => this.handleForgotPassword(e));
-        }
-        
         // Sign up link
         const signupLink = document.querySelector('.signup-link a');
-        if (signupLink) {
-            signupLink.addEventListener('click', (e) => this.handleSignupLink(e));
-        }
         
         // Keyboard shortcuts
         this.setupKeyboardShortcuts();
@@ -171,22 +164,6 @@ class LoginForm2 {
                 }, 200);
             }, 150);
         }
-    }
-    
-    handleSignupLink(e) {
-        e.preventDefault();
-        // Add neon pulse effect
-        const link = e.target;
-        link.style.textShadow = '0 0 10px rgba(0, 153, 255, 0.8)';
-        link.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-            link.style.transform = 'scale(1)';
-            setTimeout(() => {
-                link.style.textShadow = '';
-            }, 200);
-        }, 150);
-        
-        FormUtils.showNotification('Redirecting to sign up page...', 'info', this.form);
     }
     
     async handleSubmit(e) {
