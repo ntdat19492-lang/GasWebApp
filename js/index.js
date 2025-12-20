@@ -213,15 +213,15 @@ class LoginForm2 {
 		document.head.appendChild(link);
 
   		try {
-    	const res = await fetch(`html/main.html`);
-    	const html = await res.text();
-    	body.innerHTML = html;
-        const script = document.createElement('script');
-        script.src = 'js/main.js';
-        document.body.appendChild(script);
+            const res = await fetch(`html/main.html`);
+            const html = await res.text();
+            body.innerHTML = html;
+            const script = document.createElement('script');
+            script.src = 'js/main.js';
+            document.body.appendChild(script);
   		} catch (err) {
-    		main.innerHTML = `<div class='content-box'>Không tải được</div>`;
-    		console.error(err);
+            main.innerHTML = `<div class='content-box'>Không tải được</div>`;
+            console.error(err);
   		}
 	}
 
