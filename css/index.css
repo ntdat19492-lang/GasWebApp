@@ -175,6 +175,7 @@ body {
 
 /* Form Options */
 .form-options {
+    ưidth: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
