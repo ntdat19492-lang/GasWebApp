@@ -22,7 +22,6 @@ class LoginForm2 {
         this.setupFloatingLabels();
         this.addInputAnimations();
         this.setupPasswordToggle();
-        this.setupSocialButtons();
         this.addBackgroundEffects();
         FormUtils.addSharedAnimations();
     }
@@ -175,15 +174,13 @@ class LoginForm2 {
         if (isValid) {
             const username = document.getElementById("email").value.toLowerCase();
             const password = document.getElementById("password").value;
-            const body ={};
-            body.username = username;
-            body.password = password;
-			// console.log(body);
+            const {username, password} = body;
+            // console.log(body);
 
-			this.isSubmitting = true;
-			this.submitBtn.classList.add('loading');
-			this.submitBtn.style.boxShadow = '0 0 30px rgba(0, 255, 136, 0.6)';
-
+            this.isSubmitting = true;
+            this.submitBtn.classList.add('loading');
+            this.submitBtn.style.boxShadow = '0 0 30px rgba(0, 255, 136, 0.6)';
+            
             const res = await fetch("./signIn", {
 	    	    method: "POST",
 	    	    headers: { "Content-Type": "application/json" },
@@ -194,7 +191,7 @@ class LoginForm2 {
             // console.log(data);
             
             if (data.gasJson.success) {
-                this.loginSuccess();
+                this.mainForm();
             } else {
                 alert(data.gasJson.message);
                 this.isSubmitting = false;
@@ -206,7 +203,7 @@ class LoginForm2 {
         }
     }
     
-	async loginSuccess() {
+	async mainForm() {
   		try {
             const body = document.body;
             const link = document.createElement('link');
