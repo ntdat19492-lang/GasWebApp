@@ -6,40 +6,56 @@ const tabTitles = {
   	search: 'Tìm Kiếm'
 };
 
-// Load nội dung tab
 async function loadPage(page) {
-  	try {
-      // 🔹 Set header ngay khi load page
-      const header = document.getElementById("headerTitle");
-      animationLoadPage(header);
-      header.textContent = tabTitles[page];
-      
-      const mainCard = document.querySelector('.main');
-      animationLoadPage(mainCard);
-      
-      const res = await fetch(`html/${page}.html`);
-      const html = await res.text();
-      const main = document.getElementById("mainContent");
-      main.innerHTML = html;
-      if (page === "setting") settingHTML();
-      if (page === "log") logHTML();
-  	} catch (err) {
-      main.innerHTML = `<div class='content-box'>Không tải được</div>`;
-      console.error(err);
-  	}
+  const header = document.getElementById("headerTitle");
+  const mainCard = document.querySelector('.main');
+  const main = document.getElementById("mainContent");
+
+  try {
+    // 🔹 Ẩn nội dung cũ
+    await Promise.all([
+      animationOut(header),
+      animationOut(mainCard)
+    ]);
+
+    // 🔹 Đổi nội dung
+    header.textContent = tabTitles[page];
+
+    const res = await fetch(`html/${page}.html`);
+    const html = await res.text();
+    main.innerHTML = html;
+
+    if (page === "setting") settingHTML();
+    if (page === "log") logHTML();
+
+    // 🔹 Hiện NGAY nội dung mới
+    showImmediately(header);
+    showImmediately(mainCard);
+
+  } catch (err) {
+    main.innerHTML = `<div class='content-box'>Không tải được</div>`;
+    console.error(err);
+  }
 }
 
-function animationLoadPage(card) {
-  if (card) {
+function showImmediately(card) {
+  if (!card) return;
+
+  card.style.transition = 'none';
+  card.style.opacity = '1';
+  card.style.transform = 'translateY(0) scale(1)';
+}
+
+function animationOut(card, duration = 800) {
+  return new Promise(resolve => {
+    if (!card) return resolve();
+
+    card.style.transition = `all ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)`;
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px) scale(0.9)';
-        
-    setTimeout(() => {
-      card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-      card.style.opacity = '1';
-      card.style.transform = 'translateY(0) scale(1)';
-    }, 200);
-  }
+
+    setTimeout(resolve, duration);
+  });
 }
 
 function settingHTML() {
