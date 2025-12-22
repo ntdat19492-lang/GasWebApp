@@ -195,6 +195,7 @@ class LoginForm2 {
             } else {
                 // alert(data.gasJson.message);
 				this.showError('password', data.gasJson.message);
+				this.showUsernameError();
                 this.isSubmitting = false;
                 this.submitBtn.classList.remove('loading');
             }
@@ -260,6 +261,20 @@ class LoginForm2 {
         formGroup.classList.add('error');
         errorElement.textContent = message;
         errorElement.classList.add('show');
+        
+        // Add shake animation with neon effect
+        const field = document.getElementById(fieldName);
+        field.style.animation = 'shake 0.5s ease-in-out';
+        field.style.boxShadow = '0 0 15px rgba(255, 0, 128, 0.5)';
+        setTimeout(() => {
+            field.style.animation = '';
+            field.style.boxShadow = '';
+        }, 500);
+    }
+
+	    showUsernameError() {
+        const formGroup = document.getElementById(fieldName).closest('.form-group'); 
+        formGroup.classList.add('error');
         
         // Add shake animation with neon effect
         const field = document.getElementById(fieldName);
