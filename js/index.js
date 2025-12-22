@@ -273,11 +273,11 @@ class LoginForm2 {
     }
 
 	    showUsernameError() {
-        const formGroup = document.getElementById(fieldName).closest('.form-group'); 
+        const formGroup = document.getElementById('email').closest('.form-group'); 
         formGroup.classList.add('error');
         
         // Add shake animation with neon effect
-        const field = document.getElementById(fieldName);
+        const field = document.getElementById('email');
         field.style.animation = 'shake 0.5s ease-in-out';
         field.style.boxShadow = '0 0 15px rgba(255, 0, 128, 0.5)';
         setTimeout(() => {
