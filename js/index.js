@@ -1,4 +1,4 @@
-// Login Form 2 - Neon Minimalist Style JavaScript
+    // Login Form 2 - Neon Minimalist Style JavaScript
 // This file extends form-utils.js with form-specific functionality
 
 class LoginForm2 {
@@ -174,7 +174,7 @@ class LoginForm2 {
         if (isValid) {
             const username = document.getElementById("email").value.toLowerCase();
             const password = document.getElementById("password").value;
-            const {username, password} = body;
+            const {username: username, password: password} = body;
             // console.log(body);
 
             this.isSubmitting = true;
