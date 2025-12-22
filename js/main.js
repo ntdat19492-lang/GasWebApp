@@ -24,8 +24,8 @@ async function loadPage(page) {
       if (page === "setting") settingHTML();
       if (page === "log") logHTML();
   	} catch (err) {
-    	main.innerHTML = `<div class='content-box'>Không tải được</div>`;
-    	console.error(err);
+      main.innerHTML = `<div class='content-box'>Không tải được</div>`;
+      console.error(err);
   	}
 }
 
