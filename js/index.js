@@ -174,7 +174,7 @@ class LoginForm2 {
         if (isValid) {
             const username = document.getElementById("email").value.toLowerCase();
             const password = document.getElementById("password").value;
-            const {username, password} = body;
+            const body = {username, password};
             // console.log(body);
 
             this.isSubmitting = true;
