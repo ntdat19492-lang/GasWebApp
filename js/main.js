@@ -8,18 +8,16 @@ const tabTitles = {
 
 // Load nội dung tab
 async function loadPage(page) {
+  const header = document.getElementById("headerTitle");
+  const main = document.getElementById("mainContent");
   	try {
-      // 🔹 Set header ngay khi load page
-      const header = document.getElementById("headerTitle");
       header.textContent = tabTitles[page];
       animationLoadPage(header);
       
-      const mainCard = document.querySelector('.main');
       const res = await fetch(`html/${page}.html`);
       const html = await res.text();
-      const main = document.getElementById("mainContent");
       main.innerHTML = html;
-      animationLoadPage(mainCard);
+      animationLoadPage(main);
       if (page === "setting") settingHTML();
       if (page === "log") logHTML();
   	} catch (err) {
