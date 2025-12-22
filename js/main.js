@@ -45,7 +45,7 @@ function showImmediately(card) {
   card.style.transform = 'translateY(0) scale(1)';
 }
 
-function animationOut(card, duration = 300) {
+function animationOut(card, duration = 200) {
   return new Promise(resolve => {
     if (!card) return resolve();
 
