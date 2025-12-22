@@ -193,7 +193,8 @@ class LoginForm2 {
             if (data.gasJson.success) {
                 this.mainForm();
             } else {
-                alert(data.gasJson.message);
+                // alert(data.gasJson.message);
+				this.showError('password', data.gasJson.message);
                 this.isSubmitting = false;
                 this.submitBtn.classList.remove('loading');
             }
