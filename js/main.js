@@ -8,28 +8,27 @@ const tabTitles = {
 
 async function loadPage(page) {
   const header = document.getElementById("headerTitle");
-  const mainCard = document.querySelector('.main');
+  const mainCard = document.querySelector('.main'); // ⚠ wrapper
   const main = document.getElementById("mainContent");
 
   try {
-    // 🔹 Ẩn nội dung cũ
-    await Promise.all([
-      animationOut(header),
-      animationOut(mainCard)
-    ]);
+    // 🔹 animate OUT (card bao)
+    await animationOut(mainCard, 250);
 
-    // 🔹 Đổi nội dung
+    // 🔹 đổi nội dung
     header.textContent = tabTitles[page];
 
     const res = await fetch(`html/${page}.html`);
     const html = await res.text();
+
+    // 🔹 clear trước → đảm bảo mất nội dung cũ
+    main.innerHTML = '';
     main.innerHTML = html;
 
     if (page === "setting") settingHTML();
     if (page === "log") logHTML();
 
-    // 🔹 Hiện NGAY nội dung mới
-    showImmediately(header);
+    // 🔹 hiện NGAY nội dung mới
     showImmediately(mainCard);
 
   } catch (err) {
@@ -46,13 +45,13 @@ function showImmediately(card) {
   card.style.transform = 'translateY(0) scale(1)';
 }
 
-function animationOut(card, duration = 800) {
+function animationOut(card, duration = 300) {
   return new Promise(resolve => {
     if (!card) return resolve();
 
-    card.style.transition = `all ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)`;
+    card.style.transition = `opacity ${duration}ms ease, transform ${duration}ms ease`;
     card.style.opacity = '0';
-    card.style.transform = 'translateY(30px) scale(0.9)';
+    card.style.transform = 'translateY(20px) scale(0.96)';
 
     setTimeout(resolve, duration);
   });
