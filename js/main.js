@@ -19,6 +19,18 @@ async function loadPage(page) {
     	main.innerHTML = html;
     	if (page === "setting") settingHTML();
     	if (page === "log") logHTML();
+		
+		const mainCard = document.querySelector('.main');
+    	if (mainCard) {
+        	mainCard.style.opacity = '0';
+        	mainCard.style.transform = 'translateY(30px) scale(0.9)';
+        
+        	setTimeout(() => {
+            	mainCard.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            	mainCard.style.opacity = '1';
+            	mainCard.style.transform = 'translateY(0) scale(1)';
+        	}, 200);
+    	}
   	} catch (err) {
     	main.innerHTML = `<div class='content-box'>Không tải được</div>`;
     	console.error(err);
