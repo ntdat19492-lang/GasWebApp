@@ -30,14 +30,14 @@ async function loadPage(page) {
 }
 
 function animationLoadPage(card) {
-  if (mainCard) {
-    mainCard.style.opacity = '0';
-    mainCard.style.transform = 'translateY(30px) scale(0.9)';
+  if (card) {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px) scale(0.9)';
         
     setTimeout(() => {
-      mainCard.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-      mainCard.style.opacity = '1';
-      mainCard.style.transform = 'translateY(0) scale(1)';
+      card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0) scale(1)';
     }, 200);
   }
 }
