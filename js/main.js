@@ -11,13 +11,13 @@ async function loadPage(page) {
   const header = document.getElementById("headerTitle");
   const main = document.getElementById("mainContent");
   	try {
-      header.textContent = tabTitles[page];
       animationLoadPage(header);
+      header.textContent = tabTitles[page];
       
       const res = await fetch(`html/${page}.html`);
       const html = await res.text();
-      main.innerHTML = html;
       animationLoadPage(main);
+      main.innerHTML = html;
       if (page === "setting") settingHTML();
       if (page === "log") logHTML();
   	} catch (err) {
