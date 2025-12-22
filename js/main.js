@@ -6,57 +6,40 @@ const tabTitles = {
   	search: 'Tìm Kiếm'
 };
 
+// Load nội dung tab
 async function loadPage(page) {
-  const header = document.getElementById("headerTitle");
-  const mainCard = document.querySelector('.main');
-  const main = document.getElementById("mainContent");
-
-  try {
-    // animate mất đi
-    animationLoadPage(mainCard);
-
-    // ⏳ CHỜ animation
-    await new Promise(r => setTimeout(r, 250));
-
-    // đổi nội dung
-    header.textContent = tabTitles[page];
-
-    const res = await fetch(`html/${page}.html`);
-    const html = await res.text();
-    main.innerHTML = html;
-
-    if (page === "setting") settingHTML();
-    if (page === "log") logHTML();
-
-    // hiện ngay
-    mainCard.style.transition = 'none';
-    mainCard.style.opacity = '1';
-    mainCard.style.transform = 'translateY(0) scale(1)';
-
-  } catch (err) {
-    main.innerHTML = `<div class='content-box'>Không tải được</div>`;
-    console.error(err);
-  }
+  	try {
+      // 🔹 Set header ngay khi load page
+      const header = document.getElementById("headerTitle");
+      header.textContent = tabTitles[page];
+      animationLoadPage(header);
+      
+      const mainCard = document.querySelector('.main');
+      const res = await fetch(`html/${page}.html`);
+      const html = await res.text();
+      const main = document.getElementById("mainContent");
+      main.innerHTML = html;
+      animationLoadPage(mainCard);
+      if (page === "setting") settingHTML();
+      if (page === "log") logHTML();
+  	} catch (err) {
+      main.innerHTML = `<div class='content-box'>Không tải được</div>`;
+      console.error(err);
+  	}
 }
 
 function animationLoadPage(card) {
-  if (!card) return;
-
-  // 1️⃣ trạng thái ban đầu (hiện)
-  card.style.transition = 'none';
-  card.style.opacity = '1';
-  card.style.transform = 'translateY(0) scale(1)';
-
-  // 2️⃣ cho browser render 1 frame
-  requestAnimationFrame(() => {
-    // 3️⃣ set transition
-    card.style.transition = 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)';
-
-    // 4️⃣ trạng thái animate (mất đi)
+  if (card) {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px) scale(0.9)';
-  });
-}
+        
+    setTimeout(() => {
+      card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0) scale(1)';
+    }, 200);
+  }
+}}
 
 function settingHTML() {
 	document.getElementById("reloadBtn").addEventListener("click", () => {
