@@ -14,12 +14,6 @@ async function loadPage(page) {
 		header.textContent = tabTitles[page];
   	  
   	try {
-    	const res = await fetch(`html/${page}.html`);
-    	const html = await res.text();
-    	main.innerHTML = html;
-    	if (page === "setting") settingHTML();
-    	if (page === "log") logHTML();
-		
 		const mainCard = document.querySelector('.main');
     	if (mainCard) {
         	mainCard.style.opacity = '0';
@@ -31,6 +25,13 @@ async function loadPage(page) {
             	mainCard.style.transform = 'translateY(0) scale(1)';
         	}, 200);
     	}
+		
+    	const res = await fetch(`html/${page}.html`);
+    	const html = await res.text();
+    	main.innerHTML = html;
+    	if (page === "setting") settingHTML();
+    	if (page === "log") logHTML();
+		
   	} catch (err) {
     	main.innerHTML = `<div class='content-box'>Không tải được</div>`;
     	console.error(err);
