@@ -16,14 +16,13 @@ async function loadPage(page) {
       
       const mainCard = document.querySelector('.main');
       animationLoadPage(mainCard);
-		
-    	const res = await fetch(`html/${page}.html`);
-    	const html = await res.text();
+      
+      const res = await fetch(`html/${page}.html`);
+      const html = await res.text();
       const main = document.getElementById("mainContent");
-    	main.innerHTML = html;
-    	if (page === "setting") settingHTML();
-    	if (page === "log") logHTML();
-		
+      main.innerHTML = html;
+      if (page === "setting") settingHTML();
+      if (page === "log") logHTML();
   	} catch (err) {
     	main.innerHTML = `<div class='content-box'>Không tải được</div>`;
     	console.error(err);
