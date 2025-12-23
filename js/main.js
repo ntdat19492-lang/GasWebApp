@@ -10,7 +10,9 @@ const tabTitles = {
 async function loadPage(page) {
   	const header = document.getElementById("headerTitle");
   	const main = document.getElementById("mainContent");
+	const mainCard = document.querySelector("mainCard");
   	try {
+		animationLoadPage(mainCard);
       	header.textContent = tabTitles[page];
       
       	const res = await fetch(`html/${page}.html`);
@@ -65,10 +67,7 @@ function settingHTML() {
 	    	return;
 	  	}
 
-		const body ={};
-		body.username = username;
-	  	body.password = password;
-	
+		const body ={username, password};
 	  	const res = await fetch("./register", {
 	    	method: "POST",
 	    	headers: { "Content-Type": "application/json" },
