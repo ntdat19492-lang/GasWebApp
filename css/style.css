@@ -10,7 +10,7 @@
     --fontSmain: 16px;
 }
 
-html, body {
+html, body, .mainCard {
     width: 100%;
     height: 100%;
     min-height: auto;
