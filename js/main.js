@@ -8,34 +8,34 @@ const tabTitles = {
 
 // Load nội dung tab
 async function loadPage(page) {
-  const header = document.getElementById("headerTitle");
-  const main = document.getElementById("mainContent");
+  	const header = document.getElementById("headerTitle");
+  	const main = document.getElementById("mainContent");
   	try {
-      header.textContent = tabTitles[page];
+      	header.textContent = tabTitles[page];
       
-      const res = await fetch(`html/${page}.html`);
-      const html = await res.text();
-      main.innerHTML = html;
-      if (page === "setting") settingHTML();
-      if (page === "log") logHTML();
+      	const res = await fetch(`html/${page}.html`);
+      	const html = await res.text();
+      	main.innerHTML = html;
+      	if (page === "setting") settingHTML();
+      	if (page === "log") logHTML();
   	} catch (err) {
-      main.innerHTML = `<div class='content-box'>Không tải được</div>`;
-      console.error(err);
+    	main.innerHTML = `<div class='content-box'>Không tải được</div>`;
+      	console.error(err);
   	}
 }
 
 function animationLoadPage(card) {
-  if (card) {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px) scale(0.9)';
+	if (card) {
+		card.style.opacity = '0';
+		card.style.transform = 'translateY(30px) scale(0.9)';
         
-    setTimeout(() => {
-      card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-      card.style.opacity = '1';
-      card.style.transform = 'translateY(0) scale(1)';
-    }, 200);
-  }
-}}
+	setTimeout(() => {
+    	card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    	card.style.opacity = '1';
+    	card.style.transform = 'translateY(0) scale(1)';
+    	}, 200);
+  	}
+}
 
 function settingHTML() {
 	document.getElementById("reloadBtn").addEventListener("click", () => {
