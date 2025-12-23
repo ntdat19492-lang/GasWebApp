@@ -8,11 +8,9 @@ const tabTitles = {
 
 // Load nội dung tab
 async function loadPage(page) {
-  	const header = document.getElementById("headerTitle");
-  	const main = document.getElementById("mainContent");
+  	const main = document.getElementById("mainCard");
   	try {
 		animationLoadPage('mainCard');
-      	header.textContent = tabTitles[page];
       
       	const res = await fetch(`html/${page}.html`);
       	const html = await res.text();
