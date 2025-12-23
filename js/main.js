@@ -11,7 +11,7 @@ async function loadPage(page) {
   	const header = document.getElementById("headerTitle");
   	const main = document.getElementById("mainContent");
   	try {
-		animationLoadPage(mainCard);
+		animationLoadPage('mainCard');
       	header.textContent = tabTitles[page];
       
       	const res = await fetch(`html/${page}.html`);
