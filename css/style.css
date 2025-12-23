@@ -23,10 +23,6 @@ html, body {
 	padding: 0;
 }
 
-.logo-icon {
-	margin-top: 20px;
-}
-
 .mainCard {
 	width: 100%;
 	overflow-y: auto;
