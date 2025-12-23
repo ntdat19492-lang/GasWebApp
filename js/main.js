@@ -1,10 +1,4 @@
 let logBuffer = [];
-const tabTitles = {
-  	home: "Trang Chủ",
-  	setting: "Cài Đặt",
-  	log: "Log",
-  	search: 'Tìm Kiếm'
-};
 
 // Load nội dung tab
 async function loadPage(page) {
@@ -35,6 +29,13 @@ function animationLoadPage(mainCard) {
     	card.style.transform = 'translateY(0) scale(1)';
     	}, 200);
   	}
+}
+
+// Chuyển tab
+function switchTab(tab, btn) {
+  	document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  	btn.classList.add("active");
+  	loadPage(tab);
 }
 
 function settingHTML() {
@@ -94,13 +95,6 @@ function logHTML() {
       	logContainer.appendChild(box);
     	});
   	}
-}
-
-// Chuyển tab
-function switchTab(tab, btn) {
-  	document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-  	btn.classList.add("active");
-  	loadPage(tab);
 }
 
 // Thêm log vào chat
