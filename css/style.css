@@ -38,7 +38,8 @@ header {
     top: 0;
     z-index: 1;
     background: #151520;
-	padding: 10px 10px 10px calc(5% + 20px);
+	padding-bottom: 10px;
+	padding-left: calc(5% + 20px);
 }
 
 main {
