@@ -20,7 +20,7 @@ html, body {
     flex-direction: column;
     overscroll-behavior: none;
     overflow: hidden;
-    padding: 0;
+    padding: 30px;
 }
 
 main {
@@ -34,7 +34,6 @@ h1 {
     color: #ffffff;
     font-weight: 600;
     letter-spacing: -0.02em;
-    padding-bottom: 10px;
     padding-left: calc(5% + 20px);
     background: white;
     color: black;
