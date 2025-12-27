@@ -29,13 +29,12 @@ main {
     overflow-y: auto;
 }
 
-h1 {
+p {
     font-size: 1.5rem;
     color: #ffffff;
     font-weight: 600;
     letter-spacing: -0.02em;
-    
-    padding: 0;
+    padding-left: calc(5% + 20px);
     background: white;
     color: black;
 }
