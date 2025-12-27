@@ -34,8 +34,8 @@ h1 {
     color: #ffffff;
     font-weight: 600;
     letter-spacing: -0.02em;
-    padding-left: calc(5% + 20px);
-    margin: 0;
+    
+    padding: 0;
     background: white;
     color: black;
 }
