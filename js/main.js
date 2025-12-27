@@ -63,8 +63,6 @@ class App {
     }
 }
 
-const app = new App();
-app.loadPage("home");
 
 // ================== TAB: HOME ==================
 class HomeTab {
