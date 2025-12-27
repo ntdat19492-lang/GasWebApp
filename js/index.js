@@ -205,26 +205,39 @@ class LoginForm2 {
         }
     }
     
-	async mainForm() {
-  		try {
+    async mainForm() {
+        try {
             const body = document.body;
+    
+            // load CSS
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.href = 'css/style.css';
             document.head.appendChild(link);
-            const res = await fetch(`html/main.html`);
+    
+            // load HTML shell
+            const res = await fetch('html/main.html');
             const html = await res.text();
             body.innerHTML = html;
-            const script = document.createElement('script');
-            script.src = 'js/main.js';
-            document.body.appendChild(script);
-            const app = new App();
-            app.loadPage("home");
-  		} catch (err) {
-            main.innerHTML = `<div class='content-box'>Không tải được</div>`;
+    
+            // load main.js và CHỜ nó load xong
+            await new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = 'js/main.js';
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+    
+            // 🔥 lúc này App trong main.js đã tồn tại
+            window.app = new App();
+            app.loadPage('home');
+    
+        } catch (err) {
             console.error(err);
-  		}
-	}
+            document.body.innerHTML = `<div class='content-box'>Không tải được</div>`;
+        }
+    }
 
     validateForm() {
         let isValid = true;
