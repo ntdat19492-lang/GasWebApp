@@ -29,7 +29,7 @@ main {
     overflow-y: auto;
 }
 
-p {
+.title {
     font-size: 1.5rem;
     color: #ffffff;
     font-weight: 600;
