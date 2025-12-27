@@ -26,7 +26,6 @@ html, body {
     flex-direction: column;
     overscroll-behavior: none;
     overflow: hidden;
-    padding: 0;
 }
 
 main {
