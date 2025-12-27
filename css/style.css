@@ -40,8 +40,6 @@ main {
     font-weight: 600;
     letter-spacing: -0.02em;
     padding-left: calc(5% + 20px);
-    background: white;
-    color: black;
 }
 
 .contentbox {
