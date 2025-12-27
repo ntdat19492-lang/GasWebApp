@@ -35,8 +35,9 @@ h1 {
     font-weight: 600;
     letter-spacing: -0.02em;
     padding-bottom: 10px;
-	padding-left: calc(5% + 20px);
+    padding-left: calc(5% + 20px);
     background: white;
+    color: black;
 }
 
 .contentbox {
