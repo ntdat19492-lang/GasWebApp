@@ -2,7 +2,7 @@ let logBuffer = [];
 
 // Load nội dung tab
 async function loadPage(page) {
-  	const main = document.getElementById("main");
+  	const main = document.querySelector("main");
   	try {
 		animationLoadPage('main');
       
