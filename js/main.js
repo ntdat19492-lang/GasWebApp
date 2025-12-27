@@ -2,9 +2,9 @@ let logBuffer = [];
 
 // Load nội dung tab
 async function loadPage(page) {
-  	const main = document.getElementById("mainCard");
+  	const main = document.getElementById("main");
   	try {
-		animationLoadPage('mainCard');
+		animationLoadPage('main');
       
       	const res = await fetch(`html/${page}.html`);
       	const html = await res.text();
@@ -18,7 +18,7 @@ async function loadPage(page) {
 }
 
 function animationLoadPage(mainCard) {
-	const card = document.querySelector(`.${mainCard}`);
+	const card = document.querySelector(mainCard);
 	if (card) {
 		card.style.opacity = '0';
 		card.style.transform = 'translateY(30px) scale(0.9)';
