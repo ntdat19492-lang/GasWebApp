@@ -1,3 +1,13 @@
+class HomeForm {
+  contructor() {
+    this.logBuffer = [];
+  }
+  
+  async loadPage(page) {
+    
+  }
+}
+
 let logBuffer = [];
 
 // Load nội dung tab
