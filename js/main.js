@@ -53,17 +53,6 @@ class App {
         }
     }
 
-    animate() {
-        this.main.style.opacity = "0";
-        this.main.style.transform = "translateY(20px)";
-
-        setTimeout(() => {
-            this.main.style.transition = "0.3s";
-            this.main.style.opacity = "1";
-            this.main.style.transform = "translateY(0)";
-        }, 50);
-    }
-
     animatehide() {
         this.main.style.opacity = "0";
         this.main.style.transform = "translateY(20px)";
@@ -75,7 +64,6 @@ class App {
         this.main.style.transform = "translateY(0)";
     }
 }
-
 
 // ================== TAB: HOME ==================
 class HomeTab {
@@ -89,7 +77,6 @@ class HomeTab {
     }
 }
 
-
 // ================== TAB: SEARCH ==================
 class SearchTab {
     constructor(app) {
@@ -100,7 +87,6 @@ class SearchTab {
         console.log("Search tab loaded");
     }
 }
-
 
 // ================== TAB: LOG ==================
 class LogTab {
@@ -132,7 +118,6 @@ class LogTab {
         this.render();
     }
 }
-
 
 // ================== TAB: SETTING ==================
 class SettingTab {
