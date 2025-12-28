@@ -228,10 +228,7 @@ class LoginForm2 {
                 script.onerror = reject;
                 document.body.appendChild(script);
             });
-    
-            // 🔥 lúc này App trong main.js đã tồn tại
-            window.app = new App();
-            app.loadPage('home');
+            new App();
     
         } catch (err) {
             console.error(err);
