@@ -56,7 +56,6 @@ class App {
     }
 }
 
-// ================== TAB: HOME ==================
 class HomeTab {
     constructor(app) {
         this.app = app;
@@ -68,7 +67,6 @@ class HomeTab {
     }
 }
 
-// ================== TAB: SEARCH ==================
 class SearchTab {
     constructor(app) {
         this.app = app;
@@ -79,7 +77,6 @@ class SearchTab {
     }
 }
 
-// ================== TAB: LOG ==================
 class LogTab {
     constructor(app) {
         this.app = app;
@@ -110,7 +107,6 @@ class LogTab {
     }
 }
 
-// ================== TAB: SETTING ==================
 class SettingTab {
     constructor(app) {
         this.app = app;
