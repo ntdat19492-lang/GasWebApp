@@ -39,12 +39,13 @@ class App {
 
     async loadPage(name) {
         try {
-            this.animate();
+            this.animatehide();
 
             const res = await fetch(`html/${name}.html`);
             const html = await res.text();
             this.main.innerHTML = html;
 
+            this.animateshow();
             this.tabs[name]?.init();
         } catch (err) {
             console.error(err);
@@ -61,6 +62,17 @@ class App {
             this.main.style.opacity = "1";
             this.main.style.transform = "translateY(0)";
         }, 50);
+    }
+
+    animatehide() {
+        this.main.style.opacity = "0";
+        this.main.style.transform = "translateY(20px)";
+    }
+    
+    animateshow() {
+        this.main.style.transition = "0.3s";
+        this.main.style.opacity = "1";
+        this.main.style.transform = "translateY(0)";
     }
 }
 
