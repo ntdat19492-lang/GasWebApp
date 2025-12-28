@@ -10,6 +10,7 @@ class App {
         };
 
         this.setupNavEvents();
+        this.loadPage("home");
     }
 
     setupNavEvents() {
