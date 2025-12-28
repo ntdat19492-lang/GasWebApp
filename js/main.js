@@ -1,28 +1,23 @@
 class App {
     constructor() {
         this.main = document.querySelector("main");
-
         this.tabs = {
             home: new HomeTab(this),
             search: new SearchTab(this),
             log: new LogTab(this),
             setting: new SettingTab(this)
         };
-
         this.setupNavEvents();
         this.loadPage("home");
     }
 
     setupNavEvents() {
         const footer = document.querySelector(".footer-wrapper");
-
         footer.addEventListener("click", e => {
             const btn = e.target.closest(".nav-btn");
             if (!btn) return;
-
             const tab = btn.dataset.tab;
             if (!tab) return;
-
             this.switchTab(tab, btn);
         });
     }
@@ -31,20 +26,16 @@ class App {
         document
             .querySelectorAll(".nav-btn")
             .forEach(b => b.classList.remove("active"));
-
         btn.classList.add("active");
-
         this.loadPage(name);
     }
 
     async loadPage(name) {
         try {
             this.animatehide();
-
             const res = await fetch(`html/${name}.html`);
             const html = await res.text();
             this.main.innerHTML = html;
-
             this.animateshow();
             this.tabs[name]?.init();
         } catch (err) {
