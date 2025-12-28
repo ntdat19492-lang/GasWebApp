@@ -1,4 +1,4 @@
-    // Login Form 2 - Neon Minimalist Style JavaScript
+// Login Form 2 - Neon Minimalist Style JavaScript
 // This file extends form-utils.js with form-specific functionality
 
 class LoginForm2 {
