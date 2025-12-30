@@ -13,11 +13,11 @@ class App {
     }
 
     init() {
-        this.addEventListeners();
+        this.addEventListener();
         this.loadPage("home");
     }
     
-    addEventListeners‎() {
+    addEventListener‎() {
         this.footer.addEventListener("click", e => {
             const btn = e.target.closest(".nav-btn");
             if (!btn) return;
