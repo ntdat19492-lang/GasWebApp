@@ -1,6 +1,7 @@
 class App {
     constructor() {
         this.main = document.querySelector("main");
+        this.footer = document.querySelector(".footer-wrapper");
         this.tabs = {
             home: new HomeTab(this),
             search: new SearchTab(this),
@@ -17,8 +18,7 @@ class App {
     }
     
     addEventListeners‎() {
-        const footer = document.querySelector(".footer-wrapper");
-        footer.addEventListener("click", e => {
+        this.footer.addEventListener("click", e => {
             const btn = e.target.closest(".nav-btn");
             if (!btn) return;
             const tab = btn.dataset.tab;
