@@ -17,7 +17,7 @@ class App {
         this.loadPage("home");
     }
     
-    addEventListeners‎() {
+    addEventListeners() {
         this.footer.addEventListener("click", e => {
             const btn = e.target.closest(".nav-btn");
             if (!btn) return;
