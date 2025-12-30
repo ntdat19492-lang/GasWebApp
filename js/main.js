@@ -7,11 +7,16 @@ class App {
             log: new LogTab(this),
             setting: new SettingTab(this)
         };
-        this.setupNavEvents();
-        this.loadPage("home");
+        
+        this.init();
     }
 
-    setupNavEvents() {
+    init() {
+        this.addEventListeners();
+        this.loadPage("home");
+    }
+    
+    addEventListeners‎() {
         const footer = document.querySelector(".footer-wrapper");
         footer.addEventListener("click", e => {
             const btn = e.target.closest(".nav-btn");
